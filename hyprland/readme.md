@@ -6,40 +6,7 @@ This README provides details on configuring Hyprland using a set of configuratio
 
 Hyprland is a dynamic tiling Wayland compositor that allows extensive customization. The configuration files included here will help you set up your monitors, key bindings, startup applications, and window manager settings.
 
-## Installation and Setup
-
-### Prerequisites
-
-Before configuring Hyprland, ensure you have the following utilities installed:
-
-- **Hyprland**: The Wayland compositor itself.
-- **Waybar**: A customizable status bar.
-- **Hyprpaper**: A wallpaper manager for Hyprland.
-- **nm-applet**: NetworkManager applet for network configuration.
-- **blueman-applet**: Bluetooth manager applet.
-- **wofi** or **rofi**: Application launchers.
-- **Grim** and **slurp**: Screenshot utilities.
-- **amixer**: ALSA mixer for volume control.
-
 ### Install Linux
-
-***Download utils***
-
-- **Debian**:
-    ```bash
-    sudo apt update
-    sudo apt install hyprland waybar hyprpaper network-manager-gnome blueman wofi grim slurp alsa-utils
-    ```
-
-- **Arch**:
-    ```bash
-    sudo pacman -S hyprland waybar hyprpaper network-manager-applet blueman wofi grim slurp alsa-utils
-    ```
-
-- **Fedora**:
-    ```bash
-    sudo dnf install hyprland waybar hyprpaper networkmanager-applet blueman wofi grim slurp alsa-utils
-    ```
 
 ***Download configs***
 
