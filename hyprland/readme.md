@@ -8,11 +8,6 @@ Hyprland is a dynamic tiling Wayland compositor that allows extensive customizat
 
 ## Installation and Setup
 
-## Initial Setup
-
-1. **Clone the Repository**: Clone this repository using `git clone`.
-3. **Place the Configuration File**: Place the `config` files in your hyprland configuration directory, typically `~/.config/hypr/`.
-
 ### Prerequisites
 
 Before configuring Hyprland, ensure you have the following utilities installed:
