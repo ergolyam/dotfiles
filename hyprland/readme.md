@@ -46,6 +46,18 @@ Before configuring Hyprland, ensure you have the following utilities installed:
     sudo dnf install hyprland waybar hyprpaper networkmanager-applet blueman wofi grim slurp alsa-utils
     ```
 
+***Download configs***
+
+```bash
+mkdir -p ~/.config/hypr && \
+wget -O ~/.config/hypr/hyprland.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/hyprland.conf && \
+wget -O ~/.config/hypr/hyprpaper.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/hyprpaper.conf && \
+wget -O ~/.config/hypr/keys.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/keys.conf && \
+wget -O ~/.config/hypr/monitors.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/monitors.conf && \
+wget -O ~/.config/hypr/startup.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/startup.conf && \
+wget -O ~/.config/hypr/wm.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/wm.conf
+```
+
 ### Configuration Files
 
 #### 1. `hyprland.conf`
