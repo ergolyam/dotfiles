@@ -1,0 +1,32 @@
+// vi: ft=json
+{
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{name}",
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "en",
+        "format-ru": "ru"
+    },
+    "pulseaudio": {
+        "format": "󰕾 {volume}%",
+        "format-bluetooth": "󰗾 {volume}%",
+        "format-icons": {
+            "default": ["󰕾"]
+        },
+        "tooltip-format": "{icon} {volume}% | {desc}",
+        "on-click": "pavucontrol"
+    },
+    "custom/separator": {
+        "format": "  ",
+        "interval": "once",
+        "tooltip": false
+    },
+    "custom/wlogout": {
+        "format": "  ",
+        "on-click": "wlogout",
+    },
+}
+

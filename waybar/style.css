@@ -1,0 +1,13 @@
+* {
+    background: black;
+    color: white;
+    color: @foreground;
+    font-family: "Noto Sans";
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+#workspaces button.active {
+    box-shadow: inset 0 -5px 0 0 grey;
+    color: white;  /* Optional: to change text color */
+}

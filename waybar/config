@@ -1,0 +1,21 @@
+// vi: ft=json
+{
+    "include": "~/.config/waybar/modules",
+    "modules-left": [
+        "custom/separator",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "custom/separator",
+        "hyprland/language",
+        "custom/separator",
+        "pulseaudio",
+        "custom/separator",
+        "custom/wlogout",
+    ]
+}
+
