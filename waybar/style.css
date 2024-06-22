@@ -11,3 +11,11 @@
     box-shadow: inset 0 -5px 0 0 grey;
     color: white;  /* Optional: to change text color */
 }
+
+#battery.critical {
+    color: #FF0000; /* Красный цвет для критического уровня заряда */
+}
+
+#battery.charging {
+    color: #00FF00; /* Зеленый цвет при зарядке */
+}
