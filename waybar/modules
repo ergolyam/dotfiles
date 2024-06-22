@@ -28,5 +28,16 @@
         "format": "  ",
         "on-click": "wlogout",
     },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+    "tooltip": false,
+    "percentage": true,
+    "states": {
+      "charging": {
+        "icon": "󰂄"
+      }
+    }
+  }
 }
 
