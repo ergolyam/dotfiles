@@ -16,7 +16,7 @@ wget -O ~/.config/waybar/config https://raw.githubusercontent.com/grisha765/dotf
 wget -O ~/.config/waybar/style.css https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/style.css && \
 wget -O ~/.config/waybar/modules https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/modules && \
 wget -O ~/.config/waybar/wifi.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/wifi.sh && chmod +x ~/.config/waybar/wifi.sh && \
-wget -O ~/.config/waybar/ethernet.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/ethernet.sh && chmod +x ~/.config/waybar/ethernet.sh
+wget -O ~/.config/waybar/network_status.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/network_status.sh && chmod +x ~/.config/waybar/network_status.sh
 ```
 
 ### Configuration Files
