@@ -12,7 +12,7 @@ Dunst is a lightweight and customizable notification daemon. The configuration f
 
 ```bash
 mkdir -p ~/.config/dunst && \
-wget -O ~/.config/dunst/dunstrc https://raw.githubusercontent.com/grisha765/my_desktop/main/dunst/dunstrc
+wget -O ~/.config/dunst/dunstrc https://raw.githubusercontent.com/grisha765/dotfiles/main/dunst/dunstrc
 ```
 
 ### Configuration File

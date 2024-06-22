@@ -41,15 +41,15 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 
 ```bash
 mkdir -p ~/.config/hypr && mkdir -p ~/.config/waybar && mkdir -p ~/.config/dunst && \
-wget -O ~/.config/hypr/hyprland.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/hyprland.conf && \
-wget -O ~/.config/hypr/hyprpaper.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/hyprpaper.conf && \
-wget -O ~/.config/hypr/keys.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/keys.conf && \
-wget -O ~/.config/hypr/monitors.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/monitors.conf && \
-wget -O ~/.config/hypr/startup.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/startup.conf && \
-wget -O ~/.config/hypr/wm.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/wm.conf && \
-wget -O ~/.config/hypr/record_screen.sh https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/record_screen.sh && \
-wget -O ~/.config/waybar/config https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/config && \
-wget -O ~/.config/waybar/style.css https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/style.css && \
-wget -O ~/.config/waybar/modules https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/modules && \
-wget -O ~/.config/dunst/dunstrc https://raw.githubusercontent.com/grisha765/my_desktop/main/dunst/dunstrc
+wget -O ~/.config/hypr/hyprland.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/hyprland.conf && \
+wget -O ~/.config/hypr/hyprpaper.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/hyprpaper.conf && \
+wget -O ~/.config/hypr/keys.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/keys.conf && \
+wget -O ~/.config/hypr/monitors.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/monitors.conf && \
+wget -O ~/.config/hypr/startup.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/startup.conf && \
+wget -O ~/.config/hypr/wm.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/wm.conf && \
+wget -O ~/.config/hypr/record_screen.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/record_screen.sh && \
+wget -O ~/.config/waybar/config https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/config && \
+wget -O ~/.config/waybar/style.css https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/style.css && \
+wget -O ~/.config/waybar/modules https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/modules && \
+wget -O ~/.config/dunst/dunstrc https://raw.githubusercontent.com/grisha765/dotfiles/main/dunst/dunstrc
 ```

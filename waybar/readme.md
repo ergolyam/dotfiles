@@ -12,9 +12,9 @@ Waybar is a highly customizable status bar for Wayland compositors. The configur
 
 ```bash
 mkdir -p ~/.config/waybar && \
-wget -O ~/.config/waybar/config https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/config && \
-wget -O ~/.config/waybar/style.css https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/style.css && \
-wget -O ~/.config/waybar/modules https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/modules
+wget -O ~/.config/waybar/config https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/config && \
+wget -O ~/.config/waybar/style.css https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/style.css && \
+wget -O ~/.config/waybar/modules https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/modules
 ```
 
 ### Configuration Files
