@@ -39,6 +39,13 @@ Before configuring Hyprland, ensure you have the following utilities installed:
     sudo dnf install hyprland waybar hyprpaper networkmanager-applet blueman wofi grim slurp alsa-utils wl-recorder kitty
     ```
 
+***Create symlinks***
+
+```bash
+git clone https://github.com/grisha765/dotfiles.git ~/dotfiles && \
+cd ~/dotfiles && bash install.sh
+```
+
 ***Download all configs***
 
 ```bash
