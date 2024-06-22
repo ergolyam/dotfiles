@@ -15,6 +15,8 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 - **blueman-applet**: Bluetooth manager applet.
 - **wofi** or **rofi**: Application launchers.
 - **Grim** and **slurp**: Screenshot utilities.
+- **wl-recorder**: screen recorder.
+- **Kitty**: simple OpenGL terminal.
 - **amixer**: ALSA mixer for volume control.
 
 ### Install Linux
@@ -24,17 +26,17 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 - **Debian**:
     ```bash
     sudo apt update
-    sudo apt install hyprland waybar hyprpaper network-manager-gnome blueman wofi grim slurp alsa-utils
+    sudo apt install hyprland waybar hyprpaper network-manager-gnome blueman wofi grim slurp alsa-utils wl-recorder kitty
     ```
 
 - **Arch**:
     ```bash
-    sudo pacman -S hyprland waybar hyprpaper network-manager-applet blueman wofi grim slurp alsa-utils
+    sudo pacman -S hyprland waybar hyprpaper network-manager-applet blueman wofi grim slurp alsa-utils wl-recorder kitty
     ```
 
 - **Fedora**:
     ```bash
-    sudo dnf install hyprland waybar hyprpaper networkmanager-applet blueman wofi grim slurp alsa-utils
+    sudo dnf install hyprland waybar hyprpaper networkmanager-applet blueman wofi grim slurp alsa-utils wl-recorder kitty
     ```
 
 ***Download all configs***
@@ -53,5 +55,6 @@ wget -O ~/.config/waybar/style.css https://raw.githubusercontent.com/grisha765/d
 wget -O ~/.config/waybar/modules https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/modules && \
 wget -O ~/.config/waybar/wifi.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/wifi.sh && chmod +x ~/.config/waybar/wifi.sh && \
 wget -O ~/.config/waybar/ethernet.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/ethernet.sh && chmod +x ~/.config/waybar/ethernet.sh && \
-wget -O ~/.config/dunst/dunstrc https://raw.githubusercontent.com/grisha765/dotfiles/main/dunst/dunstrc
+wget -O ~/.config/dunst/dunstrc https://raw.githubusercontent.com/grisha765/dotfiles/main/dunst/dunstrc && \
+wget -O ~/.config/kitty/kitty.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/kitty/kitty.conf
 ```
