@@ -10,14 +10,43 @@
         "format-en": "en",
         "format-ru": "ru"
     },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-disabled": "󰂲",
+        "format-connected": "󰥉 {device_battery_percentage}%",
+        "tooltip-format": "{device_alias}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "󰥉 {device_battery_percentage}% | {device_alias}",
+        "on-click": "blueman-manager"
+    },
+    "network#ethernet": {
+      "interface": "enp4s0f3u1u1c2",
+      "format-ethernet": "󰈀",
+      "tooltip-format": "{ipaddr}",
+      "format-disconnected": "X",
+      "tooltip": true,
+      "on-click": "~/.config/waybar/ethernet.sh",
+      "on-click-right": "nm-connection-editor"
+    },
+    "network#wifi": {
+      "interface": "wlo1",
+      "format-wifi": "󰤨",
+      "tooltip-format": "{essid} ({signalStrength}%)",
+      "format-disconnected": "󰤮",
+      "tooltip": true,
+      "on-click": "~/.config/waybar/wifi.sh",
+      "on-click-right": "nm-connection-editor"
+    },
     "pulseaudio": {
-        "format": "󰕾 {volume}%",
-        "format-bluetooth": "󰗾 {volume}%",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
         "format-icons": {
-            "default": ["󰕾"]
+            "default": ["󰕿", "󰖀", "󰕾"],
+            "mute": "󰖁"
         },
-        "tooltip-format": "{icon} {volume}% | {desc}",
-        "on-click": "pavucontrol"
+        "tooltip-format": "{volume}% | {desc}",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
     },
     "custom/separator": {
         "format": "  ",
@@ -28,16 +57,16 @@
         "format": "  ",
         "on-click": "wlogout",
     },
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
-    "tooltip": false,
-    "percentage": true,
-    "states": {
-      "charging": {
-        "icon": "󰂄"
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+      "tooltip": false,
+      "percentage": true,
+      "states": {
+        "charging": {
+          "icon": "󰂄"
+        }
       }
     }
-  }
 }
 
