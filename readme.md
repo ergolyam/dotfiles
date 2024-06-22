@@ -47,9 +47,11 @@ wget -O ~/.config/hypr/keys.conf https://raw.githubusercontent.com/grisha765/dot
 wget -O ~/.config/hypr/monitors.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/monitors.conf && \
 wget -O ~/.config/hypr/startup.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/startup.conf && \
 wget -O ~/.config/hypr/wm.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/wm.conf && \
-wget -O ~/.config/hypr/record_screen.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/record_screen.sh && \
+wget -O ~/.config/hypr/record_screen.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/record_screen.sh && chmod +x ~/.config/hypr/record_screen.sh && \
 wget -O ~/.config/waybar/config https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/config && \
 wget -O ~/.config/waybar/style.css https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/style.css && \
 wget -O ~/.config/waybar/modules https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/modules && \
+wget -O ~/.config/waybar/wifi.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/wifi.sh && chmod +x ~/.config/waybar/wifi.sh && \
+wget -O ~/.config/waybar/ethernet.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/waybar/ethernet.sh && chmod +x ~/.config/waybar/ethernet.sh && \
 wget -O ~/.config/dunst/dunstrc https://raw.githubusercontent.com/grisha765/dotfiles/main/dunst/dunstrc
 ```
