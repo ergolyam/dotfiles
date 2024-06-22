@@ -47,6 +47,7 @@ wget -O ~/.config/hypr/keys.conf https://raw.githubusercontent.com/grisha765/my_
 wget -O ~/.config/hypr/monitors.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/monitors.conf && \
 wget -O ~/.config/hypr/startup.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/startup.conf && \
 wget -O ~/.config/hypr/wm.conf https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/wm.conf && \
+wget -O ~/.config/hypr/record_screen.sh https://raw.githubusercontent.com/grisha765/my_desktop/main/hyprland/record_screen.sh && \
 wget -O ~/.config/waybar/config https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/config && \
 wget -O ~/.config/waybar/style.css https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/style.css && \
 wget -O ~/.config/waybar/modules https://raw.githubusercontent.com/grisha765/my_desktop/main/waybar/modules && \
