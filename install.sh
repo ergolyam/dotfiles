@@ -24,6 +24,7 @@ ln -sf ~/dotfiles/waybar/ethernet.sh ~/.config/waybar/ethernet.sh
 ln -sf ~/dotfiles/waybar/modules ~/.config/waybar/modules
 ln -sf ~/dotfiles/waybar/style.css ~/.config/waybar/style.css
 ln -sf ~/dotfiles/waybar/wifi.sh ~/.config/waybar/wifi.sh
+ln -sf ~/dotfiles/waybar/network_status.sh ~/.config/waybar/network_status.sh
 
 echo "Create symlinks for dunst."
 ln -sf ~/dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
