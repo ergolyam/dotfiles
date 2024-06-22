@@ -18,7 +18,7 @@ wget -O ~/.config/hypr/keys.conf https://raw.githubusercontent.com/grisha765/dot
 wget -O ~/.config/hypr/monitors.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/monitors.conf && \
 wget -O ~/.config/hypr/startup.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/startup.conf && \
 wget -O ~/.config/hypr/wm.conf https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/wm.conf && \
-wget -O ~/.config/hypr/record_screen.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/record_screen.sh
+wget -O ~/.config/hypr/record_screen.sh https://raw.githubusercontent.com/grisha765/dotfiles/main/hyprland/record_screen.sh && chmod +x ~/.config/hypr/record_screen.sh
 ```
 
 ### Configuration Files
