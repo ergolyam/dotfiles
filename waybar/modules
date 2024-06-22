@@ -19,20 +19,11 @@
         "tooltip-format-enumerate-connected": "󰥉 {device_battery_percentage}% | {device_alias}",
         "on-click": "blueman-manager"
     },
-    "network#ethernet": {
-      "interface": "enp4s0f3u1u1c2",
-      "format-ethernet": "󰈀",
-      "tooltip-format": "{ipaddr}",
-      "format-disconnected": "X",
-      "tooltip": true,
-      "on-click": "~/.config/waybar/ethernet.sh",
-      "on-click-right": "nm-connection-editor"
-    },
-    "network#wifi": {
-      "interface": "wlo1",
-      "format-wifi": "󰤨",
-      "tooltip-format": "{essid} ({signalStrength}%)",
-      "format-disconnected": "󰤮",
+    "custom/network": {
+      "format": "{}",
+      "exec": "~/.config/waybar/network_status.sh 2> /dev/null",
+      "interval": 10,
+      "return-type": "json",
       "tooltip": true,
       "on-click": "~/.config/waybar/wifi.sh",
       "on-click-right": "nm-connection-editor"
