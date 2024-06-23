@@ -6,6 +6,7 @@ mkdir -p ~/.config/hypr
 mkdir -p ~/.config/waybar
 mkdir -p ~/.config/dunst
 mkdir -p ~/.config/kitty
+mkdir -p ~/.config/wlogout
 
 # Создание символических ссылок для файлов и директорий
 
@@ -31,6 +32,9 @@ ln -sf ~/dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
 
 echo "Create symlinks for kitty."
 ln -sf ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+
+echo "Create symlinks for wlogout"
+ln -sf ~/dotfiles/wlogout/layout ~/.config/wlogout
 
 echo "Dotfiles have been linked."
 
