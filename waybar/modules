@@ -19,6 +19,18 @@
         "tooltip-format-enumerate-connected": "󰥉 {device_battery_percentage}% | {device_alias}",
         "on-click": "blueman-manager"
     },
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "format": {
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+                "days": "<span color='#ffffff'><b>{}</b></span>",
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>"
+            }
+        }
+    },
     "custom/network": {
       "format": "{}",
       "exec": "~/.config/waybar/network_status.sh 2> /dev/null",
