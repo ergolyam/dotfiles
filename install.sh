@@ -18,6 +18,7 @@ ln -sf ~/dotfiles/hyprland/monitors.conf ~/.config/hypr/monitors.conf
 ln -sf ~/dotfiles/hyprland/startup.conf ~/.config/hypr/startup.conf
 ln -sf ~/dotfiles/hyprland/wm.conf ~/.config/hypr/wm.conf
 ln -sf ~/dotfiles/hyprland/record_screen.sh ~/.config/hypr/record_screen.sh
+ln -sf ~/dotfiles/hyprland/monitors_select.sh ~/.config/hypr/monitors_select.sh
 
 echo "Create symlinks for waybar."
 ln -sf ~/dotfiles/waybar/config ~/.config/waybar/config
