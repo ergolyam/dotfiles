@@ -7,6 +7,7 @@ mkdir -p ~/.config/waybar
 mkdir -p ~/.config/dunst
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/wlogout
+mkdir -p ~/.config/fish
 
 # Создание символических ссылок для файлов и директорий
 
@@ -36,6 +37,9 @@ ln -sf ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
 echo "Create symlinks for wlogout"
 ln -sf ~/dotfiles/wlogout/layout ~/.config/wlogout
+
+echo "Create symlinks for fish"
+ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 
 echo "Dotfiles have been linked."
 
