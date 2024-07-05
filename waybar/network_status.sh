@@ -21,14 +21,14 @@ get_wifi_icon() {
   fi
 }
 
-if [ "$ethernet_connected" == "connected" ]; then
-  ip=$(nmcli -g IP4.ADDRESS dev show $ethernet_interface | head -n 1)
-  echo "{\"text\": \"󰈀\", \"tooltip\": \"$ip\"}"
-elif [ "$wifi_connected" == "connected" ]; then
+if [ "$wifi_connected" == "connected" ]; then
   essid=$(nmcli -g GENERAL.CONNECTION dev show $wifi_interface)
   signal=$(awk 'NR==3 {printf "%d", $3 * 100 / 70}' /proc/net/wireless)
   icon=$(get_wifi_icon $signal)
   echo "{\"text\": \"$icon\", \"tooltip\": \"$essid ($signal%)\"}"
+elif [ "$ethernet_connected" == "connected" ]; then
+  ip=$(nmcli -g IP4.ADDRESS dev show $ethernet_interface | head -n 1)
+  echo "{\"text\": \"󰈀\", \"tooltip\": \"$ip\"}"
 else
   echo "{\"text\": \"󰤮\", \"tooltip\": \"No connection\"}"
 fi
