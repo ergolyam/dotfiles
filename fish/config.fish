@@ -32,4 +32,5 @@ function fish_prompt
     echo -n '╰$ '
 end
 alias ssh 'env TERM=xterm-256color ssh'
+set -g -x fish_greeting ""
 end
