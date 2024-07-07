@@ -11,5 +11,6 @@ then
     notify-send "Запись экрана остановлена и сохранена в: $output_file"
 else
     # Если wf-recorder не запущен, начинаем запись
+    notify-send "Запись экрана начата"
     wf-recorder -f "$output_file" -g "$(slurp -d)" &
 fi
