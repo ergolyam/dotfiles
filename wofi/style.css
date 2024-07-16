@@ -1,0 +1,40 @@
+window {
+    background-color: #000000; /* Черный фон */
+    border: 2px solid #3a3f4b;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+entry {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+entry:focus {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+entry:selected {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+expander > list {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+expander > list > entry {
+    background-color: #000000;
+    color: #FFFFFF;/
+}
+
+expander > list > entry:hover {
+    background-color: #333333;
+    color: #FFFFFF;
+}
