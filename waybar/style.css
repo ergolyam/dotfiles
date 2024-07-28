@@ -2,9 +2,10 @@
     background: black;
     color: white;
     color: @foreground;
-    font-family: "Noto Sans";
-    padding-right: 1px;
-    padding-left: 1px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 16px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 #workspaces button.active {
@@ -13,9 +14,14 @@
 }
 
 #battery.critical {
-    color: #FF0000; /* Красный цвет для критического уровня заряда */
+    color: #FF0000;
 }
 
 #battery.charging {
-    color: #00FF00; /* Зеленый цвет при зарядке */
+    color: #00FF00;
+}
+
+#custom-network {
+    padding-right: 3px;
+    padding-left: 3px;
 }
