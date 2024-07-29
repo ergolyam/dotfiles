@@ -87,25 +87,25 @@
 
 2. Automount sd cards.
     ```bash
-    sudo bash -c "cat > /etc/systemd/system/automount-sd.service <<EOF
+    mkdir -p ~/.config/systemd/user &&\
+    bash -c "cat > ~/.config/systemd/user/automount-sd.service <<EOF
     [Unit]
     Description=Automount SD Card
     After=udisks2.service
 
     [Service]
     Type=oneshot
-    User=$USER
     ExecStart=/usr/bin/bash -c '/usr/bin/udisksctl mount -b /dev/mmcblk0p1'
     ExecStop=/usr/bin/bash -c '/usr/bin/udisksctl unmount -b /dev/mmcblk0p1'
     RemainAfterExit=true
     Restart=on-failure
 
     [Install]
-    WantedBy=multi-user.target
+    WantedBy=default.target
     EOF" &&\
-    sudo systemctl daemon-reload &&\
-    sudo systemctl enable automount-sd.service &&\
-    sudo systemctl start automount-sd.service 
+    systemctl --user daemon-reload &&\
+    systemctl --user enable automount-sd.service &&\
+    systemctl --user start automount-sd.service 
     ```
-    - ***Before removing the SD card, it is recommended to run `sudo systemctl stop automount-sd.service` or turn off the device `poweroff`.***
+    - ***Before removing the SD card, it is recommended to run `systemctl --user stop automount-sd.service` or turn off the device `poweroff`.***
 
