@@ -58,7 +58,7 @@
     reboot
     ```
 
-2. Install patched versions mesa, pipewire для steam deck.
+2. Install patched versions mesa, pipewire for steam deck.
     ```bash
     sudo rpm-ostree override replace --experimental --from repo='copr:copr.fedorainfracloud.org:kylegospo:bazzite-multilib' mesa-filesystem mesa-libglapi mesa-dri-drivers mesa-libgbm mesa-libEGL mesa-vulkan-drivers mesa-libGL xorg-x11-server-Xwayland pipewire pipewire-alsa pipewire-gstreamer pipewire-jack-audio-connection-kit pipewire-jack-audio-connection-kit-libs pipewire-libs pipewire-pulseaudio pipewire-utils &&\
     reboot
