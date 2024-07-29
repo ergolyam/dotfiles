@@ -12,7 +12,7 @@
 }
 {
     "label" : "logout",
-    "action" : "pkill -u $USER",
+    "action" : "systemctl restart sddm",
     "text" : "Выход",
     "keybind" : "e"
 }
