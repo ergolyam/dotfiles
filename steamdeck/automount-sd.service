@@ -3,10 +3,12 @@ Description=Automount SD Card
 After=udisks2.service
 
 [Service]
+Type=oneshot
 User=grisha
 ExecStart=/usr/bin/bash -c '/usr/bin/udisksctl mount -b /dev/mmcblk0p1'
+ExecStop=/usr/bin/bash -c '/usr/bin/udisksctl unmount -b /dev/mmcblk0p1'
+RemainAfterExit=true
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-
