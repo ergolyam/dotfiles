@@ -12,7 +12,7 @@
 }
 {
     "label" : "logout",
-    "action" : "systemctl restart sddm",
+    "action" : "sudo systemctl restart sddm",
     "text" : "Выход",
     "keybind" : "e"
 }
