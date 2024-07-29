@@ -1,0 +1,12 @@
+[Unit]
+Description=Automount SD Card
+After=udisks2.service
+
+[Service]
+User=grisha
+ExecStart=/usr/bin/bash -c '/usr/bin/udisksctl mount -b /dev/mmcblk0p1'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
