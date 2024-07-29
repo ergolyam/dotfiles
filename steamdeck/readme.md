@@ -66,7 +66,7 @@
 
 3. Install the utils.
     ```bash
-    rpm-ostree install powerbuttond python-python-pidfile python3-hid jupiter-fan-control ryzenadj scx_lavd steam lutris gamescope gamescope-session-plus gamescope-session-steam mangohud vpower wlogout hyprpaper &&\
+    rpm-ostree install powerbuttond python-python-pidfile python3-hid jupiter-fan-control jupiter-hw-support-btrfs ryzenadj scx_lavd steam lutris gamescope gamescope-shaders gamescope-session-plus gamescope-session-steam mesa-va-drivers-freeworld.i686 mesa-vdpau-drivers-freeworld.i686 mangohud vpower wlogout hyprpaper &&\
     reboot
     ```
 
