@@ -12,6 +12,7 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 - **Waybar**: A customizable status bar.
 - **Hyprpaper**: A wallpaper manager for Hyprland.
 - **nm-applet**: NetworkManager applet for network configuration.
+- **nmtui**: NetworkManager terminal ncurses ui for network configuration.
 - **blueman-applet**: Bluetooth manager applet.
 - **wofi** or **rofi**: Application launchers.
 - **Grim** and **slurp**: Screenshot utilities.
@@ -37,7 +38,7 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 
 - **Fedora**:
     ```bash
-    sudo dnf install hyprland waybar hyprpaper networkmanager-applet blueman wofi grim slurp alsa-utils wl-recorder kitty
+    sudo dnf install hyprland waybar hyprpaper networkmanager-applet NetworkManager-tui blueman wofi grim slurp alsa-utils wl-recorder kitty
     ```
 
 ***Create symlinks***
