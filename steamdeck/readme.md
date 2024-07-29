@@ -2,7 +2,7 @@
 
 ## Installing fedora atomic.
 
-1. Download and install any frdora atomic image.
+1. Download and install any ferdora atomic image.
 
 [Atomic-Desktops](https://fedoraproject.org/atomic-desktops/)
 
