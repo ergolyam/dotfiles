@@ -85,7 +85,14 @@
         sudo find /usr/local/share/wayland-sessions/ -type f -name 'gamescope-session*' | grep -v 'gamescope-session-custom.desktop' | xargs -I {} sudo sed -i '/^\[Desktop Entry\]/a Hidden=true' {}
         ```
 
-2. Automount sd cards.
+2. Preparing a steamos session select (Return to Desktop).
+    ```bash
+    sudo bash -c "cat > /usr/local/bin/steamos-session-select <<EOF
+    pkill -u $USER
+    EOF"
+    ```
+
+3. Automount sd cards.
     ```bash
     mkdir -p ~/.config/systemd/user &&\
     bash -c "cat > ~/.config/systemd/user/automount-sd.service <<EOF
