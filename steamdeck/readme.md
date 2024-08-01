@@ -84,6 +84,17 @@
         sudo cp /usr/share/wayland-sessions/gamescope-session* /usr/local/share/wayland-sessions/ &&\
         sudo find /usr/local/share/wayland-sessions/ -type f -name 'gamescope-session*' | grep -v 'gamescope-session-custom.desktop' | xargs -I {} sudo sed -i '/^\[Desktop Entry\]/a Hidden=true' {}
         ```
+    - Hiding gnome-wayland sessions.
+        ```bash
+        sudo cp /usr/share/wayland-sessions/gnome* /usr/local/share/wayland-sessions/ &&\
+        sudo find /usr/local/share/wayland-sessions/ -type f -name 'gnome*' | xargs -I {} sudo sed -i '/^\[Desktop Entry\]/a Hidden=true' {}
+        ```
+    - Hiding gnome-xorg sessions.
+        ```bash
+        sudo mkdir -p /usr/local/share/xsessions &&\
+        sudo cp /usr/share/xsessions/gnome* /usr/local/share/xsessions/ &&\
+        sudo find /usr/local/share/xsessions/ -type f -name 'gnome*' | xargs -I {} sudo sed -i '/^\[Desktop Entry\]/a Hidden=true' {}
+        ```
 
 2. Preparing a steamos session select (Return to Desktop).
     ```bash
