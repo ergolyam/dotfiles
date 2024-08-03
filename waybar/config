@@ -6,7 +6,9 @@
         "hyprland/workspaces"
     ],
     "modules-center": [
-        "clock"
+        "clock",
+        "custom/separator",
+        "custom/usd-rate"
     ],
     "modules-right": [
         "tray",
