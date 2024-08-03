@@ -31,6 +31,13 @@
             }
         }
     },
+    "custom/usd-rate": {
+      "format": "{}",
+      "exec": "~/.config/waybar/usd_rate.sh 2> /dev/null",
+      "interval": 900,
+      "return-type": "json",
+      "tooltip": true
+    },
     "custom/network": {
       "format": "{}",
       "exec": "~/.config/waybar/network_status.sh 2> /dev/null",
