@@ -18,7 +18,7 @@ function fish_prompt
     # Текущая директория
     echo -n '['
     printf '\e[1;36m'
-    echo -n (prompt_pwd)
+    echo -n (pwd)
     printf '\e[0m'
     echo -n ']'
 
@@ -33,4 +33,6 @@ function fish_prompt
 end
 alias ssh 'env TERM=xterm-256color ssh'
 set -g -x fish_greeting ""
+set -x XCURSOR_PATH "~/.icons"
+set -x XCURSOR_THEME "Hackneyed-24px"
 end
