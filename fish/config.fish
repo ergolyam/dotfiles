@@ -35,4 +35,6 @@ alias ssh 'env TERM=xterm-256color ssh'
 set -g -x fish_greeting ""
 set -x XCURSOR_PATH "~/.icons"
 set -x XCURSOR_THEME "Hackneyed-24px"
+set -x ANDROID_HOME ~/.local/share/android-sdk
+set -x PATH $ANDROID_HOME/cmdline-tools/bin $ANDROID_HOME/platform-tools $ANDROID_HOME/build-tools/33.0.0/ $PATH
 end
