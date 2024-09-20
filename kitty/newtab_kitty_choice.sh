@@ -31,7 +31,7 @@ if [ "$selected_container" == "Host" ]; then
     exec bash
 elif [[ "$selected_container" && "$selected_container" != "Host" ]]; then
     if [ -f "$session_file" ] && grep -q "\"$selected_container\"" "$session_file"; then
-        command=$(grep "\"$selected_container\"" "$session_file" | sed -E 's/.*"([^"]+)"/\1/')
+        command=$(awk -v session="$selected_container" -F'\"' '$2 == session { for(i=4;i<=NF;i++) printf("%s ", $i); print "" }' "$session_file" | tr -d '\n')
         kitty @ set-tab-title "$selected_container"
         eval "$command"
     else
