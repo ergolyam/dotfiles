@@ -37,6 +37,7 @@ ln -sf ~/dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
 
 echo "Create symlinks for kitty."
 ln -sf ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+ln -sf ~/dotfiles/kitty/newtab_kitty_choice.sh ~/.config/kitty/newtab_kitty_choice.sh
 
 echo "Create symlinks for wlogout."
 ln -sf ~/dotfiles/wlogout/layout ~/.config/wlogout
