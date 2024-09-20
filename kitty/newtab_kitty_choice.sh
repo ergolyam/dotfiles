@@ -24,7 +24,7 @@ if [ -z "$containers" ]; then
     exit 1
 fi
 
-selected_container=$(echo -e "$containers" | fzf --prompt="Select a container or Host: ")
+selected_container=$(echo -e "$containers" | fzf --prompt="Select a session: ")
 
 if [ "$selected_container" == "Host" ]; then
     kitty @ set-tab-title "Host"
