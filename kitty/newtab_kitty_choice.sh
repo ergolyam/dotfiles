@@ -28,7 +28,7 @@ selected_container=$(echo -e "$containers" | fzf --prompt="Select a session: ")
 
 if [ "$selected_container" == "Host" ]; then
     kitty @ set-tab-title "Host"
-    exec bash
+    exec "$SHELL"
 elif [[ "$selected_container" && "$selected_container" != "Host" ]]; then
     if [ -f "$session_file" ] && grep -q "\"$selected_container\"" "$session_file"; then
         command=$(awk -v session="$selected_container" -F'\"' '$2 == session { for(i=4;i<=NF;i++) printf("%s ", $i); print "" }' "$session_file" | tr -d '\n')
