@@ -10,7 +10,11 @@ function fish_prompt
     echo -n '@'
 
     # Имя хоста
-    printf '\e[1;34m'
+    if test -n "$DISTROBOX_ENTER_PATH"
+        printf '\e[1;34m'
+    else
+        printf '\e[1;31m'
+    end
     echo -n (hostname | cut -d . -f 1)
     printf '\e[0m'
     echo -n ']'
