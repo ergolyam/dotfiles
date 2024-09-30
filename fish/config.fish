@@ -37,6 +37,7 @@ function fish_prompt
 end
 alias ssh 'env TERM=xterm-256color ssh'
 set -g -x fish_greeting ""
+set -U fish_user_paths $fish_user_paths ~/.local/bin
 set -x XCURSOR_PATH "~/.icons"
 set -x XCURSOR_THEME "Hackneyed-24px"
 set -x ANDROID_HOME ~/.local/share/android-sdk
