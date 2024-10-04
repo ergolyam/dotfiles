@@ -17,7 +17,7 @@
         "tooltip-format": "{device_alias}",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "󰥉 {device_battery_percentage}% | {device_alias}",
-        "on-click": "blueman-manager"
+        "on-click": "kitty -e bluetui"
     },
     "clock": {
         "format": "{:%H:%M}",
