@@ -13,7 +13,7 @@ function fish_prompt
     if test -n "$DISTROBOX_ENTER_PATH"
         printf '\e[1;34m'
     else if test -n "$SSH_CONNECTION"
-        printf '\e[38;5;214m'
+        printf '\e[1;38;5;214m'
     else
         printf '\e[1;31m'
     end
