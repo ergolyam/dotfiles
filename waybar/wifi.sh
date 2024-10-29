@@ -2,14 +2,14 @@
 
 if nmcli radio wifi | grep -q "enabled"; then
   if nmcli radio wifi off; then
-    notify-send "WiFi выключен"
+    notify-send "WiFi off."
   else
-    notify-send "Ошибка при выключении WiFi"
+    notify-send "Failed to disable WiFi."
   fi
 else
   if nmcli radio wifi on; then
-    notify-send "WiFi включен"
+    notify-send "WiFi on."
   else
-    notify-send "Ошибка при включении WiFi"
+    notify-send "Failed to enable WiFi."
   fi
 fi
