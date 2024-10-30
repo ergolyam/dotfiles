@@ -28,17 +28,17 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 - **Debian**:
     ```bash
     sudo apt update
-    sudo apt install hyprland waybar hyprpaper network-manager-gnome blueman wofi grim slurp alsa-utils wl-recorder kitty
+    sudo apt install hyprland waybar hyprpaper network-manager-gnome blueman wofi grim slurp alsa-utils wf-recorder kitty
     ```
 
 - **Arch**:
     ```bash
-    sudo pacman -S hyprland waybar hyprpaper network-manager-applet blueman wofi grim slurp alsa-utils wl-recorder kitty
+    yay -S hyprland waybar hyprpaper network-manager-applet blueman wofi grim slurp alsa-utils wf-recorder kitty syncthing bluetui-bin
     ```
 
 - **Fedora**:
     ```bash
-    sudo dnf install hyprland waybar hyprpaper networkmanager-applet NetworkManager-tui blueman wofi grim slurp alsa-utils wl-recorder kitty
+    sudo dnf install hyprland waybar hyprpaper networkmanager-applet NetworkManager-tui blueman wofi grim slurp alsa-utils wf-recorder kitty
     ```
 
 ***Create symlinks***
