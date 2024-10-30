@@ -10,7 +10,7 @@ function fish_prompt
     echo -n '@'
 
     # Имя хоста
-    if test -n "$DISTROBOX_ENTER_PATH"
+    if test -n "$container"
         printf '\e[1;34m'
     else if test -n "$SSH_CONNECTION"
         printf '\e[1;38;5;214m'
