@@ -13,10 +13,10 @@ if [ -f "$session_file" ]; then
     done < "$session_file"
 fi
 
-containers=$(echo -e "Host\n$(distrobox list | tail -n +2 | awk -F'|' '{print $2}' | sed 's/^[ \t]*//;s/[ \t]*$//')")
+distrobox_containers=$(echo -e "Host\n$(distrobox list | tail -n +2 | awk -F'|' '{print $2 " (Distrobox)"}' | sed 's/^[ \t]*//;s/[ \t]*$//')")
 
 if [ -n "$sessions" ]; then
-    containers=$(echo -e "$containers\n$sessions")
+    containers=$(echo -e "$distrobox_containers\n$sessions")
 fi
 
 if [ -z "$containers" ]; then
@@ -36,8 +36,8 @@ elif [[ "$selected_container" && "$selected_container" != "Host" ]]; then
         kitty @ set-tab-title "$selected_container"
         eval "$command"
     else
-        kitty @ set-tab-title "$selected_container"
-        distrobox enter "$selected_container"
+        kitty @ set-tab-title "$(echo "$selected_container" | sed 's/ * (Distrobox)$//')"
+        distrobox enter "$(echo "$selected_container" | sed 's/ * (Distrobox)$//')"
     fi
 else
     echo "No container or session selected."
