@@ -17,7 +17,7 @@ function fish_prompt
     else
         printf '\e[1;31m'
     end
-    echo -n (hostname | cut -d . -f 1)
+    echo -n (uname -n | cut -d . -f 1)
     printf '\e[0m'
     echo -n ']'
 
