@@ -36,9 +36,14 @@ elif [[ "$selected_container" && "$selected_container" != "Host" ]]; then
         command=$(awk -v session="$selected_container" -F'\"' '$2 == session { for(i=4;i<=NF;i++) printf("%s ", $i); print "" }' "$session_file" | tr -d '\n')
         kitty @ set-tab-title "$selected_container"
         eval "$command"
-    else
-        kitty @ set-tab-title "$(echo "$selected_container" | sed 's/ * (Distrobox)$//')"
-        distrobox enter "$(echo "$selected_container" | sed 's/ * (Distrobox)$//')"
+    elif [[ "$selected_container" == *"(Distrobox)" ]]; then
+        container_name=$(echo "$selected_container" | sed 's/ * (Distrobox)$//')
+        kitty @ set-tab-title "$container_name"
+        distrobox enter "$container_name"
+    elif [[ "$selected_container" == *"(Toolbox)" ]]; then
+        container_name=$(echo "$selected_container" | sed 's/ * (Toolbox)$//')
+        kitty @ set-tab-title "$container_name"
+        toolbox enter "$container_name"
     fi
 else
     echo "No container or session selected."
