@@ -31,7 +31,7 @@ while true; do
         else
             echo "DP-1 пропал"
             pkill waybar
-            hyprctl keyword monitor eDP-1,preferred,1440x0,1,transform,3
+            hyprctl keyword monitor eDP-1,preferred,0x0,1,transform,3
             waybar &
         fi
         # Обновляем предыдущее состояние
