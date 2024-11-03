@@ -14,10 +14,11 @@ if [ -f "$session_file" ]; then
 fi
 
 distrobox_containers=$(echo -e "Host\n$(distrobox list | tail -n +2 | awk -F'|' '{print $2 " (Distrobox)"}' | sed 's/^[ \t]*//;s/[ \t]*$//')")
+distrobox_root_containers=$(distrobox list --root | tail -n +2 | awk -F'|' '{print $2 " (Distrobox-Root)"}' | sed 's/^[ \t]*//;s/[ \t]*$//')
 toolbox_containers=$(toolbox list --containers | tail -n +2 | awk '{printf "%-21s (Toolbox)\n", $2}')
 
 if [ -n "$sessions" ]; then
-    containers=$(echo -e "$distrobox_containers\n$toolbox_containers\n$sessions")
+    containers=$(echo -e "$distrobox_containers\n$distrobox_root_containers\n$toolbox_containers\n$sessions")
 fi
 
 if [ -z "$containers" ]; then
@@ -40,6 +41,10 @@ elif [[ "$selected_container" && "$selected_container" != "Host" ]]; then
         container_name=$(echo "$selected_container" | sed 's/ * (Distrobox)$//')
         kitty @ set-tab-title "$container_name"
         distrobox enter "$container_name"
+    elif [[ "$selected_container" == *"(Distrobox-Root)" ]]; then
+        container_name=$(echo "$selected_container" | sed 's/ * (Distrobox-Root)$//')
+        kitty @ set-tab-title "$container_name"
+        distrobox enter --root "$container_name"
     elif [[ "$selected_container" == *"(Toolbox)" ]]; then
         container_name=$(echo "$selected_container" | sed 's/ * (Toolbox)$//')
         kitty @ set-tab-title "$container_name"
