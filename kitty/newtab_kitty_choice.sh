@@ -27,7 +27,7 @@ if [ -z "$containers" ]; then
 fi
 
 selected_container=$(echo -e "$containers" | fzf --prompt="Select a session: " \
-    --height=40% --layout=reverse --border --info=inline --padding=5% --margin=5% --info=hidden)
+    --height=100% --layout=reverse --border --info=inline --padding=5% --margin=5% --info=hidden)
 
 if [ "$selected_container" == "Host" ]; then
     kitty @ set-tab-title "Host"
