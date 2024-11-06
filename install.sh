@@ -15,6 +15,7 @@ mkdir -p ~/.config/fish
 echo "Create symlinks for hyprland."
 ln -sf ~/dotfiles/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 ln -sf ~/dotfiles/hyprland/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
+ln -sf ~/dotfiles/hyprland/wallapaper.png ~/.config/hypr/wallapaper.png
 ln -sf ~/dotfiles/hyprland/keys.conf ~/.config/hypr/keys.conf
 ln -sf ~/dotfiles/hyprland/monitors.conf ~/.config/hypr/monitors.conf
 ln -sf ~/dotfiles/hyprland/startup.conf ~/.config/hypr/startup.conf
