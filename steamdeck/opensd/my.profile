@@ -58,14 +58,14 @@ ABS_RZ          = -32767    32767
 #---------------------------------------
 # Axis                x         y
 #---------------------------------------
-LPadSensitivity     = 1.0       1.0
-RPadSensitivity     = 1.0       1.0
+LPadSensitivity     = 0.65       0.65
+RPadSensitivity     = 0.65       0.65
 
 #---------------------------------------
 # Axis            x         y
 #---------------------------------------
-LPadDecay       = 0.10      0.10
-RPadDecay       = 0.10      0.10
+LPadDecay       = 0.05      0.05
+RPadDecay       = 0.05      0.05
 
 
 [Bindings]
