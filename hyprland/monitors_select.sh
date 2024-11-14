@@ -26,6 +26,7 @@ while true; do
         if [ "$current_state" == "present" ]; then
             echo "DP-1 появился"
             pkill waybar
+            pkill opensdd
             hyprctl keyword monitor eDP-1,disable
             waybar &
         else
@@ -33,6 +34,7 @@ while true; do
             pkill waybar
             hyprctl keyword monitor eDP-1,preferred,0x0,1,transform,3
             waybar &
+            env --chdir ~/.local/share/opensd ~/.local/share/opensd/opensdd &
         fi
         # Обновляем предыдущее состояние
         prev_state="$current_state"
