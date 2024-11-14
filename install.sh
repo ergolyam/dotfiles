@@ -51,10 +51,14 @@ ln -sf ~/dotfiles/wofi/style.css ~/.config/wofi/style.css
 echo "Create symlinks for fish."
 ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 
-echo "Create symlinks for opensd"
-rm ~/.config/opensd/config.ini
-ln -sf ~/dotfiles/steamdeck/opensd/config.ini ~/.config/opensd/config.ini
-ln -sf ~/dotfiles/steamdeck/opensd/my.profile ~/.config/opensd/profiles/my.profile
+if grep -q "Jupiter" /sys/devices/virtual/dmi/id/product_name; then
+    echo "Create symlinks for opensd"
+    rm ~/.config/opensd/config.ini
+    ln -sf ~/dotfiles/steamdeck/opensd/config.ini ~/.config/opensd/config.ini
+    ln -sf ~/dotfiles/steamdeck/opensd/my.profile ~/.config/opensd/profiles/my.profile
+else
+    echo "This is not Jupiter, skipping symlink creation."
+fi
 
 echo "Dotfiles have been linked."
 
