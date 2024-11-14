@@ -97,8 +97,8 @@ Options             = Gamepad   BTN_SELECT
 Steam               = Mouse   KEY_LEFTMETA
 QuickAccess         = Mouse     BTN_RIGHT
 # Triggers
-#LTrigg              = Gamepad   ABS_Z       +
-#RTrigg              = Gamepad   ABS_RZ      +
+LTrigg              = None
+RTrigg              = None
 # Left Stick
 LStickUp            = Gamepad   ABS_Y       -
 LStickDown          = Gamepad   ABS_Y       +
