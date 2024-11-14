@@ -9,6 +9,7 @@ mkdir -p ~/.config/kitty
 mkdir -p ~/.config/wlogout
 mkdir -p ~/.config/wofi
 mkdir -p ~/.config/fish
+mkdir -p ~/.config/opensd/profiles
 
 # Создание символических ссылок для файлов и директорий
 
@@ -23,6 +24,7 @@ ln -sf ~/dotfiles/hyprland/wm.conf ~/.config/hypr/wm.conf
 ln -sf ~/dotfiles/hyprland/wmrules.conf ~/.config/hypr/wmrules.conf
 ln -sf ~/dotfiles/hyprland/record_screen.sh ~/.config/hypr/record_screen.sh
 ln -sf ~/dotfiles/hyprland/monitors_select.sh ~/.config/hypr/monitors_select.sh
+ln -sf ~/dotfiles/hyprland/set_workspace.sh ~/.config/hypr/set_workspace.sh
 
 echo "Create symlinks for waybar."
 ln -sf ~/dotfiles/waybar/config ~/.config/waybar/config
@@ -48,6 +50,11 @@ ln -sf ~/dotfiles/wofi/style.css ~/.config/wofi/style.css
 
 echo "Create symlinks for fish."
 ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
+
+echo "Create symlinks for opensd"
+rm ~/.config/opensd/config.ini
+ln -sf ~/dotfiles/steamdeck/opensd/config.ini ~/.config/opensd/config.ini
+ln -sf ~/dotfiles/steamdeck/opensd/my.profile ~/.config/opensd/profiles/my.profile
 
 echo "Dotfiles have been linked."
 
