@@ -28,6 +28,20 @@ function fish_prompt
     printf '\e[0m'
     echo -n ']'
 
+    # Проверка на git репозиторий и получение текущей ветки
+    set -l git_branch ""
+    if git rev-parse --abbrev-ref HEAD > /dev/null 2>&1
+        set git_branch (git rev-parse --abbrev-ref HEAD)
+    end
+
+    if test -n "$git_branch"
+        echo -n '['
+        printf '\e[1;33m'
+        echo -n "$git_branch"
+        printf '\e[0m'
+        echo -n ']'
+    end
+
     # Время
     echo -n (printf '\e[90m')'('
     echo -n (date +"%H:%M:%S")
