@@ -47,6 +47,18 @@ function fish_prompt
     echo -n (date +"%H:%M:%S")
     echo -n ')'(printf '\e[0m')
 
+    if set -q __last_cmd_duration_ms
+        if test $__last_cmd_duration_ms -ge 1000
+            # Вычисление времени в секундах с двумя знаками после запятой
+            set -l duration_sec (math "$__last_cmd_duration_ms / 1000.0")
+            echo -n '['
+            printf '\e[1;35m'
+            printf '%.2fs' $duration_sec
+            printf '\e[0m'
+            echo -n ']'
+        end
+    end
+
     # Переход на новую строку
     echo
     echo -n '╰$ '
@@ -60,4 +72,19 @@ set -Ua fish_user_paths ~/.local/bin
 set -Ua fish_user_paths $ANDROID_HOME/cmdline-tools/bin
 set -Ua fish_user_paths $ANDROID_HOME/platform-tools 
 set -Ua fish_user_paths $ANDROID_HOME/build-tools/33.0.0
+
+# Инициализация переменной для хранения длительности команды
+set -g __last_cmd_duration_ms 0
+
+# Функция, вызываемая перед выполнением команды
+function __preexec --on-event fish_preexec
+    set -g __cmd_start_time (date +%s%N)
+end
+
+# Функция, вызываемая после выполнения команды
+function __postexec --on-event fish_postexec
+    set -l end_time (date +%s%N)
+    set -l duration_ns (math "$end_time - $__cmd_start_time")
+    set -g __last_cmd_duration_ms (math "($duration_ns) / 1000000")
+end
 end
