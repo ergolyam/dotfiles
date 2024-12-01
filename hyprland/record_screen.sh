@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Путь к файлу для записи
-output_file="$HOME/Видео/Записи экрана/Запись экрана от $(date +'%Y-%m-%d %H-%M-%S').mkv"
+output_file="$HOME/Videos/Записи экрана/Запись экрана от $(date +'%Y-%m-%d %H-%M-%S').mkv"
 
 # Проверяем, запущен ли wf-recorder
 if pgrep -x "wf-recorder" > /dev/null
