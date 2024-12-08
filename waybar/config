@@ -1,6 +1,7 @@
 // vi: ft=json
 {
     "include": "~/.config/waybar/modules",
+    "layer": "top",
     "modules-left": [
         "custom/separator",
         "hyprland/workspaces"
