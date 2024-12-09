@@ -14,4 +14,4 @@ else
     MODE="COL"
 fi
 
-dunstify -r $NOTIF_ID "Scroller switched to $MODE for desktop: $WS"
+dunstify -r $NOTIF_ID "HyprScroller" "Scroller switched to $MODE on workspace $WS"
