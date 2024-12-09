@@ -2,10 +2,11 @@
 
 WS=$(hyprctl activeworkspace -j | jq -r .name)
 FLAG_FILE="/tmp/hypr_overview_mode_${WS}"
+NOTIF_ID=9998
 
 if [ -f "$FLAG_FILE" ]; then
     rm "$FLAG_FILE"
-    notify-send "HyprScroller" "Off overview mode on workspace ${WS}"
+    TOGGLE="Off"
     
     OVERVIEW_COUNT=$(ls /tmp/hypr_overview_mode_* 2>/dev/null | wc -l)
     
@@ -14,9 +15,10 @@ if [ -f "$FLAG_FILE" ]; then
     fi
 else
     touch "$FLAG_FILE"
-    notify-send "HyprScroller" "On overview mode on workspace ${WS}"
+    TOGGLE="On"
     hyprctl keyword general:border_size 2
 fi
 
 hyprctl dispatch scroller:toggleoverview
 
+dunstify -r $NOTIF_ID "HyprScroller" "$TOGGLE overview mode on workspace $WS"
