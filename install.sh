@@ -26,6 +26,7 @@ ln -sf ~/dotfiles/hyprland/record_screen.sh ~/.config/hypr/record_screen.sh
 ln -sf ~/dotfiles/hyprland/monitors_select.sh ~/.config/hypr/monitors_select.sh
 ln -sf ~/dotfiles/hyprland/set_workspace.sh ~/.config/hypr/set_workspace.sh
 ln -sf ~/dotfiles/hyprland/toggle_overview_mode.sh ~/.config/hypr/toggle_overview_mode.sh
+ln -sf ~/dotfiles/hyprland/set_scroller_mode.sh ~/.config/hypr/set_scroller_mode.sh
 
 echo "Create symlinks for waybar."
 ln -sf ~/dotfiles/waybar/config ~/.config/waybar/config
@@ -35,6 +36,7 @@ ln -sf ~/dotfiles/waybar/style.css ~/.config/waybar/style.css
 ln -sf ~/dotfiles/waybar/wifi.sh ~/.config/waybar/wifi.sh
 ln -sf ~/dotfiles/waybar/network_status.sh ~/.config/waybar/network_status.sh
 ln -sf ~/dotfiles/waybar/usd_rate.sh ~/.config/waybar/usd_rate.sh
+ln -sf ~/dotfiles/waybar/status_scroller_mode.sh ~/.config/waybar/status_scroller_mode.sh
 
 echo "Create symlinks for dunst."
 ln -sf ~/dotfiles/dunst/dunstrc ~/.config/dunst/dunstrc
