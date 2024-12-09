@@ -38,6 +38,13 @@
       "return-type": "json",
       "tooltip": true
     },
+    "custom/scroller_mode": {
+      "format": "{}",
+      "exec": "~/.config/waybar/status_scroller_mode.sh 2> /dev/null",
+      "interval": 2,
+      "return-type": "json",
+      "tooltip": false
+    },
     "custom/network": {
       "format": "{}",
       "exec": "~/.config/waybar/network_status.sh 2> /dev/null",

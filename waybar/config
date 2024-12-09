@@ -4,7 +4,9 @@
     "layer": "top",
     "modules-left": [
         "custom/separator",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/separator",
+        "custom/scroller_mode"
     ],
     "modules-center": [
         "clock",
