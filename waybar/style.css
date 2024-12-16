@@ -13,6 +13,14 @@
     color: white;  /* Optional: to change text color */
 }
 
+#custom-microphone {
+    color: red;
+}
+
+#custom-capture {
+    color: red;
+}
+
 #battery.critical {
     color: #FF0000;
 }
