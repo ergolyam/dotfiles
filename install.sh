@@ -41,6 +41,7 @@ ln -sf $SCRIPT_DIR/waybar/wifi.sh ~/.config/waybar/wifi.sh
 ln -sf $SCRIPT_DIR/waybar/network_status.sh ~/.config/waybar/network_status.sh
 ln -sf $SCRIPT_DIR/waybar/usd_rate.sh ~/.config/waybar/usd_rate.sh
 ln -sf $SCRIPT_DIR/waybar/status_scroller_mode.sh ~/.config/waybar/status_scroller_mode.sh
+ln -sf $SCRIPT_DIR/waybar/wttr.sh ~/.config/waybar/wttr.sh
 
 echo "Create symlinks for dunst."
 ln -sf $SCRIPT_DIR/dunst/dunstrc ~/.config/dunst/dunstrc
