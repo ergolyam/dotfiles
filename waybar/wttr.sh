@@ -91,6 +91,8 @@ current_hour=$(date +"%H")
 
 weather_json=$(curl -s "https://wttr.in/?format=j1")
 
+current_location=$(echo "$weather_json" | jq -r '.nearest_area[0].areaName[0].value')
+current_country=$(echo "$weather_json" | jq -r '.nearest_area[0].country[0].value')
 current_weather_code=$(echo "$weather_json" | jq -r '.current_condition[0].weatherCode')
 current_feels_like=$(echo "$weather_json" | jq -r '.current_condition[0].FeelsLikeC')
 current_weather_desc=$(echo "$weather_json" | jq -r '.current_condition[0].weatherDesc[0].value')
@@ -100,7 +102,8 @@ current_humidity=$(echo "$weather_json" | jq -r '.current_condition[0].humidity'
 
 text="${WEATHER_CODES[$current_weather_code]} ${current_feels_like}°"
 
-tooltip="<b>${current_weather_desc} ${current_temp}°</b>\n"
+tooltip="<b>${current_location}, ${current_country}</b>\n"
+tooltip+="<b>${current_weather_desc} ${current_temp}°</b>\n"
 tooltip+="Feels like: ${current_feels_like}°\n"
 tooltip+="Wind: ${current_wind}Km/h\n"
 tooltip+="Humidity: ${current_humidity}%\n"
