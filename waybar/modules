@@ -38,6 +38,13 @@
       "return-type": "json",
       "tooltip": true
     },
+    "custom/wttr": {
+      "format": "{}",
+      "exec": "~/.config/waybar/wttr.sh 2> /dev/null",
+      "interval": 3600,
+      "return-type": "json",
+      "tooltip": true
+    },
     "custom/scroller_mode": {
       "format": "{}",
       "exec": "~/.config/waybar/status_scroller_mode.sh 2> /dev/null",
