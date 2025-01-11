@@ -42,6 +42,15 @@ function fish_prompt
         echo -n ']'
     end
 
+    # Проверка на активный venv
+    if test -n "$VIRTUAL_ENV"
+        echo -n '['
+        printf '\e[1;94m'
+        echo -n (basename "$VIRTUAL_ENV")
+        printf '\e[0m'
+        echo -n ']'
+    end
+
     # Время
     echo -n (printf '\e[90m')'('
     echo -n (date +"%H:%M:%S")
@@ -73,6 +82,8 @@ set -Ua fish_user_paths $ANDROID_HOME/cmdline-tools/bin
 set -Ua fish_user_paths $ANDROID_HOME/platform-tools 
 set -Ua fish_user_paths $ANDROID_HOME/build-tools/33.0.0
 
+set -g VIRTUAL_ENV_DISABLE_PROMPT 1
+
 # Инициализация переменной для хранения длительности команды
 set -g __last_cmd_duration_ms 0
 
@@ -86,5 +97,15 @@ function __postexec --on-event fish_postexec
     set -l end_time (date +%s%N)
     set -l duration_ns (math "$end_time - $__cmd_start_time")
     set -g __last_cmd_duration_ms (math "($duration_ns) / 1000000")
+end
+
+# Функция для автоматической активации venv
+function python
+    if not set -q VIRTUAL_ENV
+        if test -d ./.venv
+            source ./.venv/bin/activate.fish
+        end
+    end
+    command python $argv
 end
 end
