@@ -103,7 +103,8 @@ end
 function python
     if not set -q VIRTUAL_ENV
         if test -d ./.venv
-            source ./.venv/bin/activate.fish
+            fish -C "source ./.venv/bin/activate.fish ; python $argv"
+            return
         end
     end
     command python $argv
