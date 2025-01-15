@@ -21,6 +21,10 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 - **amixer**: ALSA mixer for volume control.
 - **wlogout**: logout manager for wayland.
 
+### Plugins
+
+- **hyprscroller**: https://github.com/dawsers/hyprscroller
+
 ### Install Linux
 
 ***Download utils***
