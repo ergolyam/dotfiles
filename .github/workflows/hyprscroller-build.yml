@@ -1,0 +1,42 @@
+name: Build hyprscroller and commit
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build hyprscroller and commit
+    runs-on: ubuntu-latest
+    container:
+      image: docker.io/fedora:latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install build tools
+        run: dnf install hyprland cmake gcc
+
+      - name: Git clone hyprscroller
+        run: git clone https://github.com/dawsers/hyprscroller.git
+
+      - name: Build
+        run: |
+          cd hyprscroller
+          make all
+
+      - name: Setup git user
+        uses: fregante/setup-git-user@v2
+
+      - name: Copy plugin
+        run: |
+          cp hyprscroller/Release/hyprscroller.so hyprland/plugins
+
+      - name: Make changes to the repository
+        run: |
+          git add hyprland/plugins/hyprscroller.so
+          git commit -m "[u] update hyprscroller"
+
+      - name: Push changes
+        run: |
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}
