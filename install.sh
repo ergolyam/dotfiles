@@ -26,6 +26,7 @@ ln -sf $SCRIPT_DIR/hyprland/monitors.conf ~/.config/hypr/monitors.conf
 ln -sf $SCRIPT_DIR/hyprland/startup.conf ~/.config/hypr/startup.conf
 ln -sf $SCRIPT_DIR/hyprland/wm.conf ~/.config/hypr/wm.conf
 ln -sf $SCRIPT_DIR/hyprland/wmrules.conf ~/.config/hypr/wmrules.conf
+ln -sf $SCRIPT_DIR/hyprland/plugins ~/.config/hypr/plugins
 ln -sf $SCRIPT_DIR/hyprland/record_screen.sh ~/.config/hypr/record_screen.sh
 ln -sf $SCRIPT_DIR/hyprland/monitors_select.sh ~/.config/hypr/monitors_select.sh
 ln -sf $SCRIPT_DIR/hyprland/set_workspace.sh ~/.config/hypr/set_workspace.sh
