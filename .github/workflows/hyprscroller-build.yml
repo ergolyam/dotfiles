@@ -11,34 +11,40 @@ jobs:
       image: docker.io/fedora:latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
       - name: Install build tools
         run: |
           dnf copr enable solopasha/hyprland -y
           dnf install git hyprland hyprland-devel cmake gcc gcc-c++ make pkg-config -y
 
+      - name: Checkout code
+        run: |
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+      - name: Setup git user
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+        working-directory: ${{ github.event.repository.name }}
+
       - name: Git clone hyprscroller
         run: git clone https://github.com/dawsers/hyprscroller.git
 
       - name: Build
-        run: |
-          cd hyprscroller
-          make all
-
-      - name: Setup git user
-        uses: fregante/setup-git-user@v2
+        run: make all
+        working-directory: ./hyprscroller
 
       - name: Copy plugin
         run: |
-          cp hyprscroller/Release/hyprscroller.so hyprland/plugins
+          cp hyprscroller/Release/hyprscroller.so ${{ github.event.repository.name }}/hyprland/plugins
 
       - name: Make changes to the repository
         run: |
           git add hyprland/plugins/hyprscroller.so
           git commit -m "[u] update hyprscroller"
+        working-directory: ${{ github.event.repository.name }}
 
       - name: Push changes
         run: |
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}
+        working-directory: ${{ github.event.repository.name }}
