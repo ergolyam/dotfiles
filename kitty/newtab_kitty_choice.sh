@@ -2,6 +2,7 @@
 
 session_file="$HOME/sessions.conf"
 sessions=""
+TERM=xterm-256color
 
 if [ -f "$session_file" ]; then
     while IFS= read -r line; do
@@ -18,7 +19,7 @@ distrobox_root_containers=$(distrobox list --root | tail -n +2 | awk -F'|' '{pri
 toolbox_containers=$(toolbox list --containers | tail -n +2 | awk '{printf "%-21s (Toolbox)\n", $2}')
 
 if [ -n "$sessions" ]; then
-    containers=$(echo -e "Host\n$distrobox_containers\n$distrobox_root_containers\n$toolbox_containers\n$sessions")
+    containers=$(echo -e "Host\n$toolbox_containers\n$distrobox_containers\n$distrobox_root_containers\n$sessions")
 fi
 
 if [ -z "$containers" ]; then
