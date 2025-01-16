@@ -72,6 +72,14 @@ function fish_prompt
     echo
     echo -n '╰$ '
 end
+
+if test -n "$container"
+    alias vi="/usr/bin/nvim"
+else
+    alias vi="toolbox run -c arch -- /usr/bin/nvim"
+    alias lazygit="toolbox run -c arch -- /usr/bin/lazygit"
+end
+
 set -g -x fish_greeting ""
 set -g -x TERM xterm-256color
 set -g -x XCURSOR_PATH "~/.icons"
