@@ -20,6 +20,7 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 - **Kitty**: simple OpenGL terminal.
 - **amixer**: ALSA mixer for volume control.
 - **wlogout**: logout manager for wayland.
+- **[bluetui](https://github.com/pythops/bluetui)**: simple bluetooth tui manager.
 
 ### Plugins
 
