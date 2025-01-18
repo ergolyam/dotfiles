@@ -28,7 +28,6 @@ ln -sf $SCRIPT_DIR/hyprland/wm.conf ~/.config/hypr/wm.conf
 ln -sf $SCRIPT_DIR/hyprland/wmrules.conf ~/.config/hypr/wmrules.conf
 ln -sf $SCRIPT_DIR/hyprland/plugins ~/.config/hypr/plugins
 ln -sf $SCRIPT_DIR/hyprland/record_screen.sh ~/.config/hypr/record_screen.sh
-ln -sf $SCRIPT_DIR/hyprland/monitors_select.sh ~/.config/hypr/monitors_select.sh
 ln -sf $SCRIPT_DIR/hyprland/set_workspace.sh ~/.config/hypr/set_workspace.sh
 ln -sf $SCRIPT_DIR/hyprland/toggle_overview_mode.sh ~/.config/hypr/toggle_overview_mode.sh
 ln -sf $SCRIPT_DIR/hyprland/set_scroller_mode.sh ~/.config/hypr/set_scroller_mode.sh
@@ -65,6 +64,7 @@ if grep -q "Jupiter" /sys/devices/virtual/dmi/id/product_name; then
     rm ~/.config/opensd/config.ini
     ln -sf $SCRIPT_DIR/steamdeck/opensd/config.ini ~/.config/opensd/config.ini
     ln -sf $SCRIPT_DIR/steamdeck/opensd/my.profile ~/.config/opensd/profiles/my.profile
+    ln -sf $SCRIPT_DIR/hyprland/monitors_select.sh ~/.config/hypr/monitors_select.sh
 else
     echo "This is not Jupiter, skipping symlink creation."
 fi
