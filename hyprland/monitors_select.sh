@@ -27,7 +27,7 @@ while true; do
             echo "DP-1 появился"
             pkill waybar
             pkill opensdd
-            hyprctl keyword monitor eDP-1,disable
+            hyprctl keyword monitor desc:Valve Corporation ANX7530 U 0x00000001,disable
             waybar &
         else
             echo "DP-1 пропал"
