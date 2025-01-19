@@ -2,8 +2,8 @@
 
 LC_ALL=en_US.UTF-8
 
-ethernet_interface="enp4s0f3u1u1c2"
-wifi_interface="wlo1"
+ethernet_interface="enp2s0f0"
+wifi_interface="wlp3s0"
 
 ethernet_connected=$(nmcli -t -f DEVICE,STATE device status | grep "^$ethernet_interface:" | cut -d: -f2)
 wifi_connected=$(nmcli -t -f DEVICE,STATE device status | grep "^$wifi_interface:" | cut -d: -f2)
@@ -23,7 +23,7 @@ get_wifi_icon() {
 
 if [ "$wifi_connected" == "connected" ]; then
   essid=$(nmcli -g GENERAL.CONNECTION dev show $wifi_interface)
-  signal=$(iw dev wlo1 link | grep 'signal' | awk '{print $2}')
+  signal=$(iw dev $wifi_interface link | grep 'signal' | awk '{print $2}')
   icon=$(get_wifi_icon $signal)
   echo "{\"text\": \"$icon\", \"tooltip\": \"$essid ($signal dBm)\"}"
 elif [ "$ethernet_connected" == "connected" ]; then
