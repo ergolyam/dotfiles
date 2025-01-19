@@ -14,11 +14,11 @@ if [ -f "$session_file" ]; then
     done < "$session_file"
 fi
 
-distrobox_containers=$(distrobox list | tail -n +2 | awk -F'|' '{print $2 " (Distrobox)"}' | sed 's/^[ \t]*//;s/[ \t]*$//')
+#distrobox_containers=$(distrobox list | tail -n +2 | awk -F'|' '{print $2 " (Distrobox)"}' | sed 's/^[ \t]*//;s/[ \t]*$//')
 toolbox_containers=$(toolbox list --containers | tail -n +2 | awk '{printf "%-21s (Toolbox)\n", $2}')
 
 if [ -n "$sessions" ]; then
-    containers=$(echo -e "Host\n$toolbox_containers\n$distrobox_containers\n$sessions")
+    containers=$(echo -e "Host\n$toolbox_containers\n$sessions")
 fi
 
 if [ -z "$containers" ]; then
