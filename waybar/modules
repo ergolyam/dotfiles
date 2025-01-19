@@ -31,26 +31,12 @@
             }
         }
     },
-    "custom/usd-rate": {
-      "format": "{}",
-      "exec": "~/.config/waybar/usd_rate.sh 2> /dev/null",
-      "interval": 900,
-      "return-type": "json",
-      "tooltip": true
-    },
     "custom/wttr": {
       "format": "{}",
       "exec": "~/.config/waybar/wttr.sh 2> /dev/null",
       "interval": 3600,
       "return-type": "json",
       "tooltip": true
-    },
-    "custom/scroller_mode": {
-      "format": "{}",
-      "exec": "~/.config/waybar/status_scroller_mode.sh 2> /dev/null",
-      "interval": 2,
-      "return-type": "json",
-      "tooltip": false
     },
     "custom/network": {
       "format": "{}",
@@ -76,20 +62,6 @@
         "tooltip-format": "{volume}% | {desc}",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol"
-    },
-    "custom/microphone": {
-      "format": "{}",
-      "exec": "pactl list sources | grep -A 10 'State: RUNNING' | grep 'Description' | grep -q -i 'Internal Microphone' && echo '{\"text\": \"  \", \"tooltip\": \"ACP/ACP3X/ACP6x Audio Coprocessor Internal Microphone\"}' || echo '{\"text\": \"\", \"tooltip\": \"\"}'",
-      "interval": 2,
-      "return-type": "json",
-      "tooltip": false
-    },
-    "custom/capture": {
-      "format": "{}",
-      "exec": "wpctl status | grep -q 'xdg-desktop-portal-hyprland:capture' && echo '{\"text\": \"  \", \"tooltip\": \"Screen capture is active\"}' || echo '{\"text\": \"\", \"tooltip\": \"\"}'",
-      "interval": 2,
-      "return-type": "json",
-      "tooltip": false
     },
     "custom/separator": {
         "format": "  ",

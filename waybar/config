@@ -6,7 +6,6 @@
         "custom/separator",
         "hyprland/workspaces",
         "custom/separator",
-        "custom/scroller_mode"
     ],
     "modules-center": [
         "clock",
@@ -15,8 +14,6 @@
     ],
     "modules-right": [
         "tray",
-        "custom/microphone",
-        "custom/capture",
         "custom/separator",
         "hyprland/language",
         "custom/separator",
