@@ -6,6 +6,7 @@
         "custom/separator",
         "hyprland/workspaces",
         "custom/separator",
+        "custom/scroller_mode",
     ],
     "modules-center": [
         "clock",
