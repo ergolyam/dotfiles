@@ -8,43 +8,73 @@ jobs:
     name: Build hyprscroller and commit
     runs-on: ubuntu-latest
     container:
-      image: docker.io/fedora:latest
+      image: docker.io/archlinux:latest
 
     steps:
 
-      - name: Install build tools
+      - name: Install packges
+        run: pacman -Syu git base-devel sudo --noconfirm
+
+      - name: Create user
         run: |
-          dnf copr enable solopasha/hyprland -y
-          dnf install git hyprland hyprland-devel cmake gcc gcc-c++ make pkg-config -y
+          useradd user
+          mkdir /home/user
+          chown user:user /home/user
+          usermod -a -G wheel user
+          sudo sed -i 's/^# \(%wheel ALL=(ALL:ALL) NOPASSWD: ALL\)/\1/' /etc/sudoers
+
+      - name: Git clone yay
+        run: sudo -u user bash -c 'git clone https://aur.archlinux.org/yay-bin.git'
+        working-directory: /home/user
+
+      - name: Make yay
+        run: sudo -u user bash -c 'makepkg -sic --noconfirm'
+        working-directory: /home/user/yay-bin
+
+      - name: Install dependencies
+        run: sudo -u user bash -c 'yay -S ninja gcc cmake meson libxcb xcb-proto xcb-util xcb-util-keysyms libxfixes libx11 libxcomposite libxrender pixman wayland-protocols cairo pango seatd libxkbcommon xcb-util-wm xorg-xwayland libinput libliftoff libdisplay-info cpio tomlplusplus hyprlang-git hyprcursor-git hyprwayland-scanner-git xcb-util-errors hyprutils-git glaze hyprgraphics-git aquamarine libxcursor --noconfirm'
 
       - name: Checkout code
         run: |
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          sudo -u user bash -c 'git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git -b ${{ github.ref_name }}'
+        working-directory: /home/user
 
       - name: Setup git user
         run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-        working-directory: ${{ github.event.repository.name }}
+          sudo -u user bash -c 'git config user.name github-actions[bot]'
+          sudo -u user bash -c 'git config user.email 41898282+github-actions[bot]@users.noreply.github.com'
+        working-directory: /home/user/${{ github.event.repository.name }}
+
+      - name: Git clone hyprland
+        run: sudo -u user bash -c 'git clone --recursive https://github.com/hyprwm/Hyprland -b v0.44.1'
+        working-directory: /home/user
 
       - name: Git clone hyprscroller
-        run: git clone https://github.com/dawsers/hyprscroller.git
+        run: sudo -u user bash -c 'git clone https://github.com/dawsers/hyprscroller.git -b v0.44.1'
+        working-directory: /home/user
+
+      - name: Build hyprland
+        run: |
+          sudo -u user bash -c 'make all'
+          make install
+          make installheaders
+        working-directory: /home/user/Hyprland
 
       - name: Build
-        run: make all
-        working-directory: ./hyprscroller
+        run: sudo -u user bash -c 'make all'
+        working-directory: /home/user/hyprscroller
 
       - name: Copy plugin
         run: |
-          cp hyprscroller/Release/hyprscroller.so ${{ github.event.repository.name }}/hyprland/plugins
+          sudo -u user bash -c 'cp hyprscroller/Release/hyprscroller.so ${{ github.event.repository.name }}/hyprland/plugins'
+        working-directory: /home/user
 
       - name: Make changes to the repository
         run: |
-          git add hyprland/plugins/hyprscroller.so
-          git commit -m "[u] update hyprscroller"
-        working-directory: ${{ github.event.repository.name }}
+          sudo -u user bash -c 'git add hyprland/plugins/hyprscroller.so && git commit -m "[u] update hyprscroller"'
+        working-directory: /home/user/${{ github.event.repository.name }}
 
       - name: Push changes
         run: |
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}
-        working-directory: ${{ github.event.repository.name }}
+          sudo -u user bash -c 'git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}'
+        working-directory: /home/user/${{ github.event.repository.name }}
