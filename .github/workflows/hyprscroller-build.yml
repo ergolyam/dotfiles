@@ -2,6 +2,16 @@ name: Build hyprscroller and commit
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Hyprland version'
+        required: true
+        default: '0.1.0'
+
+      commit_hash:
+        description: 'Hyprscroller commit hash'
+        required: true
+        default: ''
 
 jobs:
   build:
@@ -11,6 +21,13 @@ jobs:
       image: docker.io/archlinux:latest
 
     steps:
+      - name: Check version format
+        run: |
+          if [[ ! "${{ github.event.inputs.version }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Error: The version must be in X.Y.Z format (for example, 0.44.1)"
+            exit 1
+          fi
+          echo "Version accept: ${{ github.event.inputs.version }}"
 
       - name: Install packges
         run: pacman -Syu git base-devel sudo --noconfirm
@@ -46,12 +63,19 @@ jobs:
         working-directory: /home/user/${{ github.event.repository.name }}
 
       - name: Git clone hyprland
-        run: sudo -u user bash -c 'git clone --recursive https://github.com/hyprwm/Hyprland -b v0.44.1'
+        run: sudo -u user bash -c 'git clone --recursive https://github.com/hyprwm/Hyprland -b v${{ github.event.inputs.version }}'
         working-directory: /home/user
 
       - name: Git clone hyprscroller
-        run: sudo -u user bash -c 'git clone https://github.com/dawsers/hyprscroller.git -b v0.44.1'
+        run: |
+          sudo -u user bash -c 'git clone --no-checkout https://github.com/dawsers/hyprscroller.git'
         working-directory: /home/user
+
+      - name: Checkout hyprscroller
+        run: |
+          sudo -u user bash -c 'git fetch origin ${{ github.event.inputs.commit_hash }}'
+          sudo -u user bash -c 'git checkout ${{ github.event.inputs.commit_hash }}'
+        working-directory: /home/user/hyprscroller
 
       - name: Build hyprland
         run: |
@@ -60,7 +84,7 @@ jobs:
           make installheaders
         working-directory: /home/user/Hyprland
 
-      - name: Build
+      - name: Build hyprscroller
         run: sudo -u user bash -c 'make all'
         working-directory: /home/user/hyprscroller
 
