@@ -5,6 +5,10 @@ declare -a containers=("Host")
 TERM=xterm-256color
 distrobox_root_mode=0
 
+GRAY='\e[1;90m'
+RED='\e[31m'
+RESET='\e[0m'
+
 if command -v toolbox >/dev/null 2>&1; then
     toolbox_containers=$(toolbox list --containers | tail -n +2 | awk '{printf "%-21s (Toolbox)\n", $2}')
     if [ -n "$toolbox_containers" ]; then
@@ -13,7 +17,7 @@ if command -v toolbox >/dev/null 2>&1; then
         done <<< "$toolbox_containers"
     fi
 else
-    containers+=("Toolbox is not installed")
+    containers+=("${RED}Toolbox is not installed${RESET}")
 fi
 
 if command -v distrobox >/dev/null 2>&1; then
@@ -24,7 +28,7 @@ if command -v distrobox >/dev/null 2>&1; then
         done <<< "$distrobox_containers"
     fi
 else
-    containers+=("Distrobox is not installed")
+    containers+=("${RED}Distrobox is not installed${RESET}")
 fi
 
 if [ -f "$session_file" ]; then
@@ -37,7 +41,7 @@ if [ -f "$session_file" ]; then
 fi
 
 if [ "$distrobox_root_mode" -eq 0 ] && command -v distrobox >/dev/null 2>&1; then
-    containers+=("\e[31mActivate Distrobox Root Mode\e[0m")
+    containers+=("${GRAY}Activate Distrobox Root Mode${RESET}")
 fi
 
 while true; do
@@ -62,7 +66,7 @@ while true; do
                 done <<< "$distrobox_root_containers"
                 filtered_containers=()
                 for item in "${containers[@]}"; do
-                    if [[ "$item" != "\e[31mActivate Distrobox Root Mode\e[0m" ]]; then
+                    if [[ "$item" != "${GRAY}Activate Distrobox Root Mode${RESET}" ]]; then
                         filtered_containers+=("$item")
                     fi
                 done
