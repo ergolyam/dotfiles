@@ -29,6 +29,10 @@
     color: #00FF00;
 }
 
+#battery.warning {
+    color: #ff7000;
+}
+
 #custom-network {
     padding-right: 5px;
     padding-left: 1px;

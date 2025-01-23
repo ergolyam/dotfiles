@@ -81,13 +81,15 @@
     },
     "battery": {
       "format": "{icon} {capacity}%",
+      "format-alt": "{icon} {time}",
       "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
-      "tooltip": false,
       "percentage": true,
       "states": {
         "charging": {
           "icon": "󰂄"
-        }
+        },
+        "warning": 30,
+        "critical": 15
       }
     }
 }
