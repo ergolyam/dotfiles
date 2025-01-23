@@ -106,15 +106,4 @@ function __postexec --on-event fish_postexec
     set -l duration_ns (math "$end_time - $__cmd_start_time")
     set -g __last_cmd_duration_ms (math "($duration_ns) / 1000000")
 end
-
-# Функция для автоматической активации venv
-function python
-    if not set -q VIRTUAL_ENV
-        if test -d ./.venv
-            fish -C "source ./.venv/bin/activate.fish ; python $argv"
-            return
-        end
-    end
-    command python $argv
-end
 end
