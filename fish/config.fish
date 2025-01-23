@@ -76,8 +76,13 @@ end
 if test -n "$container"
     alias vi="/usr/bin/nvim"
 else
-    alias vi="toolbox run -c arch -- /usr/bin/nvim"
-    alias lazygit="toolbox run -c arch -- /usr/bin/lazygit"
+    function vi
+        toolbox run -c arch -- /usr/bin/nvim $argv
+    end
+
+    function lazygit
+        toolbox run -c arch -- /usr/bin/lazygit $argv
+    end
 end
 
 set -g -x fish_greeting ""
