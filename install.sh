@@ -60,11 +60,12 @@ echo "Create symlinks for fish."
 ln -sf $SCRIPT_DIR/fish/config.fish ~/.config/fish/config.fish
 
 if grep -q "Jupiter" /sys/devices/virtual/dmi/id/product_name; then
-    echo "Create symlinks for opensd"
+    echo "Create symlinks for jupiter"
     rm ~/.config/opensd/config.ini
     ln -sf $SCRIPT_DIR/steamdeck/opensd/config.ini ~/.config/opensd/config.ini
     ln -sf $SCRIPT_DIR/steamdeck/opensd/my.profile ~/.config/opensd/profiles/my.profile
     ln -sf $SCRIPT_DIR/hyprland/monitors_select.sh ~/.config/hypr/monitors_select.sh
+    sed -i '/^#exec-once = .*monitors_select\.sh &/ s/^#//; /^#exec-once = .*opensdd &/ s/^#//' $SCRIPT_DIR/hyprland/startup.conf
 else
     echo "This is not Jupiter, skipping symlink creation."
 fi
