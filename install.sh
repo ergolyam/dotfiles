@@ -45,6 +45,8 @@ ln -sf $SCRIPT_DIR/waybar/wttr.sh ~/.config/waybar/wttr.sh
 
 echo "Create symlinks for dunst."
 ln -sf $SCRIPT_DIR/dunst/dunstrc ~/.config/dunst/dunstrc
+ln -sf $SCRIPT_DIR/dunst/battery_check.sh ~/.config/dunst/battery_check.sh
+ln -sf $SCRIPT_DIR/dunst/battery_low.mp3 ~/.config/dunst/battery_low.mp3
 
 echo "Create symlinks for kitty."
 ln -sf $SCRIPT_DIR/kitty/kitty.conf ~/.config/kitty/kitty.conf
