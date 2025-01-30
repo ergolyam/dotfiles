@@ -31,6 +31,7 @@ ln -sf $SCRIPT_DIR/hyprland/record_screen.sh ~/.config/hypr/record_screen.sh
 ln -sf $SCRIPT_DIR/hyprland/set_workspace.sh ~/.config/hypr/set_workspace.sh
 ln -sf $SCRIPT_DIR/hyprland/toggle_overview_mode.sh ~/.config/hypr/toggle_overview_mode.sh
 ln -sf $SCRIPT_DIR/hyprland/set_scroller_mode.sh ~/.config/hypr/set_scroller_mode.sh
+ln -sf $SCRIPT_DIR/hyprland/screenshot.sh ~/.config/hypr/screenshot.sh
 
 echo "Create symlinks for waybar."
 ln -sf $SCRIPT_DIR/waybar/config ~/.config/waybar/config
