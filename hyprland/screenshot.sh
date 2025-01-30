@@ -27,12 +27,12 @@ screenshot_fullscreen() {
 }
 
 screenshot_selected_area() {
-    grim -g $(get_selected_area) - | wl-copy
+    grim -g "$(get_selected_area)" - | wl-copy
     send_notification "The screenshot of a selected screen area is sent to the clipboard."
 }
 
 screenshot_active_window() {
-    grim -g $(get_active_window) - | wl-copy
+    grim -g "$(get_active_window)" - | wl-copy
     send_notification "The screenshot of the active tile is sent to the clipboard."
 }
 
