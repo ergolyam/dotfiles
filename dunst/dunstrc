@@ -1,7 +1,12 @@
 [global]
 font = Noto Sans
-frame_width = 0
+frame_width = 10
 frame_color = "#000000"
+corner_radius = 10
+mouse_left_click = close_current
+mouse_middle_click = do_action, close_current
+mouse_right_click = close_all
+dmenu = /usr/bin/wofi --dmenu
 
 [urgency_low]
 background = "#000000"
