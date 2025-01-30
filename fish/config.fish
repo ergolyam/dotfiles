@@ -83,6 +83,10 @@ else
     function lazygit
         toolbox run -c arch -- /usr/bin/lazygit $argv
     end
+
+    function feh
+        toolbox run -c arch -- /usr/bin/feh $argv
+    end
 end
 
 set -g -x fish_greeting ""
