@@ -87,6 +87,10 @@ else
     function feh
         toolbox run -c arch -- /usr/bin/feh $argv
     end
+
+    function trans
+        toolbox run -c arch -- /usr/bin/trans $argv
+    end
 end
 
 set -g -x fish_greeting ""
