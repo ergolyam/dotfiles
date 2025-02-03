@@ -40,7 +40,7 @@ switch_language() {
 
 check_and_switch_language() {
     local input="$1"
-    if [[ "$input" =~ ^:([a-zA-Z]{2})\s*(.*) ]]; then
+    if [[ "$input" =~ ^:([a-zA-Z]{2,3})\s*(.*) ]]; then
         local lang="${BASH_REMATCH[1]}"
         local text="${BASH_REMATCH[2]}"
         switch_language "$lang"
