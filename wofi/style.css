@@ -3,6 +3,7 @@ window {
     border: 2px solid #3a3f4b;
     border-radius: 8px;
     padding: 10px;
+    font-size: 25px;
 }
 
 entry {
