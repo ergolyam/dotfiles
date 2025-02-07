@@ -11,13 +11,13 @@ wifi_connected=$(nmcli -t -f DEVICE,STATE device status | grep "^$wifi_interface
 get_wifi_icon() {
   local signal=$1
   if [ "$signal" -ge -50 ]; then
-    echo "󰤨" # Full signal
+    echo "󰤨 " # Full signal
   elif [ "$signal" -ge -70 ]; then
-    echo "󰤥" # High signal
+    echo "󰤥 " # High signal
   elif [ "$signal" -ge -85 ]; then
-    echo "󰤢" # Medium signal
+    echo "󰤢 " # Medium signal
   else
-    echo "󰤟" # Low signal
+    echo "󰤟 " # Low signal
   fi
 }
 
@@ -28,8 +28,8 @@ if [ "$wifi_connected" == "connected" ]; then
   echo "{\"text\": \"$icon\", \"tooltip\": \"$essid ($signal dBm)\"}"
 elif [ "$ethernet_connected" == "connected" ]; then
   ip=$(nmcli -g IP4.ADDRESS dev show $ethernet_interface | head -n 1)
-  echo "{\"text\": \"󰈀\", \"tooltip\": \"$ip\"}"
+  echo "{\"text\": \"󰈀 \", \"tooltip\": \"$ip\"}"
 else
-  echo "{\"text\": \"󰤮\", \"tooltip\": \"No connection\"}"
+  echo "{\"text\": \"󰤮 \", \"tooltip\": \"No connection\"}"
 fi
 
