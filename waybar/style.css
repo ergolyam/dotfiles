@@ -2,8 +2,8 @@
     background: black;
     color: white;
     color: @foreground;
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 16px;
+    font-family: "Terminess Nerd Font";
+    font-size: 18px;
     padding-right: 0px;
     padding-left: 0px;
 }
