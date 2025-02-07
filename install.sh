@@ -68,6 +68,7 @@ ln -sf $SCRIPT_DIR/fish/config.fish ~/.config/fish/config.fish
 
 echo "Create fonts symlinks"
 ln -sf $SCRIPT_DIR/fonts/TerminessNerdFont-Regular.ttf ~/.local/share/fonts/TerminessNerdFont-Regular.ttf
+ln -sf $SCRIPT_DIR/fonts/FiraCodeNerdFontMono-Regular.ttf ~/.local/share/fonts/FiraCodeNerdFontMono-Regular.ttf
 
 if grep -q "Jupiter" /sys/devices/virtual/dmi/id/product_name; then
     echo "Create symlinks for jupiter"
