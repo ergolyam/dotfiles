@@ -24,10 +24,10 @@
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "format": {
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
-                "days": "<span color='#ffffff'><b>{}</b></span>",
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>"
+                "today": "<span font='Terminess Nerd Font' color='#ff6699'><b><u>{}</u></b></span>",
+                "days": "<span font='Terminess Nerd Font' color='#ffffff'><b>{}</b></span>",
+                "months": "<span font='Terminess Nerd Font' color='#ffead3'><b>{}</b></span>",
+                "weekdays": "<span font='Terminess Nerd Font' color='#ffcc66'><b>{}</b></span>"
             }
         }
     },
