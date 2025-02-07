@@ -14,6 +14,7 @@ mkdir -p ~/.config/wlogout
 mkdir -p ~/.config/wofi
 mkdir -p ~/.config/fish
 mkdir -p ~/.config/opensd/profiles
+mkdir -p ~/.local/share/fonts
 
 # Создание символических ссылок для файлов и директорий
 
@@ -64,6 +65,9 @@ ln -sf $SCRIPT_DIR/wofi/wofi_trans.sh ~/.config/wofi/wofi_trans.sh
 
 echo "Create symlinks for fish."
 ln -sf $SCRIPT_DIR/fish/config.fish ~/.config/fish/config.fish
+
+echo "Create fonts symlinks"
+ln -sf $SCRIPT_DIR/fonts/TerminessNerdFont-Regular.ttf ~/.local/share/fonts/TerminessNerdFont-Regular.ttf
 
 if grep -q "Jupiter" /sys/devices/virtual/dmi/id/product_name; then
     echo "Create symlinks for jupiter"
