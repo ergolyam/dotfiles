@@ -37,3 +37,7 @@
     padding-right: 5px;
     padding-left: 1px;
 }
+
+#custom-waybar-media.paused {
+    color: grey;
+}
