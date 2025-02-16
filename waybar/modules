@@ -68,6 +68,10 @@
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol"
     },
+    "custom/waybar-media-previous": {
+        "format": " 󰒮 ",
+        "on-click": "~/.config/waybar/media.sh playpause",
+    },
     "custom/waybar-media": {
         "format": "{}",
         "exec": "~/.config/waybar/media.sh status",
@@ -78,6 +82,10 @@
         "on-click": "~/.config/waybar/media.sh playpause",
         "on-scroll-up": "~/.config/waybar/media.sh previous",
         "on-scroll-down": "~/.config/waybar/media.sh next"
+    },
+    "custom/waybar-media-next": {
+        "format": " 󰒭 ",
+        "on-click": "~/.config/waybar/media.sh next",
     },
     "custom/separator": {
         "format": "  ",

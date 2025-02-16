@@ -41,3 +41,11 @@
 #custom-waybar-media.paused {
     color: grey;
 }
+
+#custom-waybar-media-previous {
+    font-size: 24px;
+}
+
+#custom-waybar-media-next {
+    font-size: 24px;
+}
