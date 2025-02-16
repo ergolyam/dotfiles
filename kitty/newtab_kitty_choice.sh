@@ -82,17 +82,38 @@ while true; do
     elif [[ "$selected_container" == *" (Distrobox)" ]]; then
         container_name=$(echo "$selected_container" | sed 's/ * (Distrobox)$//')
         kitty @ set-tab-title "$container_name"
-        distrobox enter "$container_name"
+        distrobox enter "$container_name" -- env container_hostname=$container_name \
+        /bin/sh -c 'if [ -n "$SHELL" ] && command -v "$SHELL" >/dev/null 2>&1; then
+                      exec "$SHELL"
+                    elif command -v bash >/dev/null 2>&1; then
+                      exec bash
+                    else
+                      exec sh
+                    fi'
         exit 0
     elif [[ "$selected_container" == *" (Distrobox-Root)" ]]; then
         container_name=$(echo "$selected_container" | sed 's/ * (Distrobox-Root)$//')
         kitty @ set-tab-title "$container_name"
-        distrobox enter --root "$container_name"
+        distrobox enter --root "$container_name" -- env container_hostname=$container_name \
+        /bin/sh -c 'if [ -n "$SHELL" ] && command -v "$SHELL" >/dev/null 2>&1; then
+                      exec "$SHELL"
+                    elif command -v bash >/dev/null 2>&1; then
+                      exec bash
+                    else
+                      exec sh
+                    fi'
         exit 0
     elif [[ "$selected_container" == *" (Toolbox)" ]]; then
         container_name=$(echo "$selected_container" | sed 's/ * (Toolbox)$//')
         kitty @ set-tab-title "$container_name"
-        toolbox enter "$container_name"
+        toolbox run -c "$container_name" env container_hostname=$container_name \
+        /bin/sh -c 'if [ -n "$SHELL" ] && command -v "$SHELL" >/dev/null 2>&1; then
+                      exec "$SHELL"
+                    elif command -v bash >/dev/null 2>&1; then
+                      exec bash
+                    else
+                      exec sh
+                    fi'
         exit 0
     elif [ -n "$selected_container" ]; then
         if grep -q "^\"$selected_container\" " "$session_file" 2>/dev/null; then

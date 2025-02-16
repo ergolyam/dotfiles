@@ -17,7 +17,11 @@ function fish_prompt
     else
         printf '\e[1;31m'
     end
-    echo -n $hostname
+    if test -n "$container_hostname"
+      echo -n $container_hostname
+    else
+      echo -n $hostname
+    end
     printf '\e[0m'
     echo -n ']'
 
