@@ -8,7 +8,9 @@
         "custom/separator",
         "custom/scroller_mode",
         "custom/separator",
+        "custom/waybar-media-previous",
         "custom/waybar-media",
+        "custom/waybar-media-next",
     ],
     "modules-center": [
         "clock",
