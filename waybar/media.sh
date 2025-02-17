@@ -53,7 +53,13 @@ case "$ACTION" in
       else
         TEXT_STRING="${TITLE}${ARTIST}"
       fi
-      TEXT=$(echo "\"$TEXT_STRING\"")
+      MAX_LEN=50
+      if [ ${#TEXT_STRING} -gt $MAX_LEN ]; then
+        SHORTENED="${TEXT_STRING:0:${MAX_LEN}}..."
+      else
+        SHORTENED="$TEXT_STRING"
+      fi
+      TEXT=$(echo "\"$SHORTENED\"")
 
       case "$LOWER_STATUS" in
         playing|paused) CLASS="[\"$LOWER_STATUS\"]" ;;
