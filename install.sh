@@ -63,6 +63,7 @@ echo "Create symlinks for wofi."
 ln -sf $SCRIPT_DIR/wofi/config ~/.config/wofi/config
 ln -sf $SCRIPT_DIR/wofi/style.css ~/.config/wofi/style.css
 ln -sf $SCRIPT_DIR/wofi/wofi_trans.sh ~/.config/wofi/wofi_trans.sh
+ln -sf $SCRIPT_DIR/wofi/wofi_deepl.sh ~/.config/wofi/wofi_deepl.sh
 
 echo "Create symlinks for fish."
 ln -sf $SCRIPT_DIR/fish/config.fish ~/.config/fish/config.fish
