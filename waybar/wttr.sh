@@ -89,7 +89,11 @@ format_chances() {
 
 current_hour=$(date +"%H")
 
-weather_json=$(curl --retry 5 --retry-delay 15 -s "https://wttr.in/?format=j1")
+weather_json=$(curl --retry 5 --retry-delay 15 --max-time 10 -s "https://wttr.in/?format=j1")
+if [ $? -ne 0 ] || [ -z "$weather_json" ]; then
+    echo "{\"text\":\"null\",\"tooltip\":\"null\"}"
+    exit 1
+fi
 
 current_location=$(echo "$weather_json" | jq -r '.nearest_area[0].areaName[0].value')
 current_country=$(echo "$weather_json" | jq -r '.nearest_area[0].country[0].value')
