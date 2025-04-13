@@ -2,8 +2,16 @@
 
 set -e
 
-if command -v realpath >/dev/null 2>&1 && [[ "$BASH_SOURCE" != "/dev/stdin" ]]; then
-    script_dir=$(dirname "$(realpath "$BASH_SOURCE")")
+if [[ -n "$BASH_SOURCE" && "$BASH_SOURCE" != "/dev/stdin" ]]; then
+    script_path="$BASH_SOURCE"
+elif [[ -n "$0" && "$0" != "bash" ]]; then
+    script_path="$0"
+else
+    script_path=""
+fi
+
+if [[ -n "$script_path" ]]; then
+    script_dir=$(dirname "$(realpath "$script_path")")
 else
     script_dir=$(pwd)
 fi
@@ -11,8 +19,11 @@ fi
 if [ -d "$script_dir/.git" ]; then
   echo "Script dir: $script_dir"
   expected_url="github.com:grisha765/dotfiles.git"
-  remote_url="$(git -C "$script_dir" remote get-url origin)"
-  remote_short_url="$(echo "$remote_url" | sed -E 's#(git@|https://)github\.com(:|/)#github.com:#')"
+  remote_short_url=""
+  if git -C "$script_dir" remote get-url origin &>/dev/null; then
+    remote_url="$(git -C "$script_dir" remote get-url origin)"
+    remote_short_url="$(echo "$remote_url" | sed -E 's#(git@|https://)github\.com(:|/)#github.com:#')"
+  fi
 fi
 base_config="$HOME/.config"
 base_url="https://raw.githubusercontent.com/grisha765/dotfiles/main"
@@ -200,9 +211,9 @@ setup_fonts() {
   )
   for i in "${files[@]}"; do
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
-      ln -sfv "$script_dir/fonts/$i" ~/.local/share/fonts/$i
+      ln -sfv "$script_dir/fonts/$i" $HOME/.local/share/fonts/$i
     else
-      wget -O ~/.local/share/fonts/$i "$base_url/fonts/$i"
+      wget -O $HOME/.local/share/fonts/$i "$base_url/fonts/$i"
     fi
   done
 }
@@ -212,5 +223,5 @@ for config in "${selected_configs[@]}"; do
   $setup_func
 done
 
-echo "Dotfiles have been install."
+echo "Dotfiles have been installed."
 
