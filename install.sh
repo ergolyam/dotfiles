@@ -2,6 +2,7 @@
 
 script_dir=$(dirname "$(realpath "$BASH_SOURCE")")
 base_config="$HOME/.config"
+base_url="https://raw.githubusercontent.com/grisha765/dotfiles/main"
 
 echo "Script dir: $script_dir"
 
@@ -39,7 +40,11 @@ hypr_files=(
   "screenshot.sh"
   )
 for i in "${hypr_files[@]}"; do
-  ln -sfv $script_dir/hyprland/${i} $base_config/hypr/${i}
+  if [ -d "$script_dir/.git" ]; then
+    ln -sfv $script_dir/hyprland/${i} $base_config/hypr/${i}
+  else
+    wget -O $base_config/hypr/${i} $base_url/hyprland/${i}
+  fi
 done
 
 echo "Create symlinks for waybar."
@@ -56,7 +61,11 @@ waybar_files=(
   "media.sh"
   )
 for i in "${waybar_files[@]}"; do
-  ln -sfv $script_dir/waybar/${i} $base_config/waybar/${i}
+  if [ -d "$script_dir/.git" ]; then
+    ln -sfv $script_dir/waybar/${i} $base_config/waybar/${i}
+  else
+    wget -O $base_config/waybar/${i} $base_url/waybar/${i}
+  fi
 done
 
 echo "Create symlinks for dunst."
@@ -67,7 +76,11 @@ dunst_files=(
   "battery_full.ogg"
   )
 for i in "${dunst_files[@]}"; do
-  ln -sfv $script_dir/dunst/${i} $base_config/dunst/${i}
+  if [ -d "$script_dir/.git" ]; then
+    ln -sfv $script_dir/dunst/${i} $base_config/dunst/${i}
+  else
+    wget -O $base_config/dunst/${i} $base_url/dunst/${i}
+  fi
 done
 
 echo "Create symlinks for kitty."
@@ -76,7 +89,11 @@ kitty_files=(
   "newtab_kitty_choice.sh"
   )
 for i in "${kitty_files[@]}"; do
-  ln -sfv $script_dir/kitty/${i} $base_config/kitty/${i}
+  if [ -d "$script_dir/.git" ]; then
+    ln -sfv $script_dir/kitty/${i} $base_config/kitty/${i}
+  else
+    wget -O $base_config/kitty/${i} $base_url/kitty/${i}
+  fi
 done
 
 echo "Create symlinks for wlogout."
@@ -84,7 +101,11 @@ wlogout_files=(
   "layout"
   )
 for i in "${wlogout_files[@]}"; do
-  ln -sfv $script_dir/wlogout/${i} $base_config/wlogout/${i}
+  if [ -d "$script_dir/.git" ]; then
+    ln -sfv $script_dir/wlogout/${i} $base_config/wlogout/${i}
+  else
+    wget -O $base_config/wlogout/${i} $base_url/wlogout/${i}
+  fi
 done
 
 echo "Create symlinks for wofi."
@@ -95,7 +116,11 @@ wofi_files=(
   "wofi_deepl.sh"
   )
 for i in "${wofi_files[@]}"; do
-  ln -sfv $script_dir/wofi/${i} $base_config/wofi/${i}
+  if [ -d "$script_dir/.git" ]; then
+    ln -sfv $script_dir/wofi/${i} $base_config/wofi/${i}
+  else
+    wget -O $base_config/wofi/${i} $base_url/wofi/${i}
+  fi
 done
 
 echo "Create symlinks for fish."
@@ -104,12 +129,25 @@ fish_files=(
   "functions"
   )
 for i in "${fish_files[@]}"; do
-  ln -sfv $script_dir/fish/${i} $base_config/fish/${i}
+  if [ -d "$script_dir/.git" ]; then
+    ln -sfv $script_dir/fish/${i} $base_config/fish/${i}
+  else
+    wget -O $base_config/fish/${i} $base_url/fish/${i}
+  fi
 done
 
 echo "Create fonts symlinks"
-ln -sfv $script_dir/fonts/TerminessNerdFont-Regular.ttf ~/.local/share/fonts/TerminessNerdFont-Regular.ttf
-ln -sfv $script_dir/fonts/FiraCodeNerdFontMono-Regular.ttf ~/.local/share/fonts/FiraCodeNerdFontMono-Regular.ttf
+font_files=(
+  "TerminessNerdFont-Regular.ttf"
+  "FiraCodeNerdFontMono-Regular.ttf"
+  )
+for i in "${font_files[@]}"; do
+  if [ -d "$script_dir/.git" ]; then
+    ln -sfv $script_dir/fonts/${i} ~/.local/share/fonts/${i}
+  else
+    wget -O ~/.local/share/fonts/${i} $base_url/fonts/${i}
+  fi
+done
 
 echo "Dotfiles have been linked."
 
