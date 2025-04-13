@@ -2,7 +2,18 @@
 
 set -e
 
-script_dir=$(dirname "$(realpath "$BASH_SOURCE")")
+if command -v realpath >/dev/null 2>&1 && [[ "$BASH_SOURCE" != "/dev/stdin" ]]; then
+    script_dir=$(dirname "$(realpath "$BASH_SOURCE")")
+else
+    script_dir=$(pwd)
+fi
+
+if [ -d "$script_dir/.git" ]; then
+  echo "Script dir: $script_dir"
+  expected_url="github.com:grisha765/dotfiles.git"
+  remote_url="$(git -C "$script_dir" remote get-url origin)"
+  remote_short_url="$(echo "$remote_url" | sed -E 's#(git@|https://)github\.com(:|/)#github.com:#')"
+fi
 base_config="$HOME/.config"
 base_url="https://raw.githubusercontent.com/grisha765/dotfiles/main"
 
@@ -44,8 +55,6 @@ else
   done
 fi
 
-echo "Script dir: $script_dir"
-
 setup_hypr() {
   echo "Setting up Hyprland config"
   mkdir -pv $base_config/hypr/plugins
@@ -66,7 +75,7 @@ setup_hypr() {
     "screenshot.sh"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ]; then
+    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/hyprland/$i" "$base_config/hypr/$i"
     else
       wget -O "$base_config/hypr/$i" "$base_url/hyprland/$i"
@@ -90,7 +99,7 @@ setup_waybar() {
     "media.sh"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ]; then
+    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/waybar/$i" "$base_config/waybar/$i"
     else
       wget -O "$base_config/waybar/$i" "$base_url/waybar/$i"
@@ -108,7 +117,7 @@ setup_dunst() {
     "battery_full.ogg"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ]; then
+    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/dunst/$i" "$base_config/dunst/$i"
     else
       wget -O "$base_config/dunst/$i" "$base_url/dunst/$i"
@@ -124,7 +133,7 @@ setup_kitty() {
     "newtab_kitty_choice.sh"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ]; then
+    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/kitty/$i" "$base_config/kitty/$i"
     else
       wget -O "$base_config/kitty/$i" "$base_url/kitty/$i"
@@ -139,7 +148,7 @@ setup_wlogout() {
     "layout"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ]; then
+    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/wlogout/$i" "$base_config/wlogout/$i"
     else
       wget -O "$base_config/wlogout/$i" "$base_url/wlogout/$i"
@@ -157,7 +166,7 @@ setup_wofi() {
     "wofi_deepl.sh"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ]; then
+    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/wofi/$i" "$base_config/wofi/$i"
     else
       wget -O "$base_config/wofi/$i" "$base_url/wofi/$i"
@@ -174,7 +183,7 @@ setup_fish() {
     "functions/loadenv.fish"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ]; then
+    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/fish/$i" "$base_config/fish/$i"
     else
       wget -O "$base_config/fish/$i" "$base_url/fish/$i"
@@ -190,7 +199,7 @@ setup_fonts() {
     "FiraCodeNerdFontMono-Regular.ttf"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ]; then
+    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/fonts/$i" ~/.local/share/fonts/$i
     else
       wget -O ~/.local/share/fonts/$i "$base_url/fonts/$i"
@@ -203,5 +212,5 @@ for config in "${selected_configs[@]}"; do
   $setup_func
 done
 
-echo "Dotfiles have been linked."
+echo "Dotfiles have been install."
 
