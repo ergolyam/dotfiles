@@ -23,9 +23,42 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 
 - **[hyprscroller](https://github.com/dawsers/hyprscroller)**: Layout plugin that creates a window layout similar to [PaperWM](https://github.com/paperwm/PaperWM).
 
-### Install
+## Installation Script
+
+This repository includes a flexible installation script that allows you to selectively install only the components you need using flags.
+
+### Full Installation
+
+- Create symlinks (Dev Installation):
+    ```bash
+    git clone https://github.com/grisha765/dotfiles.git ~/dotfiles && \
+    cd ~/dotfiles && bash install.sh
+    ```
+
+- Download configs from raw GitHub (User Installation):
+    ```bash
+    curl -Ls https://tinyurl.com/grisha765 | bash -s
+    ```
+
+This installs all available configs (Hyprland, Waybar, Dunst, Kitty, Wlogout, Wofi, Fish, Fonts).
+
+### Selective Installation
+
+- You can install specific configs by passing arguments to the script:
+    ```bash
+    bash install.sh --fish            # Only install fish config
+    bash install.sh --hypr --kitty    # Install Hyprland and Kitty configs
+    bash install.sh --fonts           # Install only fonts
+    ```
+
+### Available Flags
 
 ```bash
-git clone https://github.com/grisha765/dotfiles.git ~/dotfiles && \
-cd ~/dotfiles && bash install.sh
+bash install --help
 ```
+
+## Notes
+
+- If you're using the script inside a git repository, it will create symlinks.
+- If you're running it outside a git repo (e.g. from raw GitHub), it will download files directly using `wget`.
+
