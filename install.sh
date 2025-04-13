@@ -9,12 +9,14 @@ echo "Script dir: $script_dir"
 echo "Create dir's."
 config_dirs=(
   "hypr"
+  "hypr/plugins"
   "waybar"
   "dunst"
   "kitty"
   "wlogout"
   "wofi"
   "fish"
+  "fish/functions"
   "opensd/profiles"
   )
 for i in "${config_dirs[@]}"; do
@@ -32,7 +34,7 @@ hypr_files=(
   "startup.conf"
   "wm.conf"
   "wmrules.conf"
-  "plugins"
+  "plugins/hyprscroller.so"
   "record_screen.sh"
   "set_workspace.sh"
   "toggle_overview_mode.sh"
@@ -126,7 +128,8 @@ done
 echo "Create symlinks for fish."
 fish_files=(
   "config.fish"
-  "functions"
+  "functions/fish_prompt.fish"
+  "functions/loadenv.fish"
   )
 for i in "${fish_files[@]}"; do
   if [ -d "$script_dir/.git" ]; then
