@@ -26,13 +26,20 @@ if [ -d "$script_dir/.git" ]; then
   fi
 fi
 
-if command -v wget >/dev/null 2>&1; then
-  download_cmd='wget -q -O'
-elif command -v curl >/dev/null 2>&1; then
-  download_cmd='curl -sSf -o'
-else
-  echo "Error: wget or curl not found." >&2
-  exit 1
+use_local_repo=false
+if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+  use_local_repo=true
+fi
+
+if ! $use_local_repo; then
+  if command -v wget >/dev/null 2>&1; then
+    download_cmd='wget -q -O'
+  elif command -v curl >/dev/null 2>&1; then
+    download_cmd='curl -sSf -o'
+  else
+    echo "Error: wget or curl not found." >&2
+    exit 1
+  fi
 fi
 
 base_config="$HOME/.config"
@@ -96,7 +103,7 @@ setup_hypr() {
     "screenshot.sh"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+    if $use_local_repo; then
       ln -sfv "$script_dir/hyprland/$i" "$base_config/hypr/$i"
     else
       echo "Download $i..."
@@ -121,7 +128,7 @@ setup_waybar() {
     "media.sh"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+    if $use_local_repo; then
       ln -sfv "$script_dir/waybar/$i" "$base_config/waybar/$i"
     else
       echo "Download $i..."
@@ -140,7 +147,7 @@ setup_dunst() {
     "battery_full.ogg"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+    if $use_local_repo; then
       ln -sfv "$script_dir/dunst/$i" "$base_config/dunst/$i"
     else
       echo "Download $i..."
@@ -157,7 +164,7 @@ setup_kitty() {
     "newtab_kitty_choice.sh"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+    if $use_local_repo; then
       ln -sfv "$script_dir/kitty/$i" "$base_config/kitty/$i"
     else
       echo "Download $i..."
@@ -173,7 +180,7 @@ setup_wlogout() {
     "layout"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+    if $use_local_repo; then
       ln -sfv "$script_dir/wlogout/$i" "$base_config/wlogout/$i"
     else
       echo "Download $i..."
@@ -192,7 +199,7 @@ setup_wofi() {
     "wofi_deepl.sh"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+    if $use_local_repo; then
       ln -sfv "$script_dir/wofi/$i" "$base_config/wofi/$i"
     else
       echo "Download $i..."
@@ -210,7 +217,7 @@ setup_fish() {
     "functions/loadenv.fish"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+    if $use_local_repo; then
       ln -sfv "$script_dir/fish/$i" "$base_config/fish/$i"
     else
       echo "Download $i..."
@@ -227,7 +234,7 @@ setup_fonts() {
     "FiraCodeNerdFontMono-Regular.ttf"
   )
   for i in "${files[@]}"; do
-    if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
+    if $use_local_repo; then
       ln -sfv "$script_dir/fonts/$i" $HOME/.local/share/fonts/$i
     else
       echo "Download $i..."
