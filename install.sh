@@ -25,6 +25,16 @@ if [ -d "$script_dir/.git" ]; then
     remote_short_url="$(echo "$remote_url" | sed -E 's#(git@|https://)github\.com(:|/)#github.com:#')"
   fi
 fi
+
+if command -v wget >/dev/null 2>&1; then
+  download_cmd='wget -q -O'
+elif command -v curl >/dev/null 2>&1; then
+  download_cmd='curl -sSf -o'
+else
+  echo "Error: wget or curl not found." >&2
+  exit 1
+fi
+
 base_config="$HOME/.config"
 base_url="https://raw.githubusercontent.com/grisha765/dotfiles/main"
 
@@ -89,7 +99,8 @@ setup_hypr() {
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/hyprland/$i" "$base_config/hypr/$i"
     else
-      wget -O "$base_config/hypr/$i" "$base_url/hyprland/$i"
+      echo "Download $i..."
+      $download_cmd "$base_config/hypr/$i" "$base_url/hyprland/$i"
     fi
   done
 }
@@ -113,7 +124,8 @@ setup_waybar() {
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/waybar/$i" "$base_config/waybar/$i"
     else
-      wget -O "$base_config/waybar/$i" "$base_url/waybar/$i"
+      echo "Download $i..."
+      $download_cmd "$base_config/waybar/$i" "$base_url/waybar/$i"
     fi
   done
 }
@@ -131,7 +143,8 @@ setup_dunst() {
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/dunst/$i" "$base_config/dunst/$i"
     else
-      wget -O "$base_config/dunst/$i" "$base_url/dunst/$i"
+      echo "Download $i..."
+      $download_cmd "$base_config/dunst/$i" "$base_url/dunst/$i"
     fi
   done
 }
@@ -147,7 +160,8 @@ setup_kitty() {
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/kitty/$i" "$base_config/kitty/$i"
     else
-      wget -O "$base_config/kitty/$i" "$base_url/kitty/$i"
+      echo "Download $i..."
+      $download_cmd "$base_config/kitty/$i" "$base_url/kitty/$i"
     fi
   done
 }
@@ -162,7 +176,8 @@ setup_wlogout() {
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/wlogout/$i" "$base_config/wlogout/$i"
     else
-      wget -O "$base_config/wlogout/$i" "$base_url/wlogout/$i"
+      echo "Download $i..."
+      $download_cmd "$base_config/wlogout/$i" "$base_url/wlogout/$i"
     fi
   done
 }
@@ -180,7 +195,8 @@ setup_wofi() {
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/wofi/$i" "$base_config/wofi/$i"
     else
-      wget -O "$base_config/wofi/$i" "$base_url/wofi/$i"
+      echo "Download $i..."
+      $download_cmd "$base_config/wofi/$i" "$base_url/wofi/$i"
     fi
   done
 }
@@ -197,7 +213,8 @@ setup_fish() {
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/fish/$i" "$base_config/fish/$i"
     else
-      wget -O "$base_config/fish/$i" "$base_url/fish/$i"
+      echo "Download $i..."
+      $download_cmd "$base_config/fish/$i" "$base_url/fish/$i"
     fi
   done
 }
@@ -213,7 +230,8 @@ setup_fonts() {
     if [ -d "$script_dir/.git" ] && [ "$remote_short_url" = "$expected_url" ]; then
       ln -sfv "$script_dir/fonts/$i" $HOME/.local/share/fonts/$i
     else
-      wget -O $HOME/.local/share/fonts/$i "$base_url/fonts/$i"
+      echo "Download $i..."
+      $download_cmd $HOME/.local/share/fonts/$i "$base_url/fonts/$i"
     fi
   done
 }
