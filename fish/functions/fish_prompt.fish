@@ -1,7 +1,12 @@
 function fish_prompt
     echo -n '╭['
-    printf '\e[1;92m'
-    echo -n $USER
+    if test "$USER" = "root"
+        printf '\e[1;35m'
+        echo -n $USER
+    else
+        printf '\e[1;92m'
+        echo -n $USER
+    end
     printf '\e[0m'
     echo -n '@'
 
@@ -63,7 +68,12 @@ function fish_prompt
     end
 
     echo
-    echo -n '╰$ '
+
+    if test "$USER" = "root"
+        echo -n '╰# '
+    else
+        echo -n '╰$ '
+    end
 end
 
 function __preexec --on-event fish_preexec
