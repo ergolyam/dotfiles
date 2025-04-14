@@ -10,3 +10,5 @@ set -Ua fish_user_paths $ANDROID_HOME/build-tools/33.0.0
 set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 set -g __last_cmd_duration_ms 0
 set -g fish_prompt_pwd_dir_length 0
+bind \cl real_clear
+
