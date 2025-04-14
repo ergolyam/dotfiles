@@ -22,7 +22,7 @@ function fish_prompt
 
     echo -n '['
     printf '\e[1;36m'
-    echo -n $PWD
+    echo -n (prompt_pwd)
     printf '\e[0m'
     echo -n ']'
 
