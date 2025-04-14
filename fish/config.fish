@@ -1,23 +1,3 @@
-if test -n "$container"
-    alias vi="/usr/bin/nvim"
-else
-    function vi
-        toolbox run -c arch -- /usr/bin/nvim $argv
-    end
-
-    function lazygit
-        toolbox run -c arch -- /usr/bin/lazygit $argv
-    end
-
-    function feh
-        toolbox run -c arch -- /usr/bin/feh $argv
-    end
-
-    function trans
-        toolbox run -c arch -- /usr/bin/trans $argv
-    end
-end
-
 set -g -x fish_greeting ""
 set -g -x TERM xterm-256color
 set -g -x XCURSOR_PATH "~/.icons"
