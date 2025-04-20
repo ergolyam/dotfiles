@@ -1,0 +1,30 @@
+font=Noto Sans
+
+border-size=10
+border-color=#000000
+border-radius=10
+
+background-color=#000000
+text-color=#ffffff
+
+default-timeout=10000
+
+on-button-left=dismiss
+on-button-middle=exec makoctl menu -n "$id" wofi --dmenu
+on-button-right=dismiss-all
+
+[urgency=low]
+background-color=#000000
+text-color=#ffffff
+default-timeout=10000
+
+[urgency=normal]
+background-color=#000000
+text-color=#ffffff
+default-timeout=10000
+
+[urgency=critical]
+background-color=#000000
+text-color=#ffffff
+default-timeout=10000
+

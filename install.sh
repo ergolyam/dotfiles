@@ -50,6 +50,7 @@ available_configs=(
   "niri"
   "waybar"
   "dunst"
+  "mako"
   "kitty"
   "wlogout"
   "wofi"
@@ -68,13 +69,14 @@ else
       --niri) selected_configs+=("niri") ;;
       --waybar) selected_configs+=("waybar") ;;
       --dunst) selected_configs+=("dunst") ;;
+      --mako) selected_configs+=("mako") ;;
       --kitty) selected_configs+=("kitty") ;;
       --wlogout) selected_configs+=("wlogout") ;;
       --wofi) selected_configs+=("wofi") ;;
       --fish) selected_configs+=("fish") ;;
       --fonts) selected_configs+=("fonts") ;;
       --help|-h)
-        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--kitty] [--wlogout] [--wofi] [--fish] [--fonts]"
+        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--wlogout] [--wofi] [--fish] [--fonts]"
         exit 0
         ;;
       *)
@@ -168,6 +170,20 @@ setup_dunst() {
     else
       echo "Download $i..."
       $download_cmd "$base_config/dunst/$i" "$base_url/dunst/$i"
+    fi
+  done
+}
+
+setup_mako() {
+  echo "Setting up Mako config"
+  mkdir -pv $base_config/mako
+  local files=("config")
+  for i in "${files[@]}"; do
+    if $use_local_repo; then
+      ln -sfv "$script_dir/mako/$i" "$base_config/mako/$i"
+    else
+      echo "Download $i..."
+      $download_cmd "$base_config/mako/$i" "$base_url/mako/$i"
     fi
   done
 }
