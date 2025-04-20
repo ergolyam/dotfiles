@@ -117,7 +117,7 @@ spawn-at-startup "cliphist" "wipe"
 spawn-at-startup "bash" "-c" "wl-paste --watch ~/.local/bin/cliphist store"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
-// prefer-no-csd
+prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // screenshot-path null
@@ -139,6 +139,7 @@ workspace " "
 
 window-rule {
     open-maximized true
+    open-focused true
 }
 
 // - host Firefox (app-id is "firefox")
