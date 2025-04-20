@@ -93,7 +93,6 @@ setup_hypr() {
   local files=(
     "hyprland.conf"
     "hyprpaper.conf"
-    "wallapaper.png"
     "keys.conf"
     "monitors.conf"
     "startup.conf"
