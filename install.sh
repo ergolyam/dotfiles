@@ -274,6 +274,12 @@ setup_fonts() {
       $download_cmd $HOME/.local/share/fonts/$i "$base_url/fonts/$i"
     fi
   done
+  if $use_local_repo; then
+    ln -sfv "$script_dir/wallapaper.png" "$base_config/wallapaper.png"
+  else
+    echo "Download wallapaper.png..."
+    $download_cmd "$base_config/wallapaper.png" "$base_url/wallapaper.png"
+  fi
 }
 
 for config in "${selected_configs[@]}"; do
