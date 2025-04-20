@@ -142,7 +142,7 @@ animations {
 
 workspace " "
 workspace "󰈹 "
-workspace " "
+workspace " "
 
 window-rule {
     open-maximized true
@@ -170,7 +170,7 @@ window-rule {
 
 window-rule {
   match app-id="kitty"
-  open-on-workspace " "
+  open-on-workspace " "
 }
 
 binds {
