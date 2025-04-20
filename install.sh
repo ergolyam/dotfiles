@@ -47,6 +47,7 @@ base_url="https://raw.githubusercontent.com/grisha765/dotfiles/main"
 
 available_configs=(
   "hypr"
+  "niri"
   "waybar"
   "dunst"
   "kitty"
@@ -64,6 +65,7 @@ else
   for arg in "$@"; do
     case $arg in
       --hypr) selected_configs+=("hypr") ;;
+      --niri) selected_configs+=("niri") ;;
       --waybar) selected_configs+=("waybar") ;;
       --dunst) selected_configs+=("dunst") ;;
       --kitty) selected_configs+=("kitty") ;;
@@ -72,7 +74,7 @@ else
       --fish) selected_configs+=("fish") ;;
       --fonts) selected_configs+=("fonts") ;;
       --help|-h)
-        echo "Usage: $0 [--hypr] [--waybar] [--dunst] [--kitty] [--wlogout] [--wofi] [--fish] [--fonts]"
+        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--kitty] [--wlogout] [--wofi] [--fish] [--fonts]"
         exit 0
         ;;
       *)
@@ -108,6 +110,20 @@ setup_hypr() {
     else
       echo "Download $i..."
       $download_cmd "$base_config/hypr/$i" "$base_url/hyprland/$i"
+    fi
+  done
+}
+
+setup_niri() {
+  echo "Setting up Niri config"
+  mkdir -pv $base_config/niri
+  local files=("config.kdl")
+  for i in "${files[@]}"; do
+    if $use_local_repo; then
+      ln -sfv "$script_dir/niri/$i" "$base_config/niri/$i"
+    else
+      echo "Download $i..."
+      $download_cmd "$base_config/niri/$i" "$base_url/niri/$i"
     fi
   done
 }
