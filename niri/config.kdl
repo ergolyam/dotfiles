@@ -121,6 +121,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "cliphist" "wipe"
 spawn-at-startup "bash" "-c" "wl-paste --watch ~/.local/bin/cliphist store"
 spawn-at-startup "~/.config/dunst/battery_check.sh"
+spawn-at-startup "bash" "-c" "swaybg --image ~/.config/wallapaper.png"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 prefer-no-csd
