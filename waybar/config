@@ -4,10 +4,7 @@
     "layer": "top",
     "modules-left": [
         "custom/separator",
-        "hyprland/workspaces",
-        "custom/separator",
-        "custom/scroller_mode",
-        "custom/separator",
+        "niri/workspaces",
         "custom/waybar-media-previous",
         "custom/waybar-media",
         "custom/waybar-media-next",
@@ -20,7 +17,7 @@
     "modules-right": [
         "tray",
         "custom/separator",
-        "hyprland/language",
+        "niri/language",
         "custom/separator",
         "pulseaudio",
         "custom/separator",
@@ -31,6 +28,7 @@
         "battery",
         "custom/separator",
         "custom/wlogout",
+        "custom/separator",
     ]
 }
 

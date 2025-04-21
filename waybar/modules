@@ -5,7 +5,7 @@
         "all-outputs": true,
         "format": "{name}",
     },
-    "hyprland/language": {
+    "niri/language": {
         "format": "{}",
         "format-en": "en",
         "format-ru": "ru"
