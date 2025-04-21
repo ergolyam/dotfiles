@@ -93,7 +93,7 @@
         "tooltip": false
     },
     "custom/wlogout": {
-        "format": "  ",
+        "format": " ",
         "on-click": "wlogout",
     },
     "battery": {
