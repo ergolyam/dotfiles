@@ -8,12 +8,12 @@ Welcome to my repository for configuration files for various desktop Linux utili
 
 Before configuring Hyprland, ensure you have the following utilities installed:
 
-- **[niri](https://github.com/YaLTeR/niri)**: (Main) A scrollable-tiling Wayland compositor.
+- **[niri](https://github.com/YaLTeR/niri)**: `(Main)` A scrollable-tiling Wayland compositor.
 - **[hyprland](https://github.com/hyprwm/Hyprland)**: (Second) A independent tiling Wayland compositor.
-- **[mako](https://github.com/emersion/mako)**: (Main) A lightweight Wayland notification daemon.
+- **[mako](https://github.com/emersion/mako)**: `(Main)` A lightweight Wayland notification daemon.
 - **[dunst](https://github.com/dunst-project/dunst)**: (Second) Lightweight and customizable notification daemon.
 - **[waybar](https://github.com/Alexays/Waybar)**: A customizable status bar.
-- **[swaybg](https://github.com/swaywm/swaybg)**: (Main) Wallpaper tool for Wayland compositors.
+- **[swaybg](https://github.com/swaywm/swaybg)**: `(Main)` Wallpaper tool for Wayland compositors.
 - **[hyprpaper](https://github.com/hyprwm/hyprpaper)**: (Second) A wallpaper manager for Hyprland.
 - **[nmtui](https://github.com/NetworkManager/NetworkManager/tree/main/src/nmtui)**: NetworkManager terminal ncurses ui for network configuration.
 - **[wofi](https://hg.sr.ht/~scoopta/wofi)**: Launcher/menu program for wlroots based wayland compositors.
