@@ -119,9 +119,16 @@ environment {
 spawn-at-startup "~/.local/share/xwayland-satellite/target/release/xwayland-satellite"
 spawn-at-startup "waybar"
 spawn-at-startup "cliphist" "wipe"
-spawn-at-startup "bash" "-c" "wl-paste --watch ~/.local/bin/cliphist store"
+spawn-at-startup "sh" "-c" "wl-paste --watch ~/.local/bin/cliphist store"
 spawn-at-startup "~/.config/dunst/battery_check.sh"
-spawn-at-startup "bash" "-c" "swaybg --image ~/.config/wallapaper.png"
+spawn-at-startup "sh" "-c" "swaybg --image ~/.config/wallapaper.png"
+// spawn-at-startup "sh" "-c" "swayidle -w timeout 300 'niri msg action power-off-monitors && swaylock -f' resume 'niri msg action power-on-monitors' before-sleep 'swaylock -f'"
+
+switch-events {
+  lid-close {
+    spawn "swaylock" "-f";
+  }
+}
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 prefer-no-csd
@@ -179,11 +186,11 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Q { spawn "kitty" "bash" "-c" "~/.config/kitty/newtab_kitty_choice.sh"; }
     Mod+D { spawn "wofi" "--allow-images" "--show" "drun"; }
-    Super+Alt+L { spawn "swaylock"; }
+    Super+Alt+L { spawn "swaylock" "-f"; }
 
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     
-    Alt+V { spawn "bash" "-c" "cliphist list | wofi -S dmenu --cache-file /dev/null | cliphist decode | wl-copy"; }
+    Alt+V { spawn "sh" "-c" "cliphist list | wofi -S dmenu --cache-file /dev/null | cliphist decode | wl-copy"; }
     Alt+Shift+R { spawn "~/.config/wofi/wofi_deepl.sh" "--lang" "ru"; }
     Alt+Shift+E { spawn "~/.config/wofi/wofi_deepl.sh" "--lang" "en"; }
 
