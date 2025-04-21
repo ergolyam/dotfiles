@@ -12,7 +12,7 @@ while true; do
     if [[ $BAT_STATUS == "Discharging" && $BAT_CAPACITY -le $CRITICAL_CAPACITY ]]; then
         if [[ $LOW_NOTIFICATION_SENT -eq 0 ]]; then
             notify-send -u critical "Warning!" "Battery is low: $BAT_CAPACITY%"
-            /usr/bin/paplay $HOME/.config/dunst/battery_low.mp3
+            /usr/bin/paplay $HOME/.local/share/other/battery_low.mp3
             LOW_NOTIFICATION_SENT=1
         fi
     elif [[ $BAT_CAPACITY -gt $CRITICAL_CAPACITY ]]; then
@@ -22,7 +22,7 @@ while true; do
     if [[ $BAT_STATUS == "Full" && $BAT_CAPACITY -eq $FULL_CAPACITY ]]; then
         if [[ $FULL_NOTIFICATION_SENT -eq 0 ]]; then
             notify-send -u normal "Battery Full" "Battery is fully charged"
-            /usr/bin/paplay $HOME/.config/dunst/battery_full.ogg
+            /usr/bin/paplay $HOME/.local/share/other/battery_full.ogg
             FULL_NOTIFICATION_SENT=1
         fi
     elif [[ $BAT_CAPACITY -lt $FULL_CAPACITY ]]; then

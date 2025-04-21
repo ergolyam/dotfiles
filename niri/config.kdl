@@ -120,8 +120,8 @@ spawn-at-startup "~/.local/share/xwayland-satellite/target/release/xwayland-sate
 spawn-at-startup "waybar"
 spawn-at-startup "cliphist" "wipe"
 spawn-at-startup "sh" "-c" "wl-paste --watch ~/.local/bin/cliphist store"
-spawn-at-startup "~/.config/dunst/battery_check.sh"
-spawn-at-startup "sh" "-c" "swaybg --image ~/.config/wallapaper.png"
+spawn-at-startup "~/.local/share/other/battery_check.sh"
+spawn-at-startup "sh" "-c" "swaybg --image ~/.local/share/other/wallapaper.png"
 // spawn-at-startup "sh" "-c" "swayidle -w timeout 300 'niri msg action power-off-monitors && swaylock -f' resume 'niri msg action power-on-monitors' before-sleep 'swaylock -f'"
 
 switch-events {
