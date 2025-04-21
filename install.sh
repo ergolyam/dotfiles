@@ -56,6 +56,7 @@ available_configs=(
   "wofi"
   "fish"
   "fonts"
+  "other"
 )
 
 selected_configs=()
@@ -75,8 +76,9 @@ else
       --wofi) selected_configs+=("wofi") ;;
       --fish) selected_configs+=("fish") ;;
       --fonts) selected_configs+=("fonts") ;;
+      --other) selected_configs+=("other") ;;
       --help|-h)
-        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--wlogout] [--wofi] [--fish] [--fonts]"
+        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--wlogout] [--wofi] [--fish] [--fonts] [--other]"
         exit 0
         ;;
       *)
@@ -273,12 +275,25 @@ setup_fonts() {
       $download_cmd $HOME/.local/share/fonts/$i "$base_url/fonts/$i"
     fi
   done
-  if $use_local_repo; then
-    ln -sfv "$script_dir/wallapaper.png" "$base_config/wallapaper.png"
-  else
-    echo "Download wallapaper.png..."
-    $download_cmd "$base_config/wallapaper.png" "$base_url/wallapaper.png"
-  fi
+}
+
+setup_other() {
+  echo "Setting up other files"
+  mkdir -pv ~/.local/share/other
+  local files=(
+    "battery_check.sh"
+    "battery_low.mp3"
+    "battery_full.ogg"
+    "wallapaper.png"
+  )
+  for i in "${files[@]}"; do
+    if $use_local_repo; then
+      ln -sfv "$script_dir/other/$i" $HOME/.local/share/other/$i
+    else
+      echo "Download $i..."
+      $download_cmd $HOME/.local/share/other/$i "$base_url/other/$i"
+    fi
+  done
 }
 
 for config in "${selected_configs[@]}"; do
