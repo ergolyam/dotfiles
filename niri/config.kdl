@@ -147,9 +147,9 @@ animations {
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
-workspace " "
-workspace "󰈹 "
-workspace " "
+workspace "1"
+workspace "2"
+workspace "3"
 
 window-rule {
     open-maximized true
@@ -166,18 +166,18 @@ window-rule {
 }
 
 window-rule {
-  match app-id="firefox"
-  open-on-workspace "󰈹 "
+  match app-id=r#"firefox$"#
+  open-on-workspace "2"
 }
 
 window-rule {
   match app-id="org.telegram.desktop"
-  open-on-workspace " "
+  open-on-workspace "1"
 }
 
 window-rule {
   match app-id="kitty"
-  open-on-workspace " "
+  open-on-workspace "3"
 }
 
 binds {
