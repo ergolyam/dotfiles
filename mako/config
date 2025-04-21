@@ -1,6 +1,8 @@
 font=Terminess Nerd Font
 max-icon-size=48
+layer=overlay
 
+height=400
 border-size=10
 border-color=#000000
 border-radius=10
