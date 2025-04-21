@@ -1,5 +1,4 @@
 // This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
@@ -128,11 +127,18 @@ layout {
     }
 }
 
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Switch-Events
+switch-events {
+  lid-close {
+    spawn "swaylock" "-f";
+  }
+}
+
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous
 environment {
     DISPLAY ":0"
 }
 
-// spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "~/.local/share/xwayland-satellite/target/release/xwayland-satellite"
 spawn-at-startup "waybar"
 spawn-at-startup "cliphist" "wipe"
@@ -141,17 +147,8 @@ spawn-at-startup "~/.local/share/other/battery_check.sh"
 spawn-at-startup "sh" "-c" "swaybg --image ~/.local/share/other/wallapaper.png"
 // spawn-at-startup "sh" "-c" "swayidle -w timeout 300 'niri msg action power-off-monitors && swaylock -f' resume 'niri msg action power-on-monitors' before-sleep 'swaylock -f'"
 
-switch-events {
-  lid-close {
-    spawn "swaylock" "-f";
-  }
-}
-
-// Uncomment this line to ask the clients to omit their client-side decorations if possible.
 prefer-no-csd
-
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-// screenshot-path null
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 animations {
@@ -162,21 +159,17 @@ animations {
     // slowdown 3.0
 }
 
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Named-Workspaces
 workspace "1"
 workspace "2"
 workspace "3"
 
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 window-rule {
     open-maximized true
     open-focused true
 }
 
-// - host Firefox (app-id is "firefox")
-// - Flatpak Firefox (app-id is "org.mozilla.firefox")
-
-// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
@@ -198,6 +191,7 @@ window-rule {
   open-on-workspace "3"
 }
 
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
@@ -212,8 +206,6 @@ binds {
     Alt+Shift+R { spawn "~/.config/wofi/wofi_deepl.sh" "--lang" "ru"; }
     Alt+Shift+E { spawn "~/.config/wofi/wofi_deepl.sh" "--lang" "en"; }
 
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
