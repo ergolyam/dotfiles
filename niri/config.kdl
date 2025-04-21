@@ -173,6 +173,7 @@ window-rule {
 window-rule {
   match app-id="org.telegram.desktop"
   open-on-workspace "1"
+  block-out-from "screencast"
 }
 
 window-rule {
