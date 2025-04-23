@@ -198,6 +198,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Q { spawn "kitty" "bash" "-c" "~/.config/kitty/newtab_kitty_choice.sh"; }
     Mod+D { spawn "wofi" "--allow-images" "--show" "drun"; }
+    Mod+E { spawn "thunar"; }
     Super+Alt+L { spawn "swaylock" "-f"; }
 
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
