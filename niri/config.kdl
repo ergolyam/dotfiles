@@ -191,6 +191,11 @@ window-rule {
   open-on-workspace "3"
 }
 
+window-rule {
+  match app-id="sdl-freerdp"
+  open-floating false
+}
+
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
