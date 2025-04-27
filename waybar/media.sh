@@ -22,7 +22,12 @@ if [[ -z "$PLAYERS" ]]; then
   fi
 fi
 
-PLAYER="$(echo "$PLAYERS" | head -n1)"
+for P in $PLAYERS; do
+    if [[ "$(playerctl -p "$P" status 2>/dev/null)" == "Playing" ]]; then
+        PLAYER="$P"; break
+    fi
+done
+: ${PLAYER:=$(echo "$PLAYERS" | grep -v '^firefox' | head -n1)}
 
 case "$ACTION" in
   status)
