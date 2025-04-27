@@ -38,7 +38,7 @@
     padding-left: 1px;
 }
 
-#custom-waybar-media.paused {
+#mpris.paused {
     color: grey;
 }
 

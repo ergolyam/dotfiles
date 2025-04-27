@@ -68,28 +68,17 @@
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol"
     },
-    "custom/waybar-media-previous": {
-        "format": "{}",
-        "exec": "~/.config/waybar/media.sh icon-prev",
-        "interval": 5,
-        "return-type": "json",
-        "on-click": "~/.config/waybar/media.sh previous"
-    },
-    "custom/waybar-media": {
-        "format": "{}",
-        "exec": "~/.config/waybar/media.sh status",
-        "interval": 5,
-        "return-type": "json",
-        "tooltip": true,
-        "escape": true,
-        "on-click": "~/.config/waybar/media.sh playpause"
-    },
-    "custom/waybar-media-next": {
-        "format": "{}",
-        "exec": "~/.config/waybar/media.sh icon-next",
-        "interval": 5,
-        "return-type": "json",
-        "on-click": "~/.config/waybar/media.sh next"
+    "mpris": {
+      "format": "{status_icon} {title} - {artist}",
+      "tooltip-format": "{player} ({status})\n{title}\n{artist}\n[{position}/{length}]",
+      "dynamic-order": ["title", "artist", "album"],
+      "max-length": 50,
+      "status-icons": { "playing": "󰐊", "paused": "󰏤", "stopped": "󰓛" },
+      "player-icons": { "default": "󰝚" },
+      "on-click": "playerctl play-pause",
+      "on-click-middle": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "ignored-players": ["firefox"]
     },
     "custom/separator": {
         "format": "  ",

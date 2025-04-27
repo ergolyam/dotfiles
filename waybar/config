@@ -5,9 +5,8 @@
     "modules-left": [
         "custom/separator",
         "niri/workspaces",
-        "custom/waybar-media-previous",
-        "custom/waybar-media",
-        "custom/waybar-media-next",
+        "custom/separator",
+        "mpris"
     ],
     "modules-center": [
         "clock",
@@ -28,7 +27,7 @@
         "battery",
         "custom/separator",
         "custom/wlogout",
-        "custom/separator",
+        "custom/separator"
     ]
 }
 
