@@ -69,7 +69,10 @@
         "on-click-right": "pavucontrol"
     },
     "custom/waybar-media-previous": {
-        "format": " 󰒮 ",
+        "format": "{}",
+        "exec": "~/.config/waybar/media.sh icon-prev",
+        "interval": 5,
+        "return-type": "json",
         "on-click": "~/.config/waybar/media.sh previous"
     },
     "custom/waybar-media": {
@@ -84,7 +87,10 @@
         "on-scroll-down": "~/.config/waybar/media.sh next"
     },
     "custom/waybar-media-next": {
-        "format": " 󰒭 ",
+        "format": "{}",
+        "exec": "~/.config/waybar/media.sh icon-next",
+        "interval": 5,
+        "return-type": "json",
         "on-click": "~/.config/waybar/media.sh next"
     },
     "custom/separator": {

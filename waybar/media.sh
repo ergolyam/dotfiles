@@ -16,9 +16,6 @@ if [[ -z "$PLAYERS" ]]; then
   if [[ "$ACTION" == "status" ]]; then
     echo '{"tooltip":null,"text":null,"class":["stopped"]}'
     exit 0
-  else
-    echo "No media players found."
-    exit 0
   fi
 fi
 
@@ -30,6 +27,17 @@ done
 : ${PLAYER:=$(echo "$PLAYERS" | grep -v '^firefox' | head -n1)}
 
 case "$ACTION" in
+  icon-prev|icon-next)
+    if [[ -z "$PLAYERS" ]]; then
+      echo '{"text":null}'
+    else
+      if [[ "$ACTION" == "icon-prev" ]]; then
+        echo '{"text":" 󰒮 "}'
+      else
+        echo '{"text":" 󰒭 "}'
+      fi
+    fi
+    ;;
   status)
     STATUS="$(playerctl -p "$PLAYER" status 2>/dev/null)"
     [[ -z "$STATUS" ]] && STATUS="Stopped"
