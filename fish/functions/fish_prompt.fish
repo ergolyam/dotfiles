@@ -32,8 +32,10 @@ function fish_prompt
     echo -n ']'
 
     set -l git_branch ""
-    if git rev-parse --abbrev-ref HEAD > /dev/null 2>&1
-        set git_branch (git rev-parse --abbrev-ref HEAD)
+    if type -q git
+        if git rev-parse --abbrev-ref HEAD > /dev/null 2>&1
+            set git_branch (git rev-parse --abbrev-ref HEAD)
+        end
     end
 
     if test -n "$git_branch"
