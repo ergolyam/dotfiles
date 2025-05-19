@@ -77,8 +77,7 @@
       "player-icons": { "default": "󰝚" },
       "on-click": "playerctl play-pause",
       "on-click-middle": "playerctl previous",
-      "on-click-right": "playerctl next",
-      "ignored-players": ["firefox"]
+      "on-click-right": "playerctl next"
     },
     "custom/separator": {
         "format": "  ",
