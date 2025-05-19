@@ -249,6 +249,7 @@ setup_fish() {
     "functions/fish_prompt.fish"
     "functions/loadenv.fish"
     "functions/real_clear.fish"
+    "functions/bash.fish"
   )
   for i in "${files[@]}"; do
     if $use_local_repo; then
