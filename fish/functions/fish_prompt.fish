@@ -1,75 +1,57 @@
 function fish_prompt
-    echo -n '╭['
+    set -l reset '\e[0m'
+    set -l prompt '╭['
+
     if test "$USER" = "root"
-        printf '\e[1;35m'
-        echo -n $USER
+        set prompt "$prompt\e[1;35m$USER$reset"
     else
-        printf '\e[1;92m'
-        echo -n $USER
+        set prompt "$prompt\e[1;92m$USER$reset"
     end
-    printf '\e[0m'
-    echo -n '@'
+    set prompt "$prompt@"
 
+    set -l hostcolor
     if test -n "$container"
-        printf '\e[1;34m'
+        set hostcolor '\e[1;34m'
     else if test -n "$SSH_CONNECTION"
-        printf '\e[1;38;5;214m'
+        set hostcolor '\e[1;38;5;214m'
     else
-        printf '\e[1;31m'
+        set hostcolor '\e[1;31m'
     end
+
     if test -n "$container_hostname"
-      echo -n $container_hostname
+      set prompt "$prompt$hostcolor$container_hostname$reset"
     else
-      echo -n $hostname
+      set prompt "$prompt$hostcolor$hostname$reset"
     end
-    printf '\e[0m'
-    echo -n ']'
+    
+    set prompt "$prompt]"
 
-    echo -n '['
-    printf '\e[1;36m'
-    echo -n (prompt_pwd)
-    printf '\e[0m'
-    echo -n ']'
+    set -l promptpwd (prompt_pwd)
+    set prompt "$prompt""[""\e[1;36m$promptpwd$reset]"
 
-    set -l git_branch ""
     if type -q git
         if git rev-parse --abbrev-ref HEAD > /dev/null 2>&1
-            set git_branch (git rev-parse --abbrev-ref HEAD)
+            set -l branch (git rev-parse --abbrev-ref HEAD)
+            set prompt "$prompt""[""\e[1;33m$branch$reset]"
         end
     end
 
-    if test -n "$git_branch"
-        echo -n '['
-        printf '\e[1;33m'
-        echo -n "$git_branch"
-        printf '\e[0m'
-        echo -n ']'
-    end
-
     if test -n "$VIRTUAL_ENV"
-        echo -n '['
-        printf '\e[1;94m'
-        echo -n (basename "$VIRTUAL_ENV")
-        printf '\e[0m'
-        echo -n ']'
+        set -l pyvenv (basename $VIRTUAL_ENV)
+        set prompt "$prompt""[""\e[1;94m$pyvenv$reset]"
     end
-
-    echo -n (printf '\e[90m')'('
-    echo -n (date +"%H:%M:%S")
-    echo -n ')'(printf '\e[0m')
 
     if set -q __last_cmd_duration_ms
         if test $__last_cmd_duration_ms -ge 1000
             set -l duration_sec (math "$__last_cmd_duration_ms / 1000.0")
-            echo -n '['
-            printf '\e[1;35m'
-            printf '%.2fs' $duration_sec
-            printf '\e[0m'
-            echo -n ']'
+            set prompt "$prompt""[""\e[1;35m"(printf '%.2fs' $duration_sec)"$reset]"
         end
     end
 
-    echo
+    set -l time_str (date +"%H:%M:%S")
+    set prompt "$prompt\e[90m($time_str)$reset"
+
+    echo -e "$prompt"
 
     if test "$USER" = "root"
         echo -n '╰# '
