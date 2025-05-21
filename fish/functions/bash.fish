@@ -22,8 +22,9 @@ function bash
     set part_user "╭["$user_color"\\u"$reset"@"$host_color$the_host$reset"]"
     set part_pwd  "[""\\[\\e[1;36m\\]\\w"$reset"]"
     set part_time "\\[\\e[90m\\](\\t)"$reset""
+    set -l part_info "[""\\[\\e[1;34m\\]bash"$reset"]"
 
-    set line1 $part_user$part_pwd$part_time
+    set -l line1 $part_user$part_pwd$part_info$part_time
 
     set line2 "╰"$symbol" "
 
