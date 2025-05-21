@@ -5,16 +5,16 @@ function bash
     set -l the_host '\\h'
 
     if test $USER = 'root'
-        set -l symbol '#'
-        set -l user_color '\\[\\e[1;35m\\]'
+        set symbol '#'
+        set user_color '\\[\\e[1;35m\\]'
     end
 
     if set -q container
-        set -l host_color '\\[\\e[1;34m\\]'
-        set -l the_host $container_hostname
+        set host_color '\\[\\e[1;34m\\]'
+        set the_host $container_hostname
     else if set -q SSH_CONNECTION
-        set -l host_color '\\[\\e[1;38;5;214m\\]'
-        set -l the_host '\\h'
+        set host_color '\\[\\e[1;38;5;214m\\]'
+        set the_host '\\h'
     end
 
     set -l reset '\\[\\e[0m\\]'
