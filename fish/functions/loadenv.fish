@@ -41,6 +41,11 @@ function loadenv
             continue
         end
 
+        if not string match -qr '^[A-Za-z_][A-Za-z0-9_]*="[^"]*"$' -- $line
+            echo "Syntax error in env file at line: $line"
+            continue
+        end
+
         set key_val (string split -m 1 '=' -- $line)
 
         if test (count $key_val) -ne 2
