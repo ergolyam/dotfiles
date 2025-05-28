@@ -13,5 +13,5 @@ set -g fish_prompt_pwd_dir_length 0
 bind \cl real_clear
 
 if set -q SUDO_USER; and test "$USER" != "root"
-    set -x XDG_RUNTIME_DIR "/run/user/(id -u)"
+    set -x XDG_RUNTIME_DIR "/run/user/$(id -u)"
 end
