@@ -41,6 +41,10 @@ function fish_prompt
         set prompt "$prompt""[""\e[1;94m$pyvenv$reset]"
     end
 
+    if test -n "$__loaded_env"
+        set prompt "$prompt""[""\e[1;38;5;46mENV:$__loaded_env$reset]"
+    end
+
     if set -q __last_cmd_duration_ms
         if test $__last_cmd_duration_ms -ge 1000
             set -l duration_sec (math "$__last_cmd_duration_ms / 1000.0")
