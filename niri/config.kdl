@@ -140,7 +140,7 @@ environment {
 }
 
 // spawn-at-startup "~/.local/share/xwayland-satellite/target/release/xwayland-satellite"
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 spawn-at-startup "cliphist" "wipe"
 spawn-at-startup "sh" "-c" "wl-paste --watch ~/.local/bin/cliphist store"
 spawn-at-startup "~/.local/share/other/battery_check.sh"
