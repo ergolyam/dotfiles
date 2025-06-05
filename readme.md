@@ -17,6 +17,7 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 - **[hyprpaper](https://github.com/hyprwm/hyprpaper)**: (Second) A wallpaper manager for Hyprland.
 - **[nmtui](https://github.com/NetworkManager/NetworkManager/tree/main/src/nmtui)**: NetworkManager terminal ncurses ui for network configuration.
 - **[wofi](https://hg.sr.ht/~scoopta/wofi)**: Launcher/menu program for wlroots based wayland compositors.
+- **[fuzzel](https://codeberg.org/dnkl/fuzzel)**: App launcher and fuzzy finder for Wayland.
 - **[grim](https://sr.ht/~emersion/grim)** and **[slurp](https://github.com/emersion/slurp)**: Screenshot utilities.
 - **[alacritty](https://github.com/alacritty/alacritty)**: `(Main)` A cross-platform, OpenGL terminal emulator.
 - **[tmux](https://github.com/tmux/tmux)**: A terminal multiplexer.
