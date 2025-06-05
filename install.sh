@@ -56,6 +56,7 @@ available_configs=(
   "tmux"
   "wlogout"
   "wofi"
+  "fuzzel"
   "fish"
   "fonts"
   "other"
@@ -78,11 +79,12 @@ else
       --tmux) selected_configs+=("tmux") ;;
       --wlogout) selected_configs+=("wlogout") ;;
       --wofi) selected_configs+=("wofi") ;;
+      --fuzzel) selected_configs+=("fuzzel") ;;
       --fish) selected_configs+=("fish") ;;
       --fonts) selected_configs+=("fonts") ;;
       --other) selected_configs+=("other") ;;
       --help|-h)
-        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--alacritty] [--tmux] [--wlogout] [--wofi] [--fish] [--fonts] [--other]"
+        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--alacritty] [--tmux] [--wlogout] [--wofi] [--fuzzel] [--fish] [--fonts] [--other]"
         exit 0
         ;;
       *)
@@ -274,6 +276,22 @@ setup_wofi() {
     else
       echo "Download $i..."
       $download_cmd "$base_config/wofi/$i" "$base_url/wofi/$i"
+    fi
+  done
+}
+
+setup_fuzzel() {
+  echo "Setting up fuzzel config"
+  mkdir -pv $base_config/fuzzel
+  local files=(
+    "fuzzel.ini"
+    )
+  for i in "${files[@]}"; do
+    if $use_local_repo; then
+      ln -sfv "$script_dir/fuzzel/$i" "$base_config/fuzzel/$i"
+    else
+      echo "Download $i..."
+      $download_cmd "$base_config/fuzzel/$i" "$base_url/fuzzel/$i"
     fi
   done
 }
