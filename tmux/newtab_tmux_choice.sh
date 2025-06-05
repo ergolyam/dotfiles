@@ -10,6 +10,8 @@ GRAY='\e[1;90m'
 RED='\e[31m'
 RESET='\e[0m'
 
+tmux rename-window "New Tab"
+
 if command -v toolbox >/dev/null 2>&1; then
     toolbox_containers=$(toolbox list --containers | tail -n +2 | awk '{printf "%-21s (Toolbox)\n", $2}')
     if [ -n "$toolbox_containers" ]; then
