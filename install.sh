@@ -285,6 +285,7 @@ setup_fuzzel() {
   mkdir -pv $base_config/fuzzel
   local files=(
     "fuzzel.ini"
+    "cliphist-fuzzel-img.sh"
     )
   for i in "${files[@]}"; do
     if $use_local_repo; then
