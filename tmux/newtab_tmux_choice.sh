@@ -5,6 +5,7 @@ declare -a containers=("Host")
 TERM=xterm-256color
 SHELL="$HOME/.local/bin/fish"
 distrobox_root_mode=0
+toolbox_root_mode=0
 
 GRAY='\e[1;90m'
 RED='\e[31m'
@@ -43,6 +44,10 @@ if [ -f "$session_file" ]; then
     done < "$session_file"
 fi
 
+if [ "$toolbox_root_mode" -eq 0 ] && command -v toolbox >/dev/null 2>&1; then
+    containers+=("${GRAY}Activate Toolbox Root Mode${RESET}")
+fi
+
 if [ "$distrobox_root_mode" -eq 0 ] && command -v distrobox >/dev/null 2>&1; then
     containers+=("${GRAY}Activate Distrobox Root Mode${RESET}")
 fi
@@ -57,6 +62,28 @@ while true; do
     elif [ "$selected_container" == "Toolbox is not installed" ]; then
         echo "Toolbox is not installed."
         exit 0
+    elif [ "$selected_container" == "Activate Toolbox Root Mode" ]; then
+        if sudo -v; then
+            toolbox_root_containers=$(sudo toolbox list --containers | tail -n +2 | awk '{printf "%-21s (Toolbox-Root)\n", $2}')
+            if [ -n "$toolbox_root_containers" ]; then
+                while IFS= read -r line; do
+                    containers+=("$line")
+                done <<< "$toolbox_root_containers"
+                filtered_containers=()
+                for item in "${containers[@]}"; do
+                    if [[ "$item" != "${GRAY}Activate Toolbox Root Mode${RESET}" ]]; then
+                        filtered_containers+=("$item")
+                    fi
+                done
+                containers=("${filtered_containers[@]}")
+                toolbox_root_mode=1
+                echo "Toolbox Root Mode activated."
+            else
+                echo "No Toolbox-Root containers found."
+            fi
+        else
+            echo "Failed to activate Toolbox Root Mode."
+        fi
     elif [ "$selected_container" == "Distrobox is not installed" ]; then
         echo "Distrobox is not installed."
         exit 0
@@ -110,6 +137,18 @@ while true; do
         container_name=$(echo "$selected_container" | sed 's/ * (Toolbox)$//')
         tmux rename-window "$container_name"
         toolbox run -c "$container_name" env container_hostname=$container_name \
+        /bin/sh -c 'if [ -n "$SHELL" ] && command -v "$SHELL" >/dev/null 2>&1; then
+                      exec "$SHELL"
+                    elif command -v bash >/dev/null 2>&1; then
+                      exec bash
+                    else
+                      exec sh
+                    fi'
+        exit 0
+    elif [[ "$selected_container" == *" (Toolbox-Root)" ]]; then
+        container_name=$(echo "$selected_container" | sed 's/ * (Toolbox-Root)$//')
+        tmux rename-window "$container_name"
+        sudo toolbox run -c "$container_name" env container_hostname=$container_name \
         /bin/sh -c 'if [ -n "$SHELL" ] && command -v "$SHELL" >/dev/null 2>&1; then
                       exec "$SHELL"
                     elif command -v bash >/dev/null 2>&1; then
