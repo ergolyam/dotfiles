@@ -18,6 +18,8 @@ Before configuring Hyprland, ensure you have the following utilities installed:
 - **[nmtui](https://github.com/NetworkManager/NetworkManager/tree/main/src/nmtui)**: NetworkManager terminal ncurses ui for network configuration.
 - **[wofi](https://hg.sr.ht/~scoopta/wofi)**: Launcher/menu program for wlroots based wayland compositors.
 - **[grim](https://sr.ht/~emersion/grim)** and **[slurp](https://github.com/emersion/slurp)**: Screenshot utilities.
+- **[alacritty](https://github.com/alacritty/alacritty)**: `(Main)` A cross-platform, OpenGL terminal emulator.
+- **[tmux](https://github.com/tmux/tmux)**: A terminal multiplexer.
 - **[kitty](https://github.com/kovidgoyal/kitty)**: Simple OpenGL terminal.
 - **[wlogout](https://github.com/ArtsyMacaw/wlogout)**: Logout manager for wayland.
 - **[bluetui](https://github.com/pythops/bluetui)**: Simple bluetooth tui manager.
