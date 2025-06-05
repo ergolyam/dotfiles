@@ -3,6 +3,7 @@
 session_file="$HOME/sessions.conf"
 declare -a containers=("Host")
 TERM=xterm-256color
+SHELL="$HOME/.local/bin/fish"
 distrobox_root_mode=0
 
 GRAY='\e[1;90m'
