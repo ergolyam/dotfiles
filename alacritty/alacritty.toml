@@ -28,3 +28,9 @@ blue    = '#5c5cff'
 magenta = '#ff00ff'
 cyan    = '#00ffff'
 white   = '#ffffff'
+
+[[keyboard.bindings]]
+key    = "V"
+mods   = "Control"
+action = "Paste"
+mode   = "~Vi|~Search"
