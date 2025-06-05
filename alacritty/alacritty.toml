@@ -1,0 +1,29 @@
+[colors.primary]
+background = "#1F1F1F"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+style  = "Regular"
+
+[colors.normal]
+black   = "#000000"
+red     = "#FF0000"
+green   = "#00FF00"
+yellow  = "#FFFF00"
+blue    = "#0000FF"
+magenta = "#FF00FF"
+cyan    = "#00FFFF"
+white   = "#E5E5E5"
+
+[colors.bright]
+black   = "#7F7F7F"
+red     = "#FF5555"
+green   = "#55FF55"
+yellow  = "#FFFF55"
+blue    = "#5555FF"
+magenta = "#FF55FF"
+cyan    = "#55FFFF"
+white   = "#FFFFFF"

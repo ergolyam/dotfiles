@@ -52,6 +52,8 @@ available_configs=(
   "dunst"
   "mako"
   "kitty"
+  "alacritty"
+  "tmux"
   "wlogout"
   "wofi"
   "fish"
@@ -72,13 +74,15 @@ else
       --dunst) selected_configs+=("dunst") ;;
       --mako) selected_configs+=("mako") ;;
       --kitty) selected_configs+=("kitty") ;;
+      --alacritty) selected_configs+=("alacritty") ;;
+      --tmux) selected_configs+=("tmux") ;;
       --wlogout) selected_configs+=("wlogout") ;;
       --wofi) selected_configs+=("wofi") ;;
       --fish) selected_configs+=("fish") ;;
       --fonts) selected_configs+=("fonts") ;;
       --other) selected_configs+=("other") ;;
       --help|-h)
-        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--wlogout] [--wofi] [--fish] [--fonts] [--other]"
+        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--alacritty] [--tmux] [--wlogout] [--wofi] [--fish] [--fonts] [--other]"
         exit 0
         ;;
       *)
@@ -202,6 +206,39 @@ setup_kitty() {
     else
       echo "Download $i..."
       $download_cmd "$base_config/kitty/$i" "$base_url/kitty/$i"
+    fi
+  done
+}
+
+setup_alacritty() {
+  echo "Setting up alacritty config"
+  mkdir -pv $base_config/alacritty
+  local files=(
+    "alacritty.toml"
+  )
+  for i in "${files[@]}"; do
+    if $use_local_repo; then
+      ln -sfv "$script_dir/alacritty/$i" "$base_config/alacritty/$i"
+    else
+      echo "Download $i..."
+      $download_cmd "$base_config/alacritty/$i" "$base_url/alacritty/$i"
+    fi
+  done
+}
+
+setup_tmux() {
+  echo "Setting up tmux config"
+  mkdir -pv $base_config/tmux
+  local files=(
+    "tmux.conf"
+    "newtab_tmux_choice.sh"
+  )
+  for i in "${files[@]}"; do
+    if $use_local_repo; then
+      ln -sfv "$script_dir/tmux/$i" "$base_config/tmux/$i"
+    else
+      echo "Download $i..."
+      $download_cmd "$base_config/tmux/$i" "$base_url/tmux/$i"
     fi
   done
 }
