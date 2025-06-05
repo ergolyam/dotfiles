@@ -193,6 +193,11 @@ window-rule {
 }
 
 window-rule {
+  match app-id="Alacritty"
+  open-on-workspace "3"
+}
+
+window-rule {
   match app-id="sdl-freerdp"
   open-floating false
 }
@@ -202,7 +207,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Q { spawn "kitty" "bash" "-c" "~/.config/kitty/newtab_kitty_choice.sh"; }
+    Mod+Q { spawn "alacritty" "-e" "bash" "-c" "tmux new-session ~/.config/tmux/newtab_tmux_choice.sh"; }
     Mod+D { spawn "wofi" "--allow-images" "--show" "drun"; }
     Mod+E { spawn "thunar"; }
     Super+Alt+L { spawn "swaylock" "-f"; }
