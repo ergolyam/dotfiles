@@ -59,6 +59,7 @@ available_configs=(
   "fuzzel"
   "fish"
   "fonts"
+  "cursor"
   "other"
 )
 
@@ -82,9 +83,10 @@ else
       --fuzzel) selected_configs+=("fuzzel") ;;
       --fish) selected_configs+=("fish") ;;
       --fonts) selected_configs+=("fonts") ;;
+      --cursor) selected_configs+=("cursor") ;;
       --other) selected_configs+=("other") ;;
       --help|-h)
-        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--alacritty] [--tmux] [--wlogout] [--wofi] [--fuzzel] [--fish] [--fonts] [--other]"
+        echo "Usage: $0 [--hypr] [--niri] [--waybar] [--dunst] [--mako] [--kitty] [--alacritty] [--tmux] [--wlogout] [--wofi] [--fuzzel] [--fish] [--fonts] [--cursor] [--other]"
         exit 0
         ;;
       *)
@@ -332,6 +334,27 @@ setup_fonts() {
       $download_cmd $HOME/.local/share/fonts/$i "$base_url/fonts/$i"
     fi
   done
+}
+
+setup_cursor() {
+  echo "Setting up Hackneyed right-handed cursor theme"
+  icons_dir="$HOME/.local/share/icons"
+  mkdir -pv "$icons_dir"
+  cursor_url='https://gitlab.com/-/project/6703061/uploads/1947bc32837caa903cfabf16c80971d7/Hackneyed-0.9.3-right-handed.tar.bz2'
+  cursor_tar=$(mktemp)
+  if command -v wget >/dev/null 2>&1; then
+    download_cmd='wget -q -O'
+  elif command -v curl >/dev/null 2>&1; then
+    download_cmd='curl -Lsf -o'
+  else
+    echo "Error: wget or curl not found." >&2
+    exit 1
+  fi
+  $download_cmd "$cursor_tar" "$cursor_url"
+  cursor_name=$(tar tjf "$cursor_tar" | head -n1 | cut -d/ -f1)
+  tar xjf "$cursor_tar" -C "$icons_dir"
+  rm "$cursor_tar"
+  ln -sfv "$icons_dir/$cursor_name" "$icons_dir/default"
 }
 
 setup_other() {
