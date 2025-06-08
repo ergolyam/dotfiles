@@ -139,6 +139,13 @@ environment {
     DISPLAY ":0"
 }
 
+cursor {
+    xcursor-theme "Hackneyed"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+
 // spawn-at-startup "~/.local/share/xwayland-satellite/target/release/xwayland-satellite"
 // spawn-at-startup "waybar"
 spawn-at-startup "cliphist" "wipe"
