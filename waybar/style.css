@@ -3,15 +3,19 @@
     color: white;
     color: @foreground;
     font-family: "Terminess Nerd Font";
-    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
     padding-right: 0px;
     padding-left: 0px;
 }
 
 #workspaces button.active {
     box-shadow: inset 0 -5px 0 0 grey;
-    color: white;  /* Optional: to change text color */
+    color: white;
 }
+
+#workspaces button {}
 
 #custom-microphone {
     color: red;
