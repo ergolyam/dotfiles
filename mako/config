@@ -13,8 +13,8 @@ text-color=#ffffff
 default-timeout=10000
 
 on-button-left=dismiss
-on-button-middle=exec makoctl menu -n "$id" wofi --dmenu
-on-button-right=dismiss-all
+on-button-middle=dismiss
+on-button-right=dismiss
 
 [urgency=low]
 background-color=#000000
