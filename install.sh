@@ -236,6 +236,7 @@ setup_tmux() {
   local files=(
     "tmux.conf"
     "newtab_tmux_choice.sh"
+    "tmux_check_editor.sh"
   )
   for i in "${files[@]}"; do
     if $use_local_repo; then
