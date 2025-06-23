@@ -3,13 +3,20 @@
 session_file="$HOME/sessions.conf"
 declare -a containers=("Host")
 TERM=xterm-256color
-SHELL="$HOME/.local/bin/fish"
 distrobox_root_mode=0
 toolbox_root_mode=0
 
 GRAY='\e[1;90m'
 RED='\e[31m'
 RESET='\e[0m'
+
+if command -v fish >/dev/null 2>&1; then
+    SHELL="$(command -v fish)"
+elif command -v bash >/dev/null 2>&1; then
+    SHELL="$(command -v bash)"
+else
+    SHELL="/bin/sh"
+fi
 
 tmux rename-window "New Tab"
 
