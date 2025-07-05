@@ -1,0 +1,18 @@
+# vim: filetype=yaml
+
+variant: fcos
+version: 1.6.0
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: ${HOSTNAME}
+passwd:
+  users:
+    - name: user
+      groups:
+        - wheel
+      password_hash: ${PASSWD}
+      ssh_authorized_keys:
+        - ${PUBKEY}
