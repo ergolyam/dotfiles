@@ -19,7 +19,7 @@ while true; do
         LOW_NOTIFICATION_SENT=0
     fi
 
-    if [[ $AC_ONLINE -eq 1 && $BAT_CAPACITY -eq $FULL_CAPACITY ]]; then
+    if [[ $AC_ONLINE -eq 1 && $BAT_CAPACITY -ge $FULL_CAPACITY ]]; then
         if [[ $FULL_NOTIFICATION_SENT -eq 0 ]]; then
             notify-send -u normal "Battery Full" "Battery is fully charged"
             /usr/bin/paplay $HOME/.local/share/other/battery_full.ogg
