@@ -38,13 +38,13 @@ This repository includes a flexible installation script that allows you to selec
 
 - Create symlinks (Dev Installation):
     ```bash
-    git clone https://github.com/grisha765/dotfiles.git ~/dotfiles && \
+    git clone https://github.com/ergolyam/dotfiles.git ~/dotfiles && \
     cd ~/dotfiles && bash install.sh
     ```
 
 - Download configs from raw GitHub (User Installation):
     ```bash
-    curl -Ls https://dub.sh/grisha765 | bash -s
+    curl -Ls https://dub.sh/ergolyam | bash -s
     ```
 
 This installs all available configs (Hyprland, Waybar, Dunst, Kitty, Wlogout, Wofi, Fish, Fonts).

@@ -18,7 +18,7 @@ fi
 
 if [ -d "$script_dir/.git" ]; then
   echo "Script dir: $script_dir"
-  expected_url="github.com:grisha765/dotfiles.git"
+  expected_url="github.com:ergolyam/dotfiles.git"
   remote_short_url=""
   if git -C "$script_dir" remote get-url origin &>/dev/null; then
     remote_url="$(git -C "$script_dir" remote get-url origin)"
@@ -43,7 +43,7 @@ if ! $use_local_repo; then
 fi
 
 base_config="$HOME/.config"
-base_url="https://raw.githubusercontent.com/grisha765/dotfiles/main"
+base_url="https://raw.githubusercontent.com/ergolyam/dotfiles/main"
 
 available_configs=(
   "hypr"
