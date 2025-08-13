@@ -219,6 +219,8 @@ binds {
     Mod+E { spawn "thunar"; }
     Super+Alt+L { spawn "swaylock" "-f"; }
 
+    Mod+Tab { toggle-overview; }
+
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     
     //Alt+V { spawn "sh" "-c" "cliphist list | fuzzel --dmenu --cache=/dev/null | cliphist decode | wl-copy"; }
