@@ -158,7 +158,7 @@ spawn-at-startup "cliphist" "wipe"
 spawn-at-startup "sh" "-c" "wl-paste --watch ~/.local/bin/cliphist store"
 spawn-at-startup "~/.local/share/other/battery_check.sh"
 spawn-at-startup "sh" "-c" "swaybg --image ~/.local/share/other/wallapaper.png"
-// spawn-at-startup "sh" "-c" "swayidle -w timeout 300 'niri msg action power-off-monitors && swaylock -f' resume 'niri msg action power-on-monitors' before-sleep 'swaylock -f'"
+spawn-at-startup "sh" "-c" "swayidle -w timeout 10 'makoctl mode -a idle' resume '~/.config/mako/resume-sweep.sh'"
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
