@@ -10,24 +10,25 @@ border-radius=10
 background-color=#000000
 text-color=#ffffff
 
-default-timeout=10000
+default-timeout=5000
+ignore-timeout=0
 
 on-button-left=dismiss
 on-button-middle=dismiss
 on-button-right=dismiss
 
+[mode=idle]
+default-timeout=0
+ignore-timeout=1
+
 [urgency=low]
 background-color=#000000
 text-color=#ffffff
-default-timeout=10000
 
 [urgency=normal]
 background-color=#000000
 text-color=#ffffff
-default-timeout=10000
 
 [urgency=critical]
 background-color=#000000
 text-color=#ffffff
-default-timeout=10000
-
