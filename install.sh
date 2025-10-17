@@ -186,7 +186,10 @@ setup_dunst() {
 setup_mako() {
   echo "Setting up Mako config"
   mkdir -pv $base_config/mako
-  local files=("config")
+  local files=(
+    "config"
+    "resume-sweep.sh"
+  )
   for i in "${files[@]}"; do
     if $use_local_repo; then
       ln -sfv "$script_dir/mako/$i" "$base_config/mako/$i"
