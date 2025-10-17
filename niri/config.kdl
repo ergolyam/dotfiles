@@ -127,6 +127,12 @@ layout {
     }
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Switch-Events
 switch-events {
   lid-close {
