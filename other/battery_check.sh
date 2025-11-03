@@ -11,7 +11,7 @@ while true; do
 
     if [[ $AC_ONLINE -eq 0 && $BAT_CAPACITY -le $CRITICAL_CAPACITY ]]; then
         if [[ $LOW_NOTIFICATION_SENT -eq 0 ]]; then
-            notify-send -u critical -t 0 "⚠️ Battery low" "Remaining: ${BAT_CAPACITY}%"
+            notify-send -u critical "⚠️ Battery low" "Remaining: ${BAT_CAPACITY}%"
             /usr/bin/paplay $HOME/.local/share/other/battery_low.mp3
             LOW_NOTIFICATION_SENT=1
         fi
@@ -21,7 +21,7 @@ while true; do
 
     if [[ $AC_ONLINE -eq 1 && $BAT_CAPACITY -ge $FULL_CAPACITY ]]; then
         if [[ $FULL_NOTIFICATION_SENT -eq 0 ]]; then
-            notify-send -u normal -t 0 "🔌 Battery full" "Unplug the charger"
+            notify-send -u normal "🔌 Battery full" "Unplug the charger"
             /usr/bin/paplay $HOME/.local/share/other/battery_full.ogg
             FULL_NOTIFICATION_SENT=1
         fi
