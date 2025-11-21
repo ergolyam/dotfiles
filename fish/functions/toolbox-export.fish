@@ -18,6 +18,20 @@ function toolbox-export
         return 1
     end
 
+    set outfile "$HOME/.local/bin/$bin"
+
+    if test -f "$outfile"
+        if grep -q "exec toolbox run $bin" "$outfile"
+            echo "Wrapper already exists: $outfile"
+            echo "Skip."
+            return 0
+        else
+            echo "File '$outfile' already exists and is not a toolbox wrapper."
+            echo "Refusing to overwrite."
+            return 1
+        end
+    end
+
     set realpath ""
 
     if test "$mode" = "usrbin"
@@ -27,6 +41,7 @@ function toolbox-export
             echo "Error: binary '$bin' not found inside toolbox (/usr/bin/$bin)"
             return 1
         end
+
     else if test "$mode" = "path"
         set found (toolbox run sh -c "which $bin 2>/dev/null")
 
@@ -37,8 +52,6 @@ function toolbox-export
 
         set realpath $found
     end
-
-    set outfile "$HOME/.local/bin/$bin"
 
     echo "#!/usr/bin/env sh" > $outfile
     echo "if [ \"\$container\" = \"oci\" ]; then" >> $outfile
