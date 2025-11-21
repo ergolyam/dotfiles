@@ -1,26 +1,54 @@
 function toolbox-export
-    set bin $argv[1]
+    set mode "usrbin"
+    set args
+
+    for a in $argv
+        switch $a
+            case '--path'
+                set mode "path"
+            case '*'
+                set args $args $a
+        end
+    end
+
+    set bin $args[1]
 
     if test -z "$bin"
-        echo "Usage: toolbox-export <binary>"
+        echo "Usage: toolbox-export [--path] <binary>"
         return 1
     end
 
-    if not toolbox run test -x "/usr/bin/$bin"
-        echo "Error: binary '$bin' not found inside toolbox (/usr/bin/$bin)"
-        return 1
+    set realpath ""
+
+    if test "$mode" = "usrbin"
+        if toolbox run test -x "/usr/bin/$bin"
+            set realpath "/usr/bin/$bin"
+        else
+            echo "Error: binary '$bin' not found inside toolbox (/usr/bin/$bin)"
+            return 1
+        end
+    else if test "$mode" = "path"
+        set found (toolbox run sh -c "which $bin 2>/dev/null")
+
+        if test -z "$found"
+            echo "Error: binary '$bin' not found in toolbox PATH"
+            return 1
+        end
+
+        set realpath $found
     end
 
     set outfile "$HOME/.local/bin/$bin"
 
     echo "#!/usr/bin/env sh" > $outfile
     echo "if [ \"\$container\" = \"oci\" ]; then" >> $outfile
-    echo "    exec /usr/bin/$bin \"\$@\"" >> $outfile
+    echo "    exec $realpath \"\$@\"" >> $outfile
     echo "fi" >> $outfile
     echo "exec toolbox run $bin \"\$@\"" >> $outfile
 
     chmod +x $outfile
 
     echo "Created wrapper: $outfile"
+    echo " → inside toolbox calls: $realpath"
 end
 
