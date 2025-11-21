@@ -1,20 +1,54 @@
 function toolbox-export
     set mode "usrbin"
+    set list_mode false
     set args
 
     for a in $argv
         switch $a
             case '--path'
                 set mode "path"
+            case '--list'
+                set list_mode true
             case '*'
                 set args $args $a
         end
     end
 
+    if test "$list_mode" = true
+        set dir "$HOME/.local/bin"
+
+        if not test -d $dir
+            echo "No ~/.local/bin directory"
+            return 0
+        end
+
+        echo "Toolbox wrappers:"
+        set any false
+        for f in $dir/*
+            if test -f "$f"
+                set name (basename "$f")
+                if grep -q "exec toolbox run $name" "$f"
+                    echo "  $name"
+                    set any true
+                end
+            end
+        end
+
+        if test "$any" = false
+            echo "  (none)"
+        end
+
+        return 0
+    end
+
+
     set bin $args[1]
 
     if test -z "$bin"
-        echo "Usage: toolbox-export [--path] <binary>"
+        echo "Usage:"
+        echo "  toolbox-export <binary>"
+        echo "  toolbox-export --path <binary>"
+        echo "  toolbox-export --list"
         return 1
     end
 
@@ -32,8 +66,6 @@ function toolbox-export
         end
     end
 
-    set realpath ""
-
     if test "$mode" = "usrbin"
         if toolbox run test -x "/usr/bin/$bin"
             set realpath "/usr/bin/$bin"
@@ -41,15 +73,12 @@ function toolbox-export
             echo "Error: binary '$bin' not found inside toolbox (/usr/bin/$bin)"
             return 1
         end
-
     else if test "$mode" = "path"
         set found (toolbox run sh -c "which $bin 2>/dev/null")
-
         if test -z "$found"
             echo "Error: binary '$bin' not found in toolbox PATH"
             return 1
         end
-
         set realpath $found
     end
 
