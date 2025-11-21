@@ -312,6 +312,7 @@ setup_fish() {
     "functions/loadenv.fish"
     "functions/real_clear.fish"
     "functions/bash.fish"
+    "functions/toolbox-export.fish"
   )
   for i in "${files[@]}"; do
     if $use_local_repo; then
