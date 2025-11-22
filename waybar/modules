@@ -20,7 +20,7 @@
         "on-click": "kitty -e bluetui"
     },
     "clock": {
-        "format": "{:%H:%M}",
+        "format": "{:%d %a  %H:%M}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "format": {
