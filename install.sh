@@ -128,7 +128,13 @@ setup_hypr() {
 setup_niri() {
   echo "Setting up Niri config"
   mkdir -pv $base_config/niri
-  local files=("config.kdl")
+  local files=(
+    "config.kdl"
+    "wm.kdl"
+    "wmrules.kdl"
+    "startup.kdl"
+    "binds.kdl"
+  )
   for i in "${files[@]}"; do
     if $use_local_repo; then
       ln -sfv "$script_dir/niri/$i" "$base_config/niri/$i"
