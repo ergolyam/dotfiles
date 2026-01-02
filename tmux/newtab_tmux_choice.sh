@@ -27,8 +27,6 @@ if command -v toolbox >/dev/null 2>&1; then
             containers+=("$line")
         done <<< "$toolbox_containers"
     fi
-else
-    containers+=("${RED}Toolbox is not installed${RESET}")
 fi
 
 if command -v distrobox >/dev/null 2>&1; then
@@ -38,8 +36,6 @@ if command -v distrobox >/dev/null 2>&1; then
             containers+=("$line")
         done <<< "$distrobox_containers"
     fi
-else
-    containers+=("${RED}Distrobox is not installed${RESET}")
 fi
 
 if [ -f "$session_file" ]; then
@@ -66,9 +62,6 @@ while true; do
     if [ "$selected_container" == "Host" ]; then
         tmux rename-window "Host"
         exec "$SHELL"
-    elif [ "$selected_container" == "Toolbox is not installed" ]; then
-        echo "Toolbox is not installed."
-        exit 0
     elif [ "$selected_container" == "Activate Toolbox Root Mode" ]; then
         if sudo -v; then
             toolbox_root_containers=$(sudo toolbox list --containers | tail -n +2 | awk '{printf "%-21s (Toolbox-Root)\n", $2}')
@@ -91,9 +84,6 @@ while true; do
         else
             echo "Failed to activate Toolbox Root Mode."
         fi
-    elif [ "$selected_container" == "Distrobox is not installed" ]; then
-        echo "Distrobox is not installed."
-        exit 0
     elif [ "$selected_container" == "Activate Distrobox Root Mode" ]; then
         if sudo -v; then
             distrobox_root_containers=$(distrobox list --root | tail -n +2 | awk -F'|' '{print $2 " (Distrobox-Root)"}' | sed '/^\s*$/d' | sed 's/^[ \t]*//;s/[ \t]*$//')
