@@ -6,7 +6,7 @@ binds {
     Mod+Q { spawn "alacritty" "-e" "bash" "-c" "tmux new-session ~/.config/tmux/newtab_tmux_choice.sh"; }
     Mod+D { spawn "fuzzel"; }
     Mod+E { spawn "thunar"; }
-    Super+Alt+L { spawn "swaylock" "-f"; }
+    Super+Alt+L { spawn "swaylock" "-f" "-c" "000000"; }
 
     Mod+Tab { toggle-overview; }
 

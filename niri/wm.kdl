@@ -133,7 +133,7 @@ gestures {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Switch-Events
 switch-events {
   lid-close {
-    spawn "swaylock" "-f";
+    spawn "swaylock" "-f" "-c" "000000";
   }
 }
 
