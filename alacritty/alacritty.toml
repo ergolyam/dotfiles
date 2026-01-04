@@ -35,6 +35,12 @@ mods   = "Control"
 action = "Paste"
 mode   = "~Vi|~Search"
 
+[[keyboard.bindings]]
+key    = "М"
+mods   = "Control"
+action = "Paste"
+mode   = "~Vi|~Search"
+
 [window]
 startup_mode = "Maximized"
 decorations = "None"
