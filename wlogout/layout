@@ -6,7 +6,7 @@
 }
 {
     "label" : "hibernate",
-    "action" : "doas half",
+    "action" : "loginctl hibernate",
     "text" : "Hibernation",
     "keybind" : "h"
 }
@@ -18,19 +18,19 @@
 }
 {
     "label" : "shutdown",
-    "action" : "doas poweroff",
+    "action" : "loginctl poweroff",
     "text" : "PowerOff",
     "keybind" : "s"
 }
 {
     "label" : "suspend",
-    "action" : "doas zzz",
+    "action" : "loginctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
 }
 {
     "label" : "reboot",
-    "action" : "doas reboot",
+    "action" : "loginctl reboot",
     "text" : "Reboot",
     "keybind" : "r"
 }
