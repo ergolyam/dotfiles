@@ -72,7 +72,7 @@
         "format": "{format_source}",
         "format-source": "󰍬 {volume}%",
         "format-source-muted": "󰍭 {volume}%",
-        "tooltip-format": "{volume}% | {desc}",
+        "tooltip": false,
         "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
         "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
