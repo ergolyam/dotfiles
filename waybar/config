@@ -16,6 +16,8 @@
         "custom/separator",
         "niri/language",
         "custom/separator",
+        "pulseaudio#mic",
+        "custom/separator",
         "pulseaudio",
         "custom/separator",
         "custom/network",

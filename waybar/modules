@@ -68,6 +68,16 @@
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol"
     },
+    "pulseaudio#mic": {
+        "format": "{format_source}",
+        "format-source": "󰍬 {volume}%",
+        "format-source-muted": "󰍭 {volume}%",
+        "tooltip-format": "{volume}% | {desc}",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
+        "on-click-right": "pavucontrol"
+    },
     "mpris": {
       "format": "{status_icon} {title} - {artist}",
       "tooltip-format": "{player} ({status})\n{title}\n{artist}\n[{position}/{length}]",
