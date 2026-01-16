@@ -11,7 +11,7 @@ mapfile -t IDS < <(makoctl list | awk '/^Notification [0-9]+:/{gsub(":","",$2); 
 
 ((${#IDS[@]}==0)) && exit 0
 
-sleep 5
+sleep 10
 
 for id in "${IDS[@]}"; do
   makoctl dismiss -n "$id" 2>/dev/null || true

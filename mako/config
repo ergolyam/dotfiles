@@ -10,7 +10,7 @@ border-radius=10
 background-color=#000000
 text-color=#ffffff
 
-default-timeout=5000
+default-timeout=10000
 ignore-timeout=0
 
 on-button-left=dismiss
