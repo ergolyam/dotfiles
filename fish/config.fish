@@ -12,6 +12,7 @@ set -g __last_cmd_duration_ms 0
 set -g fish_prompt_pwd_dir_length 0
 bind \cl real_clear
 
-if set -q SUDO_USER; and test "$USER" != "root"
+if status --is-interactive; and set -q SUDO_USER; and test (id -u) -ne 0
     set -x XDG_RUNTIME_DIR "/run/user/$(id -u)"
+    set -x DBUS_SESSION_BUS_ADDRESS "unix:path=$XDG_RUNTIME_DIR/bus"
 end
