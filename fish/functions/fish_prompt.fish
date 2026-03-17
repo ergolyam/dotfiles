@@ -1,4 +1,5 @@
 function fish_prompt
+    set -l last_status $status
     set -l reset '\e[0m'
     set -l prompt '╭['
 
@@ -54,6 +55,10 @@ function fish_prompt
 
     set -l time_str (date +"%H:%M:%S")
     set prompt "$prompt\e[90m($time_str)$reset"
+
+    if test $last_status -ne 0
+        set prompt "$prompt""[""\e[1;31m$last_status$reset]"
+    end
 
     echo -e "$prompt"
 
