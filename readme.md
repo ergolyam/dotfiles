@@ -44,7 +44,7 @@ This repository includes a flexible installation script that allows you to selec
 
 - Download configs from raw GitHub (User Installation):
     ```bash
-    curl -Ls https://dub.sh/ergolyam | bash -s
+    curl -Ls https://ergolyam.top/dotfiles | bash -s
     ```
 
 This installs all available configs (Hyprland, Waybar, Dunst, Kitty, Wlogout, Wofi, Fish, Fonts).
