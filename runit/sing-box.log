@@ -1,0 +1,7 @@
+#!/bin/sh
+name="sing-box-pryid"
+
+log_dir="${HOME}/.local/share/logs/${name}"
+mkdir -p "${log_dir}"
+
+exec svlogd -tt "${log_dir}"
