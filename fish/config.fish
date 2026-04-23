@@ -4,9 +4,9 @@ set -g -x XCURSOR_PATH "~/.icons"
 set -g -x XCURSOR_THEME "Hackneyed-24px"
 set -g -x ANDROID_HOME ~/.local/share/android-sdk
 set -g -x ANDROID_SDK_ROOT $ANDROID_HOME
-set -Ua fish_user_paths ~/.local/bin
-set -Ua fish_user_paths $ANDROID_HOME/cmdline-tools/latest/bin
-set -Ua fish_user_paths $ANDROID_HOME/platform-tools
+fish_add_path -g ~/.local/bin
+fish_add_path -g $ANDROID_HOME/cmdline-tools/latest/bin
+fish_add_path -g $ANDROID_HOME/platform-tools
 set -g VIRTUAL_ENV_DISABLE_PROMPT 1
 set -g __last_cmd_duration_ms 0
 set -g fish_prompt_pwd_dir_length 0
