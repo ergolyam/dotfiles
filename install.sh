@@ -320,6 +320,7 @@ setup_fish() {
     "functions/bash.fish"
     "functions/toolbox-export.fish"
     "functions/restic.fish"
+    "completions/restic.fish"
   )
   for i in "${files[@]}"; do
     if $use_local_repo; then
