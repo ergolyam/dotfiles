@@ -2,6 +2,8 @@
 
 set -e
 
+trap 'echo; echo "Installation cancelled."; exit 130' INT
+
 if [[ -n "$BASH_SOURCE" && "$BASH_SOURCE" != "/dev/stdin" ]]; then
     script_path="$BASH_SOURCE"
 elif [[ -n "$0" && "$0" != "bash" ]]; then
@@ -66,7 +68,26 @@ available_configs=(
 selected_configs=()
 
 if [ $# -eq 0 ]; then
-  selected_configs=("${available_configs[@]}")
+  echo "No config option specified."
+  echo "This will install all configs:"
+  printf '  %s\n' "${available_configs[@]}"
+  if [ -r /dev/tty ]; then
+    read -r -p "Install all configs? [y/N] " confirm < /dev/tty
+    confirm="${confirm,,}"
+  else
+    echo "Error: no TTY available for confirmation." >&2
+    echo "Run with explicit options, for example: $0 --fish" >&2
+    exit 1
+  fi
+  case "$confirm" in
+    y|yes|д|да)
+      selected_configs=("${available_configs[@]}")
+      ;;
+    *)
+      echo "Installation cancelled."
+      exit 0
+      ;;
+  esac
 else
   for arg in "$@"; do
     case $arg in
