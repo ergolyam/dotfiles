@@ -8,7 +8,8 @@ podman rm -f "${name}" || true
 exec podman run --rm --name "${name}" \
     --user "${uid}:${gid}" \
     --userns=keep-id \
-    --hostname=$hostname \
+    --pull=newer \
+    --hostname=$(uname -n) \
     -p 127.0.0.1:8384:8384 \
     -p 22000:22000/tcp \
     -p 22000:22000/udp \
