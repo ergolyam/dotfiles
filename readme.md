@@ -8,16 +8,10 @@ Welcome to my repository for configuration files for various desktop Linux utili
 
 ## Installation
 
-### Install chezmoi
-
-```sh
-sh -c "$(wget -qO- get.chezmoi.io)" -- -b $HOME/.local/bin
-```
-
 ### Apply dotfiles
 
 ```sh
-chezmoi init --apply https://github.com/ergolyam/dotfiles.git
+sh -c "$(wget -qO- get.chezmoi.io/lb)" -- init --apply ergolyam
 ```
 
 ## `chezmoi.toml`
