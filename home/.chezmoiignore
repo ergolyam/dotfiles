@@ -1,0 +1,44 @@
+{{- if eq .profile "server" }}
+**
+!.config/
+!.config/fish/
+!.config/fish/**
+{{- else if eq .profile "desktop" }}
+
+{{- if ne .wm "hypr" }}
+.config/hypr/**
+{{- end }}
+
+{{- if ne .wm "niri" }}
+.config/niri/**
+{{- end }}
+
+{{- if ne .terminal "kitty" }}
+.config/kitty/**
+{{- end }}
+
+{{- if ne .terminal "alacritty" }}
+.config/alacritty/**
+.config/tmux/**
+{{- end }}
+
+{{- if not .install_fonts }}
+.local/share/fonts/**
+{{- end }}
+
+{{- if ne .notifications "mako" }}
+.config/mako/**
+{{- end }}
+
+{{- if ne .notifications "dunst" }}
+.config/dunst/**
+{{- end }}
+
+{{- if ne .launcher "fuzzel" }}
+.config/fuzzel/**
+{{- end }}
+
+{{- if ne .launcher "wofi" }}
+.config/wofi/**
+{{- end }}
+{{- end }}
