@@ -33,6 +33,7 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
     notifications = "mako"
     launcher = "fuzzel"
     install_fonts = true
+    install_cursor = true
     ```
 
 - These values control `home/.chezmoiignore`, so only the relevant files are applied on a given machine.
@@ -42,6 +43,7 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
     - `notifications` selects the notification daemon configs. Supported values are `mako` and `dunst`.
     - `launcher` selects the launcher configs. Supported values are `fuzzel` and `wofi`.
     - `install_fonts` controls whether files from `.local/share/fonts` are applied.
+    - `install_cursor` controls whether the Hackneyed cursor theme is downloaded and `~/.local/share/icons/default` points to it.
 
 - You can edit `~/.config/chezmoi/chezmoi.toml` manually after initialization and then re-run:
     ```sh

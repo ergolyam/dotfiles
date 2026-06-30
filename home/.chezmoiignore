@@ -26,6 +26,10 @@
 .local/share/fonts/**
 {{- end }}
 
+{{- if not .install_cursor }}
+.local/share/icons/**
+{{- end }}
+
 {{- if ne .notifications "mako" }}
 .config/mako/**
 {{- end }}
