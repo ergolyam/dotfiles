@@ -1,0 +1,11 @@
+{{- $profiles := list "desktop" "server" -}}
+{{- $profile := promptChoiceOnce . "profile" "Profile" $profiles "desktop" -}}
+[data]
+profile = {{ $profile | quote }}
+{{ if eq $profile "desktop" }}
+wm = "niri"
+terminal = "alacritty"
+notifications = "mako"
+launcher = "fuzzel"
+install_fonts = true
+{{ end }}
