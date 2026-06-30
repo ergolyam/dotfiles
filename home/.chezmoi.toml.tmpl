@@ -1,5 +1,5 @@
 {{- $profiles := list "desktop" "server" -}}
-{{- $profile := promptChoiceOnce . "profile" "Profile" $profiles "desktop" -}}
+{{- $profile := promptChoiceOnce . "profile" "Profile" $profiles -}}
 [data]
 profile = {{ $profile | quote }}
 {{ if eq $profile "desktop" }}
