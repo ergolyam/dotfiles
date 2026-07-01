@@ -1,10 +1,6 @@
 # My Desktop Linux Configurations
 
-Welcome to my repository for configuration files for various desktop Linux utilities and applications. Here, I store and share my settings for different tools such as Hyprland, Waybar, and more. This repository helps me keep all my configurations in one place and share them with the community.
-
-### Plugins
-
-- **[hyprscroller](https://github.com/dawsers/hyprscroller)**: Layout plugin that creates a window layout similar to [PaperWM](https://github.com/paperwm/PaperWM).
+Welcome to my repository for configuration files for various desktop Linux utilities and applications.
 
 ## Installation
 
@@ -30,7 +26,7 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
     install_cursor = true
     ```
 
-- These values control `home/.chezmoiignore`, so only the relevant files are applied on a given machine.
+- These values control `home/.chezmoiignore.tmpl`, so only the relevant files are applied on a given machine.
     - `profile` selects the main setup type. `desktop` applies the desktop configuration. `server` keeps only the Fish shell configuration.
     - `wm` selects the window manager configs to keep. Supported values are `niri` and `hypr`.
     - `terminal` selects terminal-related configs. `alacritty` keeps Alacritty and tmux files. `kitty` keeps Kitty files.
