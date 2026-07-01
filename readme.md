@@ -18,6 +18,7 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
     ```toml
     [data]
     profile = "desktop"
+    init = "runit"
     wm = "niri"
     terminal = "alacritty"
     notifications = "mako"
@@ -26,15 +27,18 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
     install_cursor = true
     ```
 
-- These values control `home/.chezmoiignore.tmpl`, so only the relevant files are applied on a given machine.
-    - `profile` selects the main setup type. `desktop` applies the desktop configuration. `server` keeps only the Fish shell configuration.
-    - `init` selects the init system configs. Supported values are `runit` and `systemd`.
-    - `wm` selects the window manager configs to keep. Supported values are `niri` and `hypr`.
-    - `terminal` selects terminal-related configs. `alacritty` keeps Alacritty and tmux files. `kitty` keeps Kitty files.
-    - `notifications` selects the notification daemon configs. Supported values are `mako` and `dunst`.
-    - `launcher` selects the launcher configs. Supported values are `fuzzel` and `wofi`.
-    - `install_fonts` controls whether files from `.local/share/fonts` are applied.
-    - `install_cursor` controls whether the Hackneyed cursor theme is downloaded and `~/.local/share/icons/default` points to it.
+- The following `[data]` values control what gets applied on a given machine:
+
+| Variable | Values | Description |
+| -------- | ------ | ----------- |
+| `profile` | `desktop`, `server` | Selects desktop files or fish-only server files. |
+| `init` | `runit`, `systemd` | Selects service manager configs. |
+| `wm` | `niri`, `hypr` | Selects window manager configs. |
+| `terminal` | `alacritty`, `kitty` | Selects terminal configs; `alacritty` includes tmux. |
+| `notifications` | `mako`, `dunst` | Selects notification daemon config. |
+| `launcher` | `fuzzel`, `wofi` | Selects app launcher config. |
+| `install_fonts` | `true`, `false` | Applies bundled fonts. |
+| `install_cursor` | `true`, `false` | Applies icons/cursors and downloads Hackneyed. |
 
 - You can edit `~/.config/chezmoi/chezmoi.toml` manually after initialization and then re-run:
     ```sh
