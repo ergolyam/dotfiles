@@ -28,6 +28,7 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
 
 - These values control `home/.chezmoiignore.tmpl`, so only the relevant files are applied on a given machine.
     - `profile` selects the main setup type. `desktop` applies the desktop configuration. `server` keeps only the Fish shell configuration.
+    - `init` selects the init system configs. Supported values are `runit` and `systemd`.
     - `wm` selects the window manager configs to keep. Supported values are `niri` and `hypr`.
     - `terminal` selects terminal-related configs. `alacritty` keeps Alacritty and tmux files. `kitty` keeps Kitty files.
     - `notifications` selects the notification daemon configs. Supported values are `mako` and `dunst`.

@@ -3,6 +3,7 @@
 [data]
 profile = {{ $profile | quote }}
 {{ if eq $profile "desktop" }}
+init = "runit"
 wm = "niri"
 terminal = "alacritty"
 notifications = "mako"

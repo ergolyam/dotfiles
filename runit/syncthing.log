@@ -1,7 +1,0 @@
-#!/bin/sh
-name="syncthing"
-
-log_dir="${HOME}/.local/share/logs/${name}"
-mkdir -p "${log_dir}"
-
-exec svlogd -tt "${log_dir}"

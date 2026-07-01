@@ -45,4 +45,13 @@
 {{- if ne .launcher "wofi" }}
 .config/wofi/**
 {{- end }}
+
+{{- if ne .init "runit" }}
+.config/service/**
+{{- end }}
+
+{{- if ne .init "systemd" }}
+.config/containers/systemd/**
+{{- end }}
+
 {{- end }}
