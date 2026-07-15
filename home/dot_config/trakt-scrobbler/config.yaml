@@ -1,0 +1,6 @@
+version: '1.0'
+players:
+  mpv:
+    ipc_path: /run/user/1000/app/io.mpv.Mpv/mpvsocket
+  monitored:
+  - mpv
