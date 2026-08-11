@@ -1,8 +1,8 @@
-{{- $profiles := list "desktop" "server" -}}
+{{- $profiles := list "desktop" "laptop" "server" -}}
 {{- $profile := promptChoiceOnce . "profile" "Profile" $profiles -}}
 [data]
 profile = {{ $profile | quote }}
-{{ if eq $profile "desktop" }}
+{{ if or (eq $profile "desktop") (eq $profile "laptop") }}
 init = "runit"
 wm = "niri"
 terminal = "alacritty"

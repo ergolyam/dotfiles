@@ -23,8 +23,10 @@
         "custom/network",
         "custom/separator",
         "bluetooth",
+{{ if eq .profile "laptop" }}
         "custom/separator",
         "battery",
+{{ end }}
         "custom/separator",
         "custom/wlogout",
         "custom/separator"

@@ -1,4 +1,4 @@
-{{- if and (eq .profile "desktop") .install_cursor }}
+{{- if and (or (eq .profile "desktop") (eq .profile "laptop")) .install_cursor }}
 [".local/share/icons/Hackneyed"]
     type = "archive"
     url = "https://gitlab.com/-/project/6703061/uploads/1947bc32837caa903cfabf16c80971d7/Hackneyed-0.9.3-right-handed.tar.bz2"

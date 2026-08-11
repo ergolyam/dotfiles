@@ -3,7 +3,7 @@
 !.config/
 !.config/fish/
 !.config/fish/**
-{{- else if eq .profile "desktop" }}
+{{- else if or (eq .profile "desktop") (eq .profile "laptop") }}
 
 {{- if ne .wm "hypr" }}
 .config/hypr/**
