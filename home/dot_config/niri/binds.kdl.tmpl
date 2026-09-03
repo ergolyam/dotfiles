@@ -162,5 +162,7 @@ binds {
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
+{{ if eq .profile "laptop" }}
     Mod+Shift+P { spawn "sh" "-c" "touch \"$XDG_RUNTIME_DIR/niri-manual-monitor-off\"; niri msg action power-off-monitors"; }
+{{ end }}
 }
