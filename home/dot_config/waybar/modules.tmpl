@@ -17,7 +17,11 @@
         "tooltip-format": "{device_alias}",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "󰥉 {device_battery_percentage}% | {device_alias}",
+{{ if eq .terminal "alacritty" }}
+        "on-click": "alacritty -e bluetui"
+{{ else }}
         "on-click": "kitty -e bluetui"
+{{ end }}
     },
     "clock": {
         "format": "{:%d %a  %H:%M}",
