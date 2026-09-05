@@ -30,6 +30,10 @@
 .local/share/icons/**
 {{- end }}
 
+{{- if not .install_bluetui }}
+.local/bin/bluetui
+{{- end }}
+
 {{- if ne .notifications "mako" }}
 .config/mako/**
 {{- end }}
