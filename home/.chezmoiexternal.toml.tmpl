@@ -5,10 +5,19 @@
     exact = true
     stripComponents = 1
 {{- end }}
+
 {{- if and (or (eq .profile "desktop") (eq .profile "laptop")) .install_bluetui }}
 [".local/bin/bluetui"]
     type = "file"
     url = "https://github.com/pythops/bluetui/releases/download/v0.8.1/bluetui-x86_64-linux-musl"
     executable = true
     checksum.sha256 = "c6d133930af3ef85d5fb6492c98982958619284d1f583c2c8ecf46992460d60e"
+{{- end }}
+
+{{- if and (or (eq .profile "desktop") (eq .profile "laptop")) .install_cliphist }}
+[".local/bin/cliphist"]
+    type = "file"
+    url = "https://github.com/sentriz/cliphist/releases/download/v0.7.0/v0.7.0-linux-amd64"
+    executable = true
+    checksum.sha256 = "d21ca6846bd25f7bd2dabb157912e2e07226db76be32885bc53d7f27db98d08a"
 {{- end }}

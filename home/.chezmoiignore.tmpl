@@ -34,6 +34,10 @@
 .local/bin/bluetui
 {{- end }}
 
+{{- if not .install_cliphist }}
+.local/bin/cliphist
+{{- end }}
+
 {{- if ne .notifications "mako" }}
 .config/mako/**
 {{- end }}
