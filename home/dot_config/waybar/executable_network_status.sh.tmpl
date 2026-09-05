@@ -3,7 +3,11 @@
 LC_ALL=en_US.UTF-8
 
 ethernet_interface="enp2s0f0"
+{{ if eq .profile "laptop" }}
 wifi_interface="wlp3s0"
+{{ else }}
+wifi_interface="wlp0s20u1"
+{{ end }}
 
 ethernet_connected=$(nmcli -t -f DEVICE,STATE device status | grep "^$ethernet_interface:" | cut -d: -f2)
 wifi_connected=$(nmcli -t -f DEVICE,STATE device status | grep "^$wifi_interface:" | cut -d: -f2)

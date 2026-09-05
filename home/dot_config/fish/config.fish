@@ -4,6 +4,7 @@ set -g -x XCURSOR_PATH "~/.icons"
 set -g -x XCURSOR_THEME "Hackneyed-24px"
 set -g -x ANDROID_HOME ~/.local/share/android-sdk
 set -g -x ANDROID_SDK_ROOT $ANDROID_HOME
+set -g -x EDITOR vi
 fish_add_path -g ~/.local/bin
 fish_add_path -g ~/.cargo/bin
 fish_add_path -g ~/.nix-profile/bin
