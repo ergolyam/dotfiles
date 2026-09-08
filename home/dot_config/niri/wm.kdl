@@ -3,7 +3,7 @@ input {
     keyboard {
         xkb {
             layout "us,ru"
-            options "grp:caps_toggle,scrolllock:mod3"
+            options "grp:caps_toggle"
         }
     }
 
