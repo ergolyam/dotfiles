@@ -1,69 +1,69 @@
-{{- if eq .profile "server" }}
+{{ if eq .profile "server" }}
 **
 !.config/
 !.config/fish/
 !.config/fish/**
-{{- else if or (eq .profile "desktop") (eq .profile "laptop") }}
+{{ else if or (eq .profile "desktop") (eq .profile "laptop") }}
 
-{{- if ne .wm "hypr" }}
+{{ if ne .wm "hypr" }}
 .config/hypr/**
-{{- end }}
+{{ end }}
 
-{{- if ne .wm "niri" }}
+{{ if ne .wm "niri" }}
 .config/niri/**
-{{- end }}
+{{ end }}
 
-{{- if ne .terminal "kitty" }}
+{{ if ne .terminal "kitty" }}
 .config/kitty/**
-{{- end }}
+{{ end }}
 
-{{- if ne .terminal "alacritty" }}
+{{ if ne .terminal "alacritty" }}
 .config/alacritty/**
 .config/tmux/**
-{{- end }}
+{{ end }}
 
-{{- if not .install_fonts }}
+{{ if not .install_fonts }}
 .local/share/fonts/**
-{{- end }}
+{{ end }}
 
-{{- if not .install_cursor }}
+{{ if not .install_cursor }}
 .local/share/icons/**
-{{- end }}
+{{ end }}
 
-{{- if not .install_bluetui }}
+{{ if not .install_bluetui }}
 .local/bin/bluetui
-{{- end }}
+{{ end }}
 
-{{- if not .install_cliphist }}
+{{ if not .install_cliphist }}
 .local/bin/cliphist
-{{- end }}
+{{ end }}
 
-{{- if ne .notifications "mako" }}
+{{ if ne .notifications "mako" }}
 .config/mako/**
-{{- end }}
+{{ end }}
 
-{{- if ne .notifications "dunst" }}
+{{ if ne .notifications "dunst" }}
 .config/dunst/**
-{{- end }}
+{{ end }}
 
-{{- if ne .launcher "fuzzel" }}
+{{ if ne .launcher "fuzzel" }}
 .config/fuzzel/**
-{{- end }}
+{{ end }}
 
-{{- if ne .launcher "wofi" }}
+{{ if ne .launcher "wofi" }}
 .config/wofi/**
-{{- end }}
+{{ end }}
 
-{{- if ne .init "runit" }}
+{{ if ne .init "runit" }}
 .config/service/**
-{{- end }}
+{{ end }}
 
-{{- if ne .init "systemd" }}
+{{ if ne .init "systemd" }}
 .config/containers/systemd/**
-{{- end }}
+{{ end }}
 
-{{- if ne .profile "desktop" }}
+{{ if ne .profile "desktop" }}
 .config/wireplumber/wireplumber.conf.d/51-speakers-no-suspend.conf
-{{- end }}
+{{ end }}
 
-{{- end }}
+{{ end }}
