@@ -44,6 +44,19 @@ input {
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
+{{ if eq .profile "desktop" }}
+output "HDMI-A-1" {
+    mode "1920x1080@75.000"
+    position x=0 y=0
+}
+
+output "DP-1" {
+    off
+    mode "1280x800@59.910"
+    scale 1.0
+}
+{{ end }}
+
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     gaps 0
