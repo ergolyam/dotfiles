@@ -15,6 +15,10 @@ binds {
     //Alt+V { spawn "sh" "-c" "cliphist list | fuzzel --dmenu --cache=/dev/null | cliphist decode | wl-copy"; }
     Alt+V { spawn "bash" "-c" "~/.config/fuzzel/cliphist-fuzzel-img.sh"; }
 
+{{ if eq .profile "desktop" }}
+    Scroll_Lock repeat=false { spawn "sh" "-c" "v=$(brightnessctl -c leds -d 'input3::scrolllock' get); brightnessctl -q -c leds -d 'input3::scrolllock' set $((1-v))"; }
+{{ end }}
+
     // Alt+Shift+R { spawn "~/.config/wofi/wofi_deepl.sh" "--lang" "ru"; }
     // Alt+Shift+E { spawn "~/.config/wofi/wofi_deepl.sh" "--lang" "en"; }
 
