@@ -31,7 +31,7 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
 
 | Variable | Values | Description |
 | -------- | ------ | ----------- |
-| `profile` | `desktop`, `laptop`, `server` | Selects desktop, laptop files or fish-only server files. |
+| `profile` | `default`, `desktop`, `laptop` | Selects desktop, laptop files or default fish-only files. |
 | `init` | `runit`, `systemd` | Selects service manager configs. |
 | `wm` | `niri`, `hypr` | Selects window manager configs. |
 | `terminal` | `alacritty`, `kitty` | Selects terminal configs; `alacritty` includes tmux. |
