@@ -18,7 +18,11 @@
 }
 {
     "label" : "shutdown",
+{{ if eq .init "systemd" }}
+    "action" : "systemctl poweroff",
+{{ else }}
     "action" : "loginctl poweroff",
+{{ end }}
     "text" : "PowerOff",
     "keybind" : "s"
 }
@@ -30,7 +34,11 @@
 }
 {
     "label" : "reboot",
+{{ if eq .init "systemd" }}
+    "action" : "systemctl reboot",
+{{ else }}
     "action" : "loginctl reboot",
+{{ end }}
     "text" : "Reboot",
     "keybind" : "r"
 }
