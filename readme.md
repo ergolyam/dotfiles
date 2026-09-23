@@ -33,10 +33,6 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
 | -------- | ------ | ----------- |
 | `profile` | `default`, `desktop`, `laptop` | Selects desktop, laptop files or default fish-only files. |
 | `init` | `runit`, `systemd` | Selects service manager configs. |
-| `wm` | `niri`, `hypr` | Selects window manager configs. |
-| `terminal` | `alacritty`, `kitty` | Selects terminal configs; `alacritty` includes tmux. |
-| `notifications` | `mako`, `dunst` | Selects notification daemon config. |
-| `launcher` | `fuzzel`, `wofi` | Selects app launcher config. |
 | `install_fonts` | `true`, `false` | Applies bundled fonts. |
 | `install_cursor` | `true`, `false` | Applies icons/cursors and downloads Hackneyed. |
 

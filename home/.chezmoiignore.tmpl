@@ -5,15 +5,6 @@
 !.config/fish/**
 {{ else if or (eq .profile "desktop") (eq .profile "laptop") }}
 
-{{ if ne .wm "niri" }}
-.config/niri/**
-{{ end }}
-
-{{ if ne .terminal "alacritty" }}
-.config/alacritty/**
-.config/tmux/**
-{{ end }}
-
 {{ if not .install_fonts }}
 .local/share/fonts/**
 {{ end }}
@@ -28,14 +19,6 @@
 
 {{ if not .install_cliphist }}
 .local/bin/cliphist
-{{ end }}
-
-{{ if ne .notifications "mako" }}
-.config/mako/**
-{{ end }}
-
-{{ if ne .launcher "fuzzel" }}
-.config/fuzzel/**
 {{ end }}
 
 {{ if ne .init "runit" }}
