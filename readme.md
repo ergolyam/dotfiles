@@ -19,12 +19,10 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
     [data]
     profile = "desktop"
     init = "runit"
-    wm = "niri"
-    terminal = "alacritty"
-    notifications = "mako"
-    launcher = "fuzzel"
     install_fonts = true
     install_cursor = true
+    install_bluetui = true
+    install_cliphist = true
     ```
 
 - The following `[data]` values control what gets applied on a given machine:
@@ -35,6 +33,8 @@ During `chezmoi init`, chezmoi renders `home/.chezmoi.toml.tmpl` into the local 
 | `init` | `runit`, `systemd` | Selects service manager configs. |
 | `install_fonts` | `true`, `false` | Applies bundled fonts. |
 | `install_cursor` | `true`, `false` | Applies icons/cursors and downloads Hackneyed. |
+| `install_bluetui` | `true`, `false` | Downloads the x86_64 binary file `bluetui` and saves it to `~/.local/bin` |
+| `install_cliphist` | `true`, `false` | Downloads the x86_64 binary file `cliphist` and saves it to `~/.local/bin` |
 
 - You can edit `~/.config/chezmoi/chezmoi.toml` manually after initialization and then re-run:
     ```sh
