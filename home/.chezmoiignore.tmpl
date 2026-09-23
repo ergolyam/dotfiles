@@ -5,16 +5,8 @@
 !.config/fish/**
 {{ else if or (eq .profile "desktop") (eq .profile "laptop") }}
 
-{{ if ne .wm "hypr" }}
-.config/hypr/**
-{{ end }}
-
 {{ if ne .wm "niri" }}
 .config/niri/**
-{{ end }}
-
-{{ if ne .terminal "kitty" }}
-.config/kitty/**
 {{ end }}
 
 {{ if ne .terminal "alacritty" }}
@@ -42,16 +34,8 @@
 .config/mako/**
 {{ end }}
 
-{{ if ne .notifications "dunst" }}
-.config/dunst/**
-{{ end }}
-
 {{ if ne .launcher "fuzzel" }}
 .config/fuzzel/**
-{{ end }}
-
-{{ if ne .launcher "wofi" }}
-.config/wofi/**
 {{ end }}
 
 {{ if ne .init "runit" }}
