@@ -17,7 +17,7 @@
         "tooltip-format": "{device_alias}",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "󰥉 {device_battery_percentage}% | {device_alias}",
-        "on-click": "kitty -e bluetui"
+        "on-click": "alacritty -e bluetui"
     },
     "clock": {
         "format": "{:%d %a  %H:%M}",
