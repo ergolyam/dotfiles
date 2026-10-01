@@ -15,9 +15,9 @@ function restic --description "Run restic profile from ~/.restic/<profile>"
     echo "Run restic profile from $envfile"
     podman run -it --rm \
         -e TZ=Europe/Moscow \
-        -v "$HOME/.restic:/root/.ssh:ro" \
+        -v "$HOME/.restic:/root/.ssh:ro,Z" \
         -v restic-cache:/root/.cache/restic \
-        -v /tmp/restic:/restore \
+        -v /tmp/restic:/restore:Z \
         --env-file="$envfile" \
         docker.io/restic/restic $argv
 end
