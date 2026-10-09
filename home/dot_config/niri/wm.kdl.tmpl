@@ -55,6 +55,11 @@ output "DP-1" {
     mode "1280x800@59.910"
     scale 1.0
 }
+{{ else }}
+output "eDP-1" {
+    mode "1920x1080@60.010"
+    scale 1.25
+}
 {{ end }}
 
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
