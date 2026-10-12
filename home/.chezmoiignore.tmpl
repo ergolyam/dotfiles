@@ -1,8 +1,28 @@
+{{ $serverType := get . "server_type" }}
+
 {{ if eq .profile "default" }}
 **
 !.config/
 !.config/fish/
 !.config/fish/**
+
+{{ if $serverType }}
+!.config/containers/
+!.config/containers/systemd/
+
+!.config/systemd/
+!.config/systemd/user/
+{{ end }}
+
+{{ if eq $serverType "mineclonia" }}
+!.config/containers/systemd/mineclonia/
+!.config/containers/systemd/mineclonia/**
+
+!.config/systemd/user/mcl-backup-smart.service
+!.config/systemd/user/mcl-backup-smart.timer
+!.config/systemd/user/mineclonia.target
+{{ end }}
+
 {{ else if or (eq .profile "desktop") (eq .profile "laptop") }}
 
 {{ if not .install_fonts }}
@@ -25,8 +45,13 @@
 .config/service/**
 {{ end }}
 
-{{ if ne .init "systemd" }}
-.config/containers/systemd/workstation/**
+.config/containers/systemd/**
+.config/systemd/user/**
+
+{{ if eq .init "systemd" }}
+!.config/containers/systemd/
+!.config/containers/systemd/workstation/
+!.config/containers/systemd/workstation/**
 {{ end }}
 
 {{ if ne .profile "desktop" }}
