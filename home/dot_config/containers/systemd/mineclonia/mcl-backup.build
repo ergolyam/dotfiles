@@ -1,0 +1,7 @@
+[Build]
+ImageTag=localhost/mcl-backup:latest
+File=%E/containers/containerfiles/mcl-backup/dockerfile
+SetWorkingDirectory=file
+
+[Service]
+RemainAfterExit=yes

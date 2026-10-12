@@ -1,0 +1,23 @@
+FROM ghcr.io/astral-sh/uv:python3.12-alpine AS main
+
+WORKDIR /app
+
+ENV UV_CACHE_DIR=/opt/uv-cache
+
+RUN wget -qO script.py https://gist.github.com/ergolyam/1159c3d39db146b45d06e89147c39989/raw/ef711c5cfd25283712686479b213b2d6ab86aedb/tg_uploader.py
+
+RUN uv lock --script script.py && \
+    uv sync --locked --script script.py --compile-bytecode
+
+COPY ./upload.sh /usr/local/bin/upload.sh
+COPY ./backup.sh /usr/local/bin/backup.sh
+
+RUN chmod +x /usr/local/bin/upload.sh /usr/local/bin/backup.sh
+
+RUN apk add --no-cache tar zstd
+
+ENV TZ=Europe/Moscow
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+ENTRYPOINT ["/bin/ash"]
