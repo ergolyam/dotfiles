@@ -1,7 +1,7 @@
 [Service]
 Type=oneshot
 
-EnvironmentFile=%E/containers/systemd/mcl-backup.env
+EnvironmentFile=%E/containers/systemd/mineclonia/mcl-backup.env
 
 ExecCondition=/bin/sh -c 'test -n "$(/usr/bin/journalctl --user -u mcl-server.service --since "-6h" -g "ACTION\\[Server\\]: \\S+ (digs|places node) " -n 1 -o cat --no-pager)"'
 
