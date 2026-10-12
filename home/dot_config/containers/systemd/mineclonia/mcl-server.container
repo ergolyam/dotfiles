@@ -1,0 +1,21 @@
+[Unit]
+PartOf=mineclonia.target
+Requires=mcl-db.service
+After=mcl-db.service
+
+[Container]
+UserNS=keep-id:uid=30000,gid=30000
+
+Environment=LUANTI_USER_PATH=/data
+EnvironmentFile=%E/containers/systemd/mineclonia/mcl.env
+
+Image=ghcr.io/luanti-org/luanti:5.17
+AutoUpdate=registry
+
+Network=mineclonia.network
+PublishPort=30000:30000/udp
+
+Volume=%h/data/mcl-data:/data
+
+Exec=--worldname world
+

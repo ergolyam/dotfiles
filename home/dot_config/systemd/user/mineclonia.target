@@ -1,0 +1,7 @@
+[Unit]
+Upholds=mcl-db.service
+Upholds=mcl-server.service
+
+[Install]
+WantedBy=default.target
+

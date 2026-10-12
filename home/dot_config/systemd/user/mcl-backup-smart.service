@@ -1,0 +1,10 @@
+[Service]
+Type=oneshot
+
+EnvironmentFile=%E/containers/systemd/mcl-backup.env
+
+ExecCondition=/bin/sh -c 'test -n "$(/usr/bin/journalctl --user -u mcl-server.service --since "-6h" -g "ACTION\\[Server\\]: \\S+ (digs|places node) " -n 1 -o cat --no-pager)"'
+
+ExecStart=/usr/bin/curl --fail-with-body -sS -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" -d "chat_id=${TG_CHAT_ID}" -d "text=*** Backup started!"
+ExecStart=/usr/bin/systemctl --user start mcl-backup-pack.service
+

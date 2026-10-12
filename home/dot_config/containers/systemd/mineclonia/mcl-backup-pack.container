@@ -1,0 +1,21 @@
+[Unit]
+Conflicts=mineclonia.target mcl-server.service mcl-db.service
+After=mineclonia.target mcl-server.service mcl-db.service
+
+OnSuccess=mineclonia.target mcl-backup-upload.service
+OnFailure=mineclonia.target
+
+[Container]
+Image=localhost/mcl-backup:latest
+Pull=never
+Network=none
+
+Volume=%h/data/mcl-data:/data/mcl-data:ro
+Volume=%h/data/mcl-db:/data/mcl-db:ro
+Volume=%h/data/mcl-backup:/backup
+
+Exec=/usr/local/bin/backup.sh
+
+[Service]
+Type=oneshot
+

@@ -1,0 +1,16 @@
+[Unit]
+After=mcl-backup-pack.service
+
+[Container]
+Image=localhost/mcl-backup:latest
+Pull=never
+
+EnvironmentFile=%E/containers/systemd/mineclonia/mcl-backup.env
+
+Volume=%h/data/mcl-backup:/backup:ro
+
+Exec=/usr/local/bin/upload.sh
+
+[Service]
+Type=oneshot
+
