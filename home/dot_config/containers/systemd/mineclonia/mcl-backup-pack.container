@@ -6,7 +6,7 @@ OnSuccess=mineclonia.target mcl-backup-upload.service
 OnFailure=mineclonia.target
 
 [Container]
-Image=localhost/mcl-backup:latest
+Image=mcl-backup.build
 Pull=never
 Network=none
 

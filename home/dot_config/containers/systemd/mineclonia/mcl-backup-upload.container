@@ -2,7 +2,7 @@
 After=mcl-backup-pack.service
 
 [Container]
-Image=localhost/mcl-backup:latest
+Image=mcl-backup.build
 Pull=never
 
 EnvironmentFile=%E/containers/systemd/mineclonia/mcl-backup.env
