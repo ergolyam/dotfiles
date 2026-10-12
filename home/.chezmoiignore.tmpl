@@ -9,12 +9,15 @@
 {{ if $serverType }}
 !.config/containers/
 !.config/containers/systemd/
+!.config/containers/containerfiles/
 
 !.config/systemd/
 !.config/systemd/user/
 {{ end }}
 
 {{ if eq $serverType "mineclonia" }}
+!.config/containers/containerfiles/mcl-backup/**
+
 !.config/containers/systemd/mineclonia/
 !.config/containers/systemd/mineclonia/**
 
@@ -45,10 +48,11 @@
 .config/service/**
 {{ end }}
 
-.config/containers/systemd/**
+.config/containers/**
 .config/systemd/user/**
 
 {{ if eq .init "systemd" }}
+!.config/containers/
 !.config/containers/systemd/
 !.config/containers/systemd/workstation/
 !.config/containers/systemd/workstation/**
