@@ -19,3 +19,5 @@ Exec=/usr/local/bin/backup.sh
 [Service]
 Type=oneshot
 
+[Service]
+ExecStartPre=/usr/bin/mkdir -p %h/data/mcl-backup
