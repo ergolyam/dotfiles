@@ -19,3 +19,5 @@ Volume=%h/data/mcl-data:/data
 
 Exec=--worldname world
 
+[Service]
+ExecStartPre=/usr/bin/mkdir -p %h/data/mcl-data
