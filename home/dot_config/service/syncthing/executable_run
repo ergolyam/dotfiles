@@ -10,10 +10,7 @@ exec podman run --rm --name "${name}" \
     --userns=keep-id \
     --pull=newer \
     --hostname=$(uname -n) \
-    -p 127.0.0.1:8384:8384 \
-    -p 22000:22000/tcp \
-    -p 22000:22000/udp \
-    -p 21027:21027/udp \
+    --network host \
     -v syncthing:/var/syncthing \
     -v ${HOME}/Sync:/var/syncthing/Sync \
     docker.io/syncthing/syncthing:latest
