@@ -26,7 +26,19 @@
 !.config/systemd/user/mineclonia.target
 {{ end }}
 
+{{ if eq $serverType "vpn" }}
+!.config/containers/systemd/vpn/
+!.config/containers/systemd/vpn/**
+
+!.config/systemd/user/vpn.target
+
+!.config/nginx/
+!.config/nginx/vpn.conf
+{{ end }}
+
 {{ else if or (eq .profile "desktop") (eq .profile "laptop") }}
+
+.config/nginx/**
 
 {{ if not .install_fonts }}
 .local/share/fonts/**

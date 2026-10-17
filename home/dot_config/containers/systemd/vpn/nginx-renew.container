@@ -1,0 +1,10 @@
+[Container]
+Image=docker.io/neilpang/acme.sh:latest
+Volume=nginx-certs:/acme.sh
+PublishPort=80:80
+Exec=--renew-all --standalone
+
+[Service]
+Type=oneshot
+ExecStartPost=/usr/bin/podman exec systemd-nginx nginx -s reload
+

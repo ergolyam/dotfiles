@@ -1,0 +1,7 @@
+[Unit]
+Upholds=3x-ui.service
+Upholds=nginx.service
+
+[Install]
+WantedBy=default.target
+

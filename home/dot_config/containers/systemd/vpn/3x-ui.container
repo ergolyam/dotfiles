@@ -1,0 +1,16 @@
+[Unit]
+PartOf=vpn.target
+
+[Container]
+Environment=XRAY_VMESS_AEAD_FORCED=false
+Environment=XUI_ENABLE_FAIL2BAN=true
+Image=ghcr.io/mhsanaei/3x-ui:latest
+AutoUpdate=registry
+
+Network=vpn.network
+IP=10.50.0.10
+PublishPort=0.0.0.0:443:443/tcp
+PublishPort=127.0.0.1:2053:2053
+
+Volume=3xui-db:/etc/x-ui
+

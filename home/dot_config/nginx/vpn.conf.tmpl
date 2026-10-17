@@ -1,0 +1,32 @@
+server {
+    listen 8443 ssl;
+    server_name {{ .domain }};
+
+    http2 on;
+    port_in_redirect off;
+
+    ssl_certificate /etc/nginx/certs/{{ .domain }}_ecc/fullchain.cer;
+    ssl_certificate_key /etc/nginx/certs/{{ .domain }}_ecc/{{ .domain }}.key;
+
+    add_header X-Robots-Tag "noindex, nofollow" always;
+
+    location / {
+        root /usr/share/nginx/html;
+    }
+
+    location ~ ^(/sub/|/json/) {
+        proxy_pass http://10.50.0.10:2096;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Range $http_range;
+        proxy_set_header If-Range $http_if_range;
+        proxy_redirect off;
+        proxy_intercept_errors on;
+        error_page 400 404 =404 @nginx_404;
+    }
+
+    location @nginx_404 {
+        return 404;
+    }
+}
+
