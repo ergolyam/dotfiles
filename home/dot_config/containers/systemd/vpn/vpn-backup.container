@@ -1,0 +1,14 @@
+[Container]
+Image=vpn-backup.build
+Pull=never
+
+Environment=NAME=%H
+EnvironmentFile=%E/containers/systemd/vpn/vpn-backup.env
+
+Volume=3xui-db:/backup:ro
+
+Exec=/usr/local/bin/script.sh
+
+[Service]
+Type=oneshot
+

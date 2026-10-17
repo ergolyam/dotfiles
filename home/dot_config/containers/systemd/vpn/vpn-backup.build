@@ -1,0 +1,7 @@
+[Build]
+ImageTag=localhost/vpn-backup:latest
+File=%E/containers/containerfiles/vpn-backup/dockerfile
+SetWorkingDirectory=file
+
+[Service]
+RemainAfterExit=yes
