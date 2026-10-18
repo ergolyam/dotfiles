@@ -1,0 +1,14 @@
+[Unit]
+ConditionPathExists=!%S/acme-init/done
+
+[Container]
+Image=docker.io/neilpang/acme.sh:latest
+Volume=acme-certs:/acme.sh
+PublishPort=80:80
+Exec=sh -ec "acme.sh --set-default-ca --server letsencrypt && acme.sh --issue --server letsencrypt --standalone -d {{ .domain }}"
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+StateDirectory=acme-init
+ExecStartPost=/usr/bin/touch %S/acme-init/done
