@@ -1,6 +1,6 @@
 [Container]
 Image=docker.io/neilpang/acme.sh:latest
-Volume=nginx-certs:/acme.sh
+Volume=acme-certs:/acme.sh
 PublishPort=80:80
 Exec=--renew-all --standalone
 

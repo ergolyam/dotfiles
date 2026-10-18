@@ -9,5 +9,5 @@ Network=vpn.network
 IP=10.50.0.11
 
 Volume=%E/%p/vpn:/etc/nginx/conf.d
-Volume=nginx-certs:/etc/nginx/certs
+Volume=acme-certs:/etc/nginx/certs
 
