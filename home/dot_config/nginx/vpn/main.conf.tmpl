@@ -1,0 +1,15 @@
+server {
+    listen 8443 ssl;
+    server_name {{ .domain }};
+
+    http2 on;
+    port_in_redirect off;
+
+    ssl_certificate /etc/nginx/certs/{{ .domain }}_ecc/fullchain.cer;
+    ssl_certificate_key /etc/nginx/certs/{{ .domain }}_ecc/{{ .domain }}.key;
+
+    add_header X-Robots-Tag "noindex, nofollow" always;
+
+    include /etc/nginx/conf.d/routes/*.conf;
+
+}

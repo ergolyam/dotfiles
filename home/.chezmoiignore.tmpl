@@ -37,7 +37,8 @@
 !.config/systemd/user/vpn.target
 
 !.config/nginx/
-!.config/nginx/vpn.conf
+!.config/nginx/vpn/
+!.config/nginx/vpn/**
 {{ end }}
 
 {{ else if or (eq .profile "desktop") (eq .profile "laptop") }}
