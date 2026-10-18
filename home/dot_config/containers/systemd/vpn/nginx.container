@@ -1,5 +1,7 @@
 [Unit]
 PartOf=vpn.target
+Requires=acme-init.service
+After=acme-init.service
 
 [Container]
 Image=docker.io/nginx:stable-alpine-slim
