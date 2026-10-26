@@ -5,6 +5,9 @@ set -g -x XCURSOR_THEME "Hackneyed-24px"
 set -g -x ANDROID_HOME ~/.local/share/android-sdk
 set -g -x ANDROID_SDK_ROOT $ANDROID_HOME
 set -g -x EDITOR vi
+if test -z "$LS_COLORS"
+    set -g -x LS_COLORS (dircolors -b | string match -rg "^LS_COLORS='([^']*)'")
+end
 set -g -x LS_COLORS (string replace -r '(^|:)di=[^:]*' '$1di=38;5;75' "$LS_COLORS")
 fish_add_path -g ~/.local/bin
 fish_add_path -g ~/.cargo/bin
