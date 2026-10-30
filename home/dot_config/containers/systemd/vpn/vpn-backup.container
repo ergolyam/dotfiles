@@ -4,6 +4,7 @@ Pull=never
 
 Environment=NAME=%H
 EnvironmentFile=%E/containers/systemd/vpn/vpn-backup.env
+EnvironmentFile=%t/vpn-backup-version.env
 
 Volume=3xui-db:/backup:ro
 
@@ -11,4 +12,5 @@ Exec=/usr/local/bin/script.sh
 
 [Service]
 Type=oneshot
+ExecStartPre=/bin/sh -c 'echo "XUI_VERSION=$$(podman exec systemd-3x-ui /app/x-ui -v || echo unknown)" > %t/vpn-backup-version.env'
 
