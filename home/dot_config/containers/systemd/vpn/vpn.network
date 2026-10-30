@@ -1,4 +1,0 @@
-[Network]
-Subnet=10.50.0.0/24
-Gateway=10.50.0.1
-

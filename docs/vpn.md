@@ -4,7 +4,7 @@ Rootless 3x-ui/Xray with VLESS/Reality, Nginx TLS fallback, automatic ACME certi
 
 ## Before `chezmoi apply`
 
-1. Point your domain's DNS A record to the VPS and allow `80/tcp` and `443/tcp` (both must be free).
+1. Point your domain's DNS A/AAAA record to the VPS and allow `80/tcp` and `443/tcp` (both must be free).
 2. As an administrator, set the VPN-only sysctl values. They allow rootless Podman to bind low ports and enable BBR:
     ```sh
     echo "net.ipv4.ip_unprivileged_port_start=80" | sudo tee /etc/sysctl.d/99-unprivileged-ports.conf
@@ -18,6 +18,7 @@ Rootless 3x-ui/Xray with VLESS/Reality, Nginx TLS fallback, automatic ACME certi
     profile = "default"
     server_type = "vpn"
     domain = "example.com"
+    ipv6 = true # or false
     ```
     > Replace `example.com` with your domain, then run `chezmoi apply`.
 
