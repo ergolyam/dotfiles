@@ -1,3 +1,7 @@
+{{- if not (get . "sub") -}}
+{{- abortEmpty -}}
+{{- end -}}
+
 location ~ ^(/sub/|/json/) {
     proxy_pass http://10.50.0.10:2096;
     proxy_set_header Host $host;
