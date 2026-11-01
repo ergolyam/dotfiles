@@ -1,7 +1,7 @@
 [Network]
 Subnet=10.50.0.0/24
 Gateway=10.50.0.1
-{{ if .ipv6 }}
+{{ if (get . "ipv6") }}
 IPv6=yes
 Subnet=fd10:50::/64
 Gateway=fd10:50::1
