@@ -55,10 +55,28 @@ while true; do
     message=$(printf 'У <b>%s</b> пользователя через %s %s истекает подписка!\nComment: %s' \
       "$email" "$days" "$word" "$comment")
 
+    callback_data="client_get_usage $email"
+
+    curl_args=(
+      --data-urlencode "chat_id=$TG_CHAT_ID"
+      --data-urlencode "parse_mode=HTML"
+      --data-urlencode "text=$message"
+    )
+
+    if (( $(printf '%s' "$callback_data" | wc -c) <= 64 )); then
+      keyboard=$(jq -nc --arg data "$callback_data" \
+        '{inline_keyboard: [[{
+          text: "👤 Открыть карточку",
+          callback_data: $data
+        }]]}')
+
+      curl_args+=(--data-urlencode "reply_markup=$keyboard")
+    else
+      echo "WARN: Слишком длинный email для кнопки: $email" >&2
+    fi
+
     tg_response=$(curl -fsS --connect-timeout 10 --max-time 30 \
-      --data-urlencode "chat_id=$TG_CHAT_ID" \
-      --data-urlencode "parse_mode=HTML" \
-      --data-urlencode "text=$message" \
+      "${curl_args[@]}" \
       "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage")
 
     jq -e '.ok == true' >/dev/null <<< "$tg_response"
@@ -71,3 +89,4 @@ while true; do
   (( page += 1 ))
 done
 echo "OK: Проверка подписок завершена"
+
