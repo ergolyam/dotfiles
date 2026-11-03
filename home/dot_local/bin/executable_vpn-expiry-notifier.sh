@@ -27,7 +27,7 @@ while true; do
   fi
 
   if ! jq -e '.success == true and (.obj.items | type == "array")' >/dev/null <<< "$response"; then
-    echo "Ошибка: 3x-ui API вернул некорректный ответ" >&2
+    echo "ERROR: 3x-ui API вернул некорректный ответ" >&2
     exit 1
   fi
 
