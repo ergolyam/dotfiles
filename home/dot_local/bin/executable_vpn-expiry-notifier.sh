@@ -22,6 +22,11 @@ while true; do
   if response=$(curl -fsS --connect-timeout 10 --max-time 30 \
     -H "Authorization: Bearer $XUI_TOKEN" \
     "${XUI_URL%/}/panel/api/clients/list/paged?page=$page&pageSize=200&expiryFrom=$from&expiryTo=$to"); then
+    if ! jq -e '.success == true and (.obj.items | type == "array")' \
+      >/dev/null <<< "$response"; then
+      echo "ERROR: 3x-ui API вернул ошибку" >&2
+      exit 1
+    fi
     echo "OK: 3x-ui API ответил успешно, страница $page"
   else
     echo "ERROR: Не удалось получить клиентов из 3x-ui API" >&2
