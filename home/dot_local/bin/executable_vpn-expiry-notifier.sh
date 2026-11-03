@@ -58,11 +58,12 @@ while true; do
       *) word="дней" ;;
     esac
 
-    message=$(printf 'У %s пользователя через %s %s истекает подписка!\nComment: %s' \
+    message=$(printf 'У <b>%s</b> пользователя через %s %s истекает подписка!\nComment: %s' \
       "$email" "$days" "$word" "$comment")
 
     tg_response=$(curl -fsS --connect-timeout 10 --max-time 30 \
       --data-urlencode "chat_id=$TG_CHAT_ID" \
+      --data-urlencode "parse_mode=HTML" \
       --data-urlencode "text=$message" \
       "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage")
 
