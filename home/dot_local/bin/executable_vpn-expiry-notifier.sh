@@ -19,16 +19,9 @@ to=$(((now + DAYS_BEFORE * 86400) * 1000))
 
 page=1
 while true; do
-  if response=$(curl -fsS --connect-timeout 10 --max-time 30 \
+  if ! response=$(curl -fsS --connect-timeout 10 --max-time 30 \
     -H "Authorization: Bearer $XUI_TOKEN" \
     "${XUI_URL%/}/panel/api/clients/list/paged?page=$page&pageSize=200&expiryFrom=$from&expiryTo=$to"); then
-    if ! jq -e '.success == true and (.obj.items | type == "array")' \
-      >/dev/null <<< "$response"; then
-      echo "ERROR: 3x-ui API вернул ошибку" >&2
-      exit 1
-    fi
-    echo "OK: 3x-ui API ответил успешно, страница $page"
-  else
     echo "ERROR: Не удалось получить клиентов из 3x-ui API" >&2
     exit 1
   fi
@@ -39,6 +32,7 @@ while true; do
   fi
 
   count=$(jq '.obj.items | length' <<< "$response")
+  echo "OK: 3x-ui API, страница $page, найдено клиентов: $count"
 
   jq -r '
     .obj.items[]
