@@ -38,6 +38,12 @@
 !.config/systemd/user/podman-auto-update.timer.d/
 !.config/systemd/user/podman-auto-update.timer.d/vpn-schedule.conf
 
+{{ if (get . "notify") }}
+!.config/systemd/user/vpn-expiry-notifier.service
+!.config/systemd/user/vpn-expiry-notifier.timer
+!.local/bin/vpn-expiry-notifier.sh
+{{ end }}
+
 !.config/nginx/
 !.config/nginx/vpn/
 !.config/nginx/vpn/**
@@ -46,6 +52,7 @@
 {{ else if or (eq .profile "desktop") (eq .profile "laptop") }}
 
 .config/nginx/**
+.local/bin/**
 
 {{ if not .install_fonts }}
 .local/share/fonts/**

@@ -1,0 +1,4 @@
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/vpn-expiry-notifier.sh
+EnvironmentFile=%E/containers/systemd/vpn/vpn-expiry-notifier.env
