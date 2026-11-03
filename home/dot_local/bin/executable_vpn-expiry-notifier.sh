@@ -8,13 +8,14 @@ umask 077
 : "${TG_CHAT_ID:?Не задан TG_CHAT_ID}"
 
 STATE_FILE="$HOME/.local/state/vpn-expiry/sent.tsv"
+DAYS_BEFORE=5
 
 mkdir -p "$(dirname "$STATE_FILE")"
 touch "$STATE_FILE"
 
 now=$(date +%s)
 from=$((now * 1000 + 1))
-to=$(((now + 5 * 86400) * 1000))
+to=$(((now + DAYS_BEFORE * 86400) * 1000))
 
 page=1
 while true; do
@@ -62,8 +63,11 @@ while true; do
 
     jq -e '.ok == true' >/dev/null <<< "$tg_response"
     printf '%s\t%s\n' "$email" "$expiry" >> "$STATE_FILE"
+
+    echo "OK: Telegram уведомление отправлено: $email"
   done
 
   (( count < 200 )) && break
   (( page += 1 ))
 done
+echo "OK: Проверка подписок завершена"
