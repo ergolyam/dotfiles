@@ -3,6 +3,18 @@ function maki --description "Run Maki in a persistent podman container"
     set -l container_name "maki-$dir_hash"
     set -l tmpdir "/tmp/maki-$dir_hash"
 
+    if test "$argv[1]" = clean
+        if podman container exists "$container_name"
+            podman rm -f --time 0 "$container_name"
+            and rm -rf -- "$tmpdir"
+            or return $status
+            echo "Cleaned up $container_name"
+        else
+            echo "Nothing to clean: $container_name"
+        end
+        return 0
+    end
+
     mkdir -p "$tmpdir" "$HOME/.local/share/maki"
 
     if not podman container exists "$container_name"
