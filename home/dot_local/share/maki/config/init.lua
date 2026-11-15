@@ -1,4 +1,5 @@
 maki.pack.add({ "https://github.com/ergolyam/maki-codex-status" })
+maki.pack.add({ "https://github.com/dkarvik/maki-codex" })
 
 maki.setup({
     ui = {
