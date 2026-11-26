@@ -28,6 +28,7 @@ function codex --description "Run codex in a persistent podman container"
         podman run -d --pull newer \
             --name "$container_name" \
             -e TZ=Europe/Moscow \
+            -e TERM=$TERM \
             -v "$tmpdir:/tmp:z" \
             -v "$HOME/.local/share/codex:/data:z" \
             -v "$PWD:$PWD:z" \
