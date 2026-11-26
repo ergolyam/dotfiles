@@ -18,6 +18,13 @@ function codex --description "Run codex in a persistent podman container"
     mkdir -p "$tmpdir" "$HOME/.local/share/codex"
 
     if not podman container exists "$container_name"
+        set -l podman_args
+
+        if set -q PODMAN_ARGS[1]
+            echo -- "$PODMAN_ARGS" | read --tokenize --array podman_args
+            or return $status
+        end
+
         podman run -d --pull newer \
             --name "$container_name" \
             --entrypoint sleep \
@@ -25,6 +32,7 @@ function codex --description "Run codex in a persistent podman container"
             -v "$HOME/.local/share/codex:/data:z" \
             -v "$PWD:$PWD:z" \
             --workdir "$PWD" \
+            $podman_args \
             ghcr.io/ergolyam/agents-docker/codex:latest \
             infinity
 
