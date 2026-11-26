@@ -27,12 +27,13 @@ function codex --description "Run codex in a persistent podman container"
 
         podman run -d --pull newer \
             --name "$container_name" \
-            --entrypoint sleep \
+            -e TZ=Europe/Moscow \
             -v "$tmpdir:/tmp:z" \
             -v "$HOME/.local/share/codex:/data:z" \
             -v "$PWD:$PWD:z" \
             --workdir "$PWD" \
             $podman_args \
+            --entrypoint sleep \
             ghcr.io/ergolyam/agents-docker/codex:latest \
             infinity
 

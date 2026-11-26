@@ -20,11 +20,12 @@ function maki --description "Run Maki in a persistent podman container"
     if not podman container exists "$container_name"
         podman run -d --pull newer \
             --name "$container_name" \
-            --entrypoint sleep \
+            -e TZ=Europe/Moscow \
             -v "$tmpdir:/tmp:z" \
             -v "$HOME/.local/share/maki:/data:z" \
             -v "$PWD:$PWD:z" \
             --workdir "$PWD" \
+            --entrypoint sleep \
             ghcr.io/ergolyam/agents-docker/maki:latest \
             infinity
 
