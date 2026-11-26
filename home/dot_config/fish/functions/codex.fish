@@ -1,73 +1,40 @@
-function codex --description "Run codex-cli in a podman container"
-    set -l dirs
-    set -l modes
-    set -l args
-    set -l tag latest
-    set -l network container:tun2socks
+function codex --description "Run codex in a persistent podman container"
+    set -l dir_hash (echo -n "$PWD" | sha256sum | cut -c1-12)
+    set -l container_name "codex-$dir_hash"
+    set -l tmpdir "/tmp/codex-$dir_hash"
 
-    while set -q argv[1]
-        switch $argv[1]
-            case '-w:*'
-                if not set -q argv[2]
-                    echo "codex: missing directory after $argv[1]" >&2
-                    return 2
-                end
-
-                set -a dirs $argv[2]
-                set -a modes (string sub -s 4 -- $argv[1])
-                set -e argv[1..2]
-
-            case '--tag'
-                if not set -q argv[2]
-                    echo "codex: missing value after --tag" >&2
-                    return 2
-                end
-
-                set tag $argv[2]
-                set -e argv[1..2]
-
-            case '--network'
-                if not set -q argv[2]
-                    echo "codex: missing value after --network" >&2
-                    return 2
-                end
-
-                set network $argv[2]
-                set -e argv[1..2]
-
-            case '--'
-                set args $argv[2..-1]
-                break
-
-            case '*'
-                echo "codex: unknown argument $argv[1]" >&2
-                return 2
+    if test "$argv[1]" = clean
+        if podman container exists "$container_name"
+            podman rm -f --time 0 "$container_name"
+            and rm -rf -- "$tmpdir"
+            or return $status
+            echo "Cleaned up $container_name"
+        else
+            echo "Nothing to clean: $container_name"
         end
+        return 0
     end
 
-    set -l mounts
-    for i in (seq 1 (count $dirs))
-        set -l target /work
+    mkdir -p "$tmpdir" "$HOME/.local/share/codex"
 
-        if test (count $dirs) -gt 1
-            set target /work/(path basename -- $dirs[$i])
-        end
+    if not podman container exists "$container_name"
+        podman run -d --pull newer \
+            --name "$container_name" \
+            --entrypoint sleep \
+            -v "$tmpdir:/tmp:z" \
+            -v "$HOME/.local/share/codex:/data:z" \
+            -v "$PWD:$PWD:z" \
+            --workdir "$PWD" \
+            ghcr.io/ergolyam/agents-docker/codex:latest \
+            infinity
 
-        set -a mounts -v "$dirs[$i]:$target:$modes[$i]"
+        or return $status
     end
 
-    set -l network_args
-    if test "$network" = init
-        set network_args -p 127.0.0.1:1455:1455
-    else
-        set network_args --network "$network"
+    if test (podman inspect -f '{{.State.Running}}' "$container_name") != true
+        podman start "$container_name"
+        or return $status
     end
 
-    command podman run --pull newer --name codex --rm -it \
-        -e TERM=$TERM \
-        -e TZ=Europe/Moscow \
-        $network_args \
-        -v "$HOME/.local/share/codex:/data:Z" \
-        $mounts \
-        ghcr.io/ergolyam/codex-docker:$tag $args
+    podman exec -it "$container_name" entrypoint.sh $argv
 end
