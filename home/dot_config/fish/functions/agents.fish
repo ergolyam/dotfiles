@@ -1,7 +1,9 @@
-function codex --description "Run codex in a persistent podman container"
+function codex --description "Run agent in a persistent podman container"
+    set -l agent (status function)
     set -l dir_hash (echo -n "$PWD" | sha256sum | cut -c1-12)
-    set -l container_name "codex-$dir_hash"
-    set -l tmpdir "/tmp/codex-$dir_hash"
+    set -l container_name "$agent-$dir_hash"
+    set -l tmpdir "/tmp/$container_name"
+    set -l datadir "$HOME/.local/share/$agent"
 
     if test "$argv[1]" = clean
         if podman container exists "$container_name"
@@ -15,7 +17,8 @@ function codex --description "Run codex in a persistent podman container"
         return 0
     end
 
-    mkdir -p "$tmpdir" "$HOME/.local/share/codex"
+    mkdir -p "$tmpdir" "$datadir"
+    or return $status
 
     if not podman container exists "$container_name"
         set -l podman_args
@@ -28,14 +31,14 @@ function codex --description "Run codex in a persistent podman container"
         podman run -d --pull newer \
             --name "$container_name" \
             -e TZ=Europe/Moscow \
-            -e TERM=$TERM \
+            -e TERM="$TERM" \
             -v "$tmpdir:/tmp:z" \
-            -v "$HOME/.local/share/codex:/data:z" \
+            -v "$datadir:/data:z" \
             -v "$PWD:$PWD:z" \
             --workdir "$PWD" \
-            $podman_args \
             --entrypoint sleep \
-            ghcr.io/ergolyam/agents-docker/codex:latest \
+            $podman_args \
+            "ghcr.io/ergolyam/agents-docker/$agent:latest" \
             infinity
 
         or return $status
@@ -48,3 +51,5 @@ function codex --description "Run codex in a persistent podman container"
 
     podman exec -it "$container_name" entrypoint.sh $argv
 end
+
+functions --copy codex maki
