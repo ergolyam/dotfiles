@@ -1,0 +1,16 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- fromToml .chezmoi.stdin
+  | setValueAtPath "approval_policy" "never"
+  | setValueAtPath "sandbox_mode" "danger-full-access"
+  | setValueAtPath "web_search" "live"
+  | setValueAtPath "tui.status_line" (list
+      "model-with-reasoning"
+      "current-dir"
+      "thread-name"
+      "run-state"
+      "context-remaining"
+      "five-hour-limit"
+      "weekly-limit"
+      "used-tokens"
+    )
+  | toToml -}}

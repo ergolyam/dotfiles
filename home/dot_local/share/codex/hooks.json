@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh /data/hooks/environment.sh",
+            "statusMessage": "Detecting execution environment",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
+
