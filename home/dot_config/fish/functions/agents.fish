@@ -22,6 +22,11 @@ function codex --description "Run agent in a persistent podman container"
 
     if not podman container exists "$container_name"
         set -l podman_args
+        set -l tag latest
+
+        if set -q TAG[1]
+            set tag "$TAG"
+        end
 
         if set -q PODMAN_ARGS[1]
             echo -- "$PODMAN_ARGS" | read --tokenize --array podman_args
@@ -38,7 +43,7 @@ function codex --description "Run agent in a persistent podman container"
             --workdir "$PWD" \
             --entrypoint sleep \
             $podman_args \
-            "ghcr.io/ergolyam/agents-docker/$agent:latest" \
+            "ghcr.io/ergolyam/agents-docker/$agent:$tag" \
             infinity
 
         or return $status
